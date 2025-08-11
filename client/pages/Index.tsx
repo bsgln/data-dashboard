@@ -36,7 +36,7 @@ export default function Index() {
       className="min-h-screen bg-[#F8FAFC] animate-in fade-in"
       style={{ animationDuration: "800ms" }}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 sm:py-8">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
         {/* Connection Status & Controls */}
         <div
           className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0
@@ -96,7 +96,7 @@ export default function Index() {
 
             <MetricsCards metrics={data?.metrics} />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
               <GenderChart data={data?.genderDistribution} />
               <AgeParticipationChart totalVotes={data?.metrics.totalVotes || 0} />
               <BudgetPriorityTable data={data?.budgetPriorities} />
@@ -114,7 +114,7 @@ export default function Index() {
                 Асуултуудын үр дүн
               </h2>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                 {data?.questions.map((question) => (
                   <SurveyQuestionResults
                     key={question.id}
@@ -139,7 +139,7 @@ export default function Index() {
 
             <MetricsCardsSkeleton />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
               <GenderChartSkeleton />
               <GenderChartSkeleton /> {/* Age participation chart skeleton */}
               <BudgetPriorityTableSkeleton />
@@ -148,7 +148,7 @@ export default function Index() {
             <div className="mb-6 sm:mb-8">
               <div className="h-5 sm:h-6 w-40 sm:w-48 bg-gray-200 rounded animate-pulse mb-4 sm:mb-6"></div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                 <SurveyQuestionSkeleton />
                 <SurveyQuestionSkeleton />
               </div>
