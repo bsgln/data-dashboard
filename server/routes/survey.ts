@@ -206,23 +206,29 @@ const transformRealData = async (
   const maleCount = Math.round(totalVotes * (estimatedMalePercentage / 100));
   const femaleCount = Math.round(totalVotes * (estimatedFemalePercentage / 100));
 
-  // Age groups based on actual survey response data
-  const ageResponseData = [
-    { range: "16-17 нас", count: 119 },
-    { range: "18-24 нас", count: 20958 },
-    { range: "25-34 нас", count: 51042 },
-    { range: "35-44 нас", count: 46795 },
-    { range: "45-54 нас", count: 18410 },
-    { range: "55+ нас", count: 6231 },
+  // Age groups based on real Mongolia population data
+  const agePopulationData = [
+    { range: "16-17 нас", population: 119 }, // Keep survey response for 16-17 as no population data provided
+    { range: "18-24 нас", population: 179264 },
+    { range: "25-34 нас", population: 244588 },
+    { range: "35-44 нас", population: 289587 },
+    { range: "45-54 нас", population: 267022 },
+    { range: "55+ нас", population: 233287 },
   ];
 
-  const totalAgeResponses = ageResponseData.reduce((sum, item) => sum + item.count, 0);
+  const totalAgePopulation = agePopulationData.reduce((sum, item) => sum + item.population, 0);
 
-  const ageGroups = ageResponseData.map(item => ({
-    range: item.range,
-    count: item.count,
-    percentage: Math.round((item.count / totalAgeResponses) * 100 * 10) / 10,
-  }));
+  // Calculate estimated participation for each age group based on their population proportion
+  const ageGroups = agePopulationData.map(item => {
+    const participationRate = totalVotes / mongoliaAdultPopulation;
+    const estimatedParticipants = Math.round(item.population * participationRate);
+
+    return {
+      range: item.range,
+      count: estimatedParticipants,
+      percentage: Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
+    };
+  });
 
   // Calculate completion percentage based on actual adult population
   const mongoliaAdultPopulation = 2280887; // Actual adult population 16+
