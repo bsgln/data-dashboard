@@ -15,8 +15,8 @@ interface MetricsCardsProps {
 export function MetricsCards({ metrics }: MetricsCardsProps) {
   if (!metrics) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
-        {[...Array(4)].map((_, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
+        {[...Array(3)].map((_, index) => (
           <div
             key={index}
             className="bg-white p-3 sm:p-4 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
@@ -68,21 +68,10 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
         "Санал асуулгыг дуусгасан хувь. Тооцоолол: (Дуусгасан хүмүүсийн тоо ÷ Нийт уригдсан хүмүүсийн тоо) × 100%",
       isNumeric: false,
     },
-    {
-      title: "Ач холбогдолын зэрэг",
-      value: metrics.topBudgetPriority?.category || "Тодорхойгүй",
-      subtitle: `${metrics.topBudgetPriority?.percentage || 0}%`,
-      icon: Trophy,
-      iconColor: "text-amber-600",
-      iconBg: "bg-amber-50",
-      tooltip:
-        "Төсөв нэмэгдүүлэх хамгийн чухал салбар. Тооцоолол: Тэргүүлэх индекс = ((Нэмэгдүүлэх санал) - (Багасгах санал)) ÷ (Нийт санал) × 100%",
-      isNumeric: false,
-    },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
       {cards.map((card, index) => (
         <div
           key={index}
