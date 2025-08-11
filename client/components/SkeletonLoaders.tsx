@@ -149,3 +149,57 @@ export function SurveyQuestionSkeleton() {
     </div>
   );
 }
+
+export function SeventhQuestionCardSkeleton() {
+  return (
+    <div className="bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50
+                    p-4 sm:p-5 lg:p-6 rounded-2xl shadow-[0_8px_32px_rgba(0,102,255,0.12)]
+                    border border-blue-100/50 min-h-[380px] sm:min-h-[420px]">
+      {/* Header */}
+      <div className="mb-4 sm:mb-6">
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <Skeleton className="w-9 h-9 rounded-lg" />
+            <Skeleton className="h-4 w-20" />
+          </div>
+          <Skeleton className="h-6 w-16 rounded-full" />
+        </div>
+        <Skeleton className="h-5 w-full mb-2" />
+        <Skeleton className="h-5 w-4/5" />
+      </div>
+
+      {/* Top 3 cards */}
+      <div className="space-y-3 sm:space-y-4 mb-4">
+        {Array.from({ length: 3 }).map((_, index) => (
+          <div
+            key={index}
+            className="relative p-3 sm:p-4 rounded-xl bg-white/70 border border-gray-200/50"
+          >
+            <Skeleton className="absolute -top-2 -left-2 w-6 h-6 rounded-full" />
+            <div className="flex items-center justify-between">
+              <div className="flex-1 mr-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <Skeleton className="w-3 h-3 rounded-full" />
+                  <Skeleton className="h-4 w-32" />
+                </div>
+                <Skeleton className="h-2 w-full rounded-full" />
+              </div>
+              <div className="text-right">
+                <Skeleton className="h-4 w-10 mb-1" />
+                <Skeleton className="h-3 w-16" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <div className="pt-3 border-t border-gray-200/50">
+        <div className="flex justify-between items-center">
+          <Skeleton className="h-3 w-16" />
+          <Skeleton className="h-3 w-20" />
+        </div>
+      </div>
+    </div>
+  );
+}
