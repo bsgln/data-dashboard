@@ -218,12 +218,11 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
               {/* Progress bar */}
               <div className="relative h-2 bg-gray-200/60 rounded-full overflow-hidden">
                 <div
-                  className="absolute left-0 top-0 h-full rounded-full transition-all duration-1000 ease-out"
+                  className="absolute left-0 top-0 h-full rounded-full"
                   style={{
                     width: `${suggestion.percentage}%`,
                     backgroundColor: suggestion.color,
                     boxShadow: `0 0 8px ${suggestion.color}40`,
-                    animationDelay: `${800 + index * 100}ms`,
                   }}
                 />
               </div>
