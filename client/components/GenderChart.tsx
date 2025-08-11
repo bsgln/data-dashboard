@@ -13,8 +13,8 @@ export function GenderChart({ data }: GenderChartProps) {
                       min-h-[280px] flex items-center justify-center"
       >
         <div className="text-center">
-          <div className="text-gray-500 text-sm font-medium">Мэдээлэл алга</div>
-          <div className="text-gray-400 text-xs mt-1">Хүйсийн статистик</div>
+          <div className="w-16 h-16 bg-gray-200 rounded-full animate-pulse mx-auto mb-3"></div>
+          <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
         </div>
       </div>
     );
