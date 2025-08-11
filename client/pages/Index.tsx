@@ -3,6 +3,7 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricsCards } from "@/components/MetricsCards";
 import { GenderChart } from "@/components/GenderChart";
 import { AgeGroupChart } from "@/components/AgeGroupChart";
+import { AgeParticipationChart } from "@/components/AgeParticipationChart";
 import { BudgetPriorityTable } from "@/components/BudgetPriorityTable";
 import { SurveyQuestionResults } from "@/components/SurveyQuestionResults";
 import { ConnectionErrorDialog } from "@/components/ConnectionErrorDialog";
