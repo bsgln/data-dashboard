@@ -2,7 +2,6 @@ import { useSurveyData } from "@/hooks/useSurveyData";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricsCards } from "@/components/MetricsCards";
 import { GenderChart } from "@/components/GenderChart";
-import { AgeGroupChart } from "@/components/AgeGroupChart";
 import { AgeParticipationChart } from "@/components/AgeParticipationChart";
 import { BudgetPriorityTable } from "@/components/BudgetPriorityTable";
 import { SurveyQuestionResults } from "@/components/SurveyQuestionResults";
@@ -97,9 +96,8 @@ export default function Index() {
 
             <MetricsCards metrics={data?.metrics} />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
               <GenderChart data={data?.genderDistribution} />
-              <AgeGroupChart data={data?.ageGroups} />
               <AgeParticipationChart totalVotes={data?.metrics.totalVotes || 0} />
               <BudgetPriorityTable data={data?.budgetPriorities} />
             </div>
@@ -141,10 +139,9 @@ export default function Index() {
 
             <MetricsCardsSkeleton />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
               <GenderChartSkeleton />
-              <AgeGroupChartSkeleton />
-              <AgeGroupChartSkeleton /> {/* Age participation chart skeleton */}
+              <GenderChartSkeleton /> {/* Age participation chart skeleton */}
               <BudgetPriorityTableSkeleton />
             </div>
 
