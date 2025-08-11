@@ -123,14 +123,11 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
 
   return (
     <div
-      className="relative bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50 
+      className="relative bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50
                     p-4 sm:p-5 lg:p-6 rounded-2xl shadow-[0_8px_32px_rgba(0,102,255,0.12)]
-                    transition-all duration-500 hover:shadow-[0_16px_48px_rgba(0,102,255,0.18)]
-                    hover:scale-[1.02] hover:-translate-y-1
                     border border-blue-100/50 backdrop-blur-sm
-                    animate-in slide-in-from-bottom-4 fade-in min-h-[380px] sm:min-h-[420px] flex flex-col
-                    group overflow-hidden"
-      style={{ animationDelay: "600ms", animationFillMode: "backwards" }}
+                    min-h-[380px] sm:min-h-[420px] flex flex-col
+                    overflow-hidden"
     >
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-indigo-300/20 rounded-full blur-2xl transform translate-x-8 -translate-y-8 transition-transform duration-700 group-hover:scale-110"></div>
