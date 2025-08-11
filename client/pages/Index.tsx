@@ -17,6 +17,7 @@ import {
   AgeGroupChartSkeleton,
   BudgetPriorityTableSkeleton,
   SurveyQuestionSkeleton,
+  SeventhQuestionCardSkeleton,
 } from "@/components/SkeletonLoaders";
 
 export default function Index() {
