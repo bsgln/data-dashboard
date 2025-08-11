@@ -214,12 +214,8 @@ function calculateBudgetPriorities(questions: any[]) {
   );
 
   if (!increaseQuestion || !decreaseQuestion) {
-    // Return default priorities
-    return [
-      { category: "Эрүүл мэнд", index: 58.5, status: "increase" as const },
-      { category: "Боловсрол", index: 55.4, status: "increase" as const },
-      { category: "Дэд бүтэц", index: 38.7, status: "increase" as const },
-    ];
+    // No budget priority data available
+    return [];
   }
 
   // Create priority calculations based on increase vs decrease votes
