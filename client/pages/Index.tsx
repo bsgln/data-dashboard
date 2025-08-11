@@ -157,14 +157,15 @@ export default function Index() {
               <BudgetPriorityTableSkeleton />
             </div>
 
-            {/* Seventh Question Card Skeleton */}
-            <div className="mb-6 sm:mb-8">
-              <SeventhQuestionCardSkeleton />
-            </div>
-
             <div className="mb-6 sm:mb-8">
               <div className="h-5 sm:h-6 w-40 sm:w-48 bg-gray-200 rounded animate-pulse mb-4 sm:mb-6"></div>
 
+              {/* Citizen Suggestions Card Skeleton */}
+              <div className="mb-6 sm:mb-8">
+                <SeventhQuestionCardSkeleton />
+              </div>
+
+              {/* Regular Question Skeletons */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                 <SurveyQuestionSkeleton />
                 <SurveyQuestionSkeleton />
