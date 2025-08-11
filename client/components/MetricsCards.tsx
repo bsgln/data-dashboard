@@ -58,12 +58,12 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
     {
       title: "Нийт санал",
       value: metrics.totalVotes || 0,
-      subtitle: `+${(metrics.dailyVotesAdded || 0).toLocaleString()} санал /өнөөдөр/`,
+      subtitle: "Нийт санал өгсөн хүмүүсийн тоо",
       icon: Users,
       iconColor: "text-blue-600",
       iconBg: "bg-blue-50",
       tooltip:
-        "Нийт санал өгөгчдийн тоо. Өнөөдрийн нэмэгдэл нь ��дрийн турш нэмэгдсэн саналын тоог харуулна.",
+        "Санал асуулгад оролцсон нийт хүмүүсийн тоо. Бодит цагийн мэдээлэл.",
       isNumeric: true,
     },
     {
