@@ -152,9 +152,11 @@ export function SurveyQuestionSkeleton() {
 
 export function SeventhQuestionCardSkeleton() {
   return (
-    <div className="bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50
+    <div
+      className="bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50
                     p-4 sm:p-5 lg:p-6 rounded-2xl shadow-[0_8px_32px_rgba(0,102,255,0.12)]
-                    border border-blue-100/50 min-h-[380px] sm:min-h-[420px]">
+                    border border-blue-100/50 min-h-[380px] sm:min-h-[420px]"
+    >
       {/* Header */}
       <div className="mb-4 sm:mb-6">
         <div className="flex items-start justify-between mb-3">

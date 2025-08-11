@@ -23,8 +23,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#0066FF",
       details: [
         "Багш, эмч, цагдаагийн цалинг нэмэгдүүлэх",
-        "Төрийн албан хаагчдын цалинг амьжиргааны түвшинд нийцүүлэх"
-      ]
+        "Төрийн албан хаагчдын цалинг амьжиргааны түвшинд нийцүүлэх",
+      ],
     },
     {
       category: "Төсвийн үр ашиг",
@@ -33,8 +33,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#E11D48",
       details: [
         "Зардлыг бууруулах, үр ашиггүй зардлыг танах",
-        "Давхардсан төсвийн зарцуулалтыг зогсоох"
-      ]
+        "Давхардсан төсвийн зарцуулалтыг зогсоох",
+      ],
     },
     {
       category: "Эрүүл мэндийн үйлчилгээ",
@@ -43,8 +43,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#22C55E",
       details: [
         "Эрүүл мэндийн хүртээмж, чанарыг сайжруулах",
-        "Эрүүл мэндийн салбарын төсвийг нэмэгдүүлэх"
-      ]
+        "Эрүүл мэндийн салбарын төсвийг нэмэгдүүлэх",
+      ],
     },
     {
       category: "Боловсролын салбар",
@@ -53,8 +53,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#F97316",
       details: [
         "Сургууль, цэцэрлэгийн тоог нэмэгдүүлэх",
-        "Хөдөө орон нутагт боловсролын чанарыг дээшлүүлэх"
-      ]
+        "Хөдөө орон нутагт боловсролын чанарыг дээшлүүлэх",
+      ],
     },
     {
       category: "Хууль, цагдаагийн байгууллага",
@@ -63,8 +63,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#A855F7",
       details: [
         "Цагдаагийн байгууллагын нөхцөлийг сайжруулах",
-        "Хууль хэрэгжилтийг чангатгах"
-      ]
+        "Хууль хэрэгжилтийг чангатгах",
+      ],
     },
     {
       category: "Нийгмийн хамгаалал",
@@ -73,8 +73,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#EC4899",
       details: [
         "Эх, хүүхдийн халамж, тэтгэмжийг нэмэгдүүлэх",
-        "Амьжиргааны түвшин доогуур иргэдэд дэмжлэг үзүүлэх"
-      ]
+        "Амьжиргааны түвшин доогуур иргэдэд дэмжлэг үзүүлэх",
+      ],
     },
     {
       category: "Дэд бүтэц, зам засвар",
@@ -83,8 +83,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#4D7C0F",
       details: [
         "Хот, орон нутгийн замыг засварлах",
-        "Гэрэлтүүлэг, явган хүний замыг сайжруулах"
-      ]
+        "Гэрэлтүүлэг, явган хүний замыг сайжруулах",
+      ],
     },
     {
       category: "Хөдөө аж ахуй",
@@ -93,8 +93,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#0D9488",
       details: [
         "Малын эрүүл мэнд, бэлчээрийн менежмент сайжруулах",
-        "Хөдөө аж ахуйн салбарт дэмжлэг үзүүлэх"
-      ]
+        "Хөдөө аж ахуйн салбарт дэмжлэг үзүүлэх",
+      ],
     },
     {
       category: "Байгаль орчны хамгаалал",
@@ -103,8 +103,8 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#0EA5E9",
       details: [
         "Байгаль хамгаалах төсвийг нэмэгдүүлэх",
-        "Хог, бохирдлын менежментийг сайжруулах"
-      ]
+        "Хог, бохирдлын менежментийг сайжруулах",
+      ],
     },
     {
       category: "Хувийн хэвшлийн дэмжлэг",
@@ -113,9 +113,9 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#6366F1",
       details: [
         "Жижиг, дунд бизнесийн нөхцөлийг сайжруулах",
-        "Татварын хөнгөлөлт олгох"
-      ]
-    }
+        "Татварын хөнгөлөлт олгох",
+      ],
+    },
   ];
 
   const totalVotes = 38514;
@@ -129,7 +129,6 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
                     min-h-[380px] sm:min-h-[420px] flex flex-col
                     overflow-hidden"
     >
-      
       {/* Header with icon */}
       <div className="relative z-10 mb-4 sm:mb-6">
         <div className="flex items-start justify-between mb-3">
@@ -162,21 +161,29 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
           <div
             key={suggestion.category}
             className={`relative p-3 sm:p-4 rounded-xl border backdrop-blur-sm
-                      ${index === 0
-                        ? 'bg-gradient-to-r from-white/90 to-green-50/80 border-green-200/60 shadow-[0_4px_20px_rgba(34,197,94,0.15)]'
-                        : index === 1
-                        ? 'bg-gradient-to-r from-white/80 to-emerald-50/70 border-emerald-200/50 shadow-[0_3px_16px_rgba(34,197,94,0.1)]'
-                        : index === 2
-                        ? 'bg-gradient-to-r from-white/75 to-blue-50/65 border-blue-200/45 shadow-[0_2px_12px_rgba(34,197,94,0.08)]'
-                        : 'bg-gradient-to-r from-white/70 to-gray-50/60 border-gray-200/40 shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
+                      ${
+                        index === 0
+                          ? "bg-gradient-to-r from-white/90 to-green-50/80 border-green-200/60 shadow-[0_4px_20px_rgba(34,197,94,0.15)]"
+                          : index === 1
+                            ? "bg-gradient-to-r from-white/80 to-emerald-50/70 border-emerald-200/50 shadow-[0_3px_16px_rgba(34,197,94,0.1)]"
+                            : index === 2
+                              ? "bg-gradient-to-r from-white/75 to-blue-50/65 border-blue-200/45 shadow-[0_2px_12px_rgba(34,197,94,0.08)]"
+                              : "bg-gradient-to-r from-white/70 to-gray-50/60 border-gray-200/40 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
                       }`}
           >
             {/* Rank indicator */}
-            <div className={`absolute -top-2 -left-2 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg
-                           ${index === 0 ? 'bg-gradient-to-br from-yellow-400 to-orange-500' :
-                             index === 1 ? 'bg-gradient-to-br from-gray-400 to-gray-600' :
-                             index === 2 ? 'bg-gradient-to-br from-amber-600 to-yellow-700' :
-                             'bg-gradient-to-br from-blue-500 to-indigo-600'}`}>
+            <div
+              className={`absolute -top-2 -left-2 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg
+                           ${
+                             index === 0
+                               ? "bg-gradient-to-br from-yellow-400 to-orange-500"
+                               : index === 1
+                                 ? "bg-gradient-to-br from-gray-400 to-gray-600"
+                                 : index === 2
+                                   ? "bg-gradient-to-br from-amber-600 to-yellow-700"
+                                   : "bg-gradient-to-br from-blue-500 to-indigo-600"
+                           }`}
+            >
               {index + 1}
             </div>
 
@@ -229,7 +236,6 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
             </div>
           </div>
         ))}
-
       </div>
 
       {/* Footer stats */}

@@ -120,18 +120,20 @@ export default function Index() {
 
               {/* Regular Survey Questions (excluding question 7) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
-                {data?.questions.filter(q => q.id !== 7).map((question) => (
-                  <SurveyQuestionResults
-                    key={question.id}
-                    question={question}
-                  />
-                ))}
+                {data?.questions
+                  .filter((q) => q.id !== 7)
+                  .map((question) => (
+                    <SurveyQuestionResults
+                      key={question.id}
+                      question={question}
+                    />
+                  ))}
               </div>
 
               {/* Citizen Suggestions Card - At Bottom */}
               <div className="mb-4 sm:mb-6">
                 <SeventhQuestionCard
-                  question={data?.questions.find(q => q.id === 7)}
+                  question={data?.questions.find((q) => q.id === 7)}
                 />
               </div>
             </div>
