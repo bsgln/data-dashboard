@@ -59,17 +59,18 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
       : false,
     refetchIntervalInBackground: true,
     retry: (failureCount, error) => {
-      // Retry up to 3 times with exponential backoff
-      if (failureCount < 3) {
+      // Retry up to 5 times with exponential backoff for network errors
+      if (failureCount < 5) {
         console.log(
-          `Retrying survey data fetch (attempt ${failureCount + 1}/3)`,
+          `Retrying survey data fetch (attempt ${failureCount + 1}/5)`,
+          error?.message || error
         );
         return true;
       }
       setError("Холболт тасарсан байна. Дахин оролдоно уу.");
       return false;
     },
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
     staleTime: 30000, // Consider data stale after 30 seconds
     gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
   });
