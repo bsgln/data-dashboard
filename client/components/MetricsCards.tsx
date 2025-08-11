@@ -92,14 +92,14 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
       {cards.map((card, index) => (
         <div
           key={index}
-          className="bg-white p-3 sm:p-4 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
-                     transform transition-all duration-300 ease-out hover:scale-[1.02] 
+          className="bg-white p-3 sm:p-4 lg:p-5 rounded-lg lg:rounded-xl shadow-[0_2px_8px_rgba(0,102,255,0.06)]
+                     transform transition-all duration-300 ease-out hover:scale-[1.02]
                      hover:shadow-[0_4px_16px_rgba(0,102,255,0.12)] animate-in slide-in-from-bottom-4 fade-in
-                     min-h-[100px] sm:min-h-[110px] flex flex-col justify-between
+                     min-h-[100px] sm:min-h-[110px] lg:min-h-[120px] flex flex-col justify-between
                      border border-gray-50 hover:border-blue-100"
           style={{
             animationDelay: `${index * 100}ms`,
