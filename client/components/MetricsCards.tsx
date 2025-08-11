@@ -14,6 +14,26 @@ interface MetricsCardsProps {
 }
 
 export function MetricsCards({ metrics }: MetricsCardsProps) {
+  const [userVoteCount, setUserVoteCount] = useState(0);
+
+  // localStorage key for tracking user interactions
+  const VOTE_COUNT_KEY = 'userVoteCount';
+
+  useEffect(() => {
+    // Load user vote count from localStorage
+    const savedCount = localStorage.getItem(VOTE_COUNT_KEY);
+    if (savedCount) {
+      setUserVoteCount(parseInt(savedCount, 10));
+    }
+  }, []);
+
+  // Function to increment user vote count
+  const incrementUserVote = () => {
+    const newCount = userVoteCount + 1;
+    setUserVoteCount(newCount);
+    localStorage.setItem(VOTE_COUNT_KEY, newCount.toString());
+  };
+
   if (!metrics) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
@@ -43,7 +63,7 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
       iconColor: "text-blue-600",
       iconBg: "bg-blue-50",
       tooltip:
-        "Нийт санал өгөгчдийн тоо. Өнөөдрийн нэмэгдэл нь өдрийн турш нэмэгдсэн саналын тоог харуулна.",
+        "Нийт санал өгөгчдийн тоо. Өнөөдрийн нэмэгдэл нь ��дрийн турш нэмэгдсэн саналын тоог харуулна.",
       isNumeric: true,
     },
     {
@@ -54,7 +74,7 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
       iconColor: "text-green-600",
       iconBg: "bg-green-50",
       tooltip:
-        "Санал асуулгын хугацааны турш минут бүрт дунджаар хэдэн санал өгсөн тооцоолол. Тооцоолол: Нийт санал ÷ (Эхлэх - Дуусах хугацаа минут��ар)",
+        "Санал асуулгын хугацааны турш минут бүрт дунджаар хэдэн санал өгсөн тооцоолол. Тооцоолол: Нийт санал ÷ (Эхлэх - Дуусах хугацаа минутаар)",
       isNumeric: true,
       formatter: (v: number) => v.toFixed(1),
     },
