@@ -338,35 +338,25 @@ const transformRealData = async (
 
 export const handleSurveyData: RequestHandler = async (_req, res) => {
   try {
-    console.log(`🔍 Fetching data from: ${REAL_API_URL}`);
-
     // Fetch real data from the API
     const response = await fetch(REAL_API_URL);
-
-    console.log(`📡 API Response status: ${response.status}`);
 
     if (!response.ok) {
       throw new Error(`API responded with status: ${response.status}`);
     }
 
     const realData = await response.json();
-    console.log(`📊 Received data with keys: ${Object.keys(realData || {}).join(', ')}`);
 
     if (!realData.result || !realData.data) {
-      console.error(`❌ Invalid API response format. result: ${realData?.result}, data: ${!!realData?.data}`);
       throw new Error("Invalid API response format");
     }
 
-    console.log(`🔄 Transforming data...`);
     // Transform real data to our dashboard format
     const transformedData = await transformRealData(realData.data);
 
-    console.log(`✅ Successfully transformed data, sending response`);
     res.json(transformedData);
   } catch (error) {
-    console.error("❌ Error fetching real survey data:", error);
-    console.error("🔍 Error type:", error?.constructor?.name);
-    console.error("📝 Error message:", error instanceof Error ? error.message : "Unknown error");
+    console.error("Error fetching real survey data:", error);
 
     // Return error response instead of fallback data
     res.status(500).json({
