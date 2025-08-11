@@ -23,7 +23,18 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
         setIsConnected(true);
         setShowConnectionError(false);
 
-        const response = await fetch(finalConfig.dataUrl);
+        // Add timeout to fetch request
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+
+        const response = await fetch(finalConfig.dataUrl, {
+          signal: controller.signal,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        clearTimeout(timeoutId);
 
         if (!response.ok) {
           throw new Error(
@@ -37,8 +48,18 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
         return data;
       } catch (err) {
         console.error("Error fetching survey data:", err);
-        const errorMessage =
-          err instanceof Error ? err.message : "Unknown error occurred";
+
+        let errorMessage = "Unknown error occurred";
+        if (err instanceof Error) {
+          if (err.name === 'AbortError') {
+            errorMessage = "Request timeout - please check your connection";
+          } else if (err.message.includes('Failed to fetch')) {
+            errorMessage = "Network error - please check your internet connection";
+          } else {
+            errorMessage = err.message;
+          }
+        }
+
         setError(errorMessage);
         setIsConnected(false);
 
@@ -67,7 +88,7 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
         );
         return true;
       }
-      setError("Холболт тасарсан байна. Дахин оролдоно уу.");
+      setError("Холболт тасарса�� байна. Дахин оролдоно уу.");
       return false;
     },
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
