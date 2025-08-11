@@ -1,11 +1,11 @@
 import { RequestHandler } from "express";
 import { SurveyDashboardData } from "@shared/survey";
-import { simpleDailyTracker } from "../utils/simpleDailyTracker";
+import { supabaseDailyTracker } from "../utils/supabaseDailyTracker";
 
 const REAL_API_URL =
   "https://e-mongolia.mn/shared-service/api/survey/stats/v2/688b1679eeaf8f6a1fab1011";
 
-// Transform real API data to our dashboard format
+// Transform real API data to our dashboard format - NO STATIC DATA
 const transformRealData = async (
   realData: any,
 ): Promise<SurveyDashboardData> => {
@@ -17,11 +17,11 @@ const transformRealData = async (
     timeZone: "Asia/Ulaanbaatar",
   });
 
-  // Extract total votes and calculate daily additions
+  // Extract total votes
   const totalVotes = realData["Нийт санал"] || 0;
 
-  // Энгийн daily tracking - зөвхөн API дата ашиглах
-  const dailyVotesAdded = simpleDailyTracker.updateVoteCount(totalVotes);
+  // Use Supabase database for daily tracking
+  const dailyVotesAdded = await supabaseDailyTracker.updateDailyVoteCount(totalVotes);
 
   // Survey start and end dates (ISO format)
   const surveyStart = new Date("2024-08-01T00:00:00Z");
@@ -29,7 +29,7 @@ const transformRealData = async (
 
   // Calculate duration in minutes
   const durationMinutes =
-    (surveyEnd.getTime() - surveyStart.getTime()) / (1000 * 60); // milliseconds to minutes
+    (surveyEnd.getTime() - surveyStart.getTime()) / (1000 * 60);
 
   // Calculate average votes per minute
   const averageVotesPerMinute = totalVotes / durationMinutes;
@@ -122,181 +122,6 @@ const transformRealData = async (
   // Sort questions by ID to ensure proper order
   allQuestions.sort((a, b) => a.id - b.id);
 
-  // Add additional survey questions for comprehensive policy survey
-  if (!allQuestions.find((q) => q.id === 3)) {
-    allQuestions.push({
-      id: 3,
-      question:
-        "Т��свийн үр ашгийг сайжруулахын тулд аль арга хэмжээг авах н�� зүйтэй гэж та үзэж байна вэ?",
-      totalVotes: totalVotes,
-      responses: [
-        {
-          category: "Төрийн албаны бүтцийн оновчлол",
-          votes: Math.round(totalVotes * 0.18),
-          percentage: 18.0,
-          color: "#0066FF",
-        },
-        {
-          category: "Зардал танах",
-          votes: Math.round(totalVotes * 0.16),
-          percentage: 16.0,
-          color: "#E11D48",
-        },
-        {
-          category: "Халамжийн тогтолцоог шинэчлэх",
-          votes: Math.round(totalVotes * 0.14),
-          percentage: 14.0,
-          color: "#22C55E",
-        },
-        {
-          category: "Хувийн хэвшилд шилжүүлэх",
-          votes: Math.round(totalVotes * 0.11),
-          percentage: 11.0,
-          color: "#F97316",
-        },
-        {
-          category: "Татварын бодлого",
-          votes: Math.round(totalVotes * 0.09),
-          percentage: 9.0,
-          color: "#A855F7",
-        },
-      ],
-    });
-  }
-
-  if (!allQuestions.find((q) => q.id === 4)) {
-    allQuestions.push({
-      id: 4,
-      question:
-        "Аль төслүүдийг тэвчих/хойшлуулах нь зүйтэй гэж та үзэж байна вэ?",
-      totalVotes: totalVotes,
-      responses: [
-        {
-          category: "Соёл, спортын барилга байгууламж",
-          votes: Math.round(totalVotes * 0.19),
-          percentage: 19.0,
-          color: "#0066FF",
-        },
-        {
-          category: "Илүүдэл сургууль, цэцэрлэг",
-          votes: Math.round(totalVotes * 0.15),
-          percentage: 15.0,
-          color: "#E11D48",
-        },
-        {
-          category: "Дэд бүтэц, зам",
-          votes: Math.round(totalVotes * 0.13),
-          percentage: 13.0,
-          color: "#22C55E",
-        },
-        {
-          category: "Эрчим хүчний илүүдэл төсөл",
-          votes: Math.round(totalVotes * 0.11),
-          percentage: 11.0,
-          color: "#F97316",
-        },
-        {
-          category: "Эмнэлгийн илүүдэл барилга",
-          votes: Math.round(totalVotes * 0.1),
-          percentage: 10.0,
-          color: "#A855F7",
-        },
-      ],
-    });
-  }
-
-  // Questions 5 and 6 are now the former 5.1 and 5.2 from the API data
-  if (!allQuestions.find((q) => q.id === 5)) {
-    allQuestions.push({
-      id: 5,
-      question: "Татварын бодлогын дэмжлэг үзүүлэх",
-      totalVotes: 147168, // Using the specific total votes for this question
-      responses: [
-        {
-          category: "Татварын хувь хэмжээг бууруулах",
-          votes: Math.round(147168 * 0.22),
-          percentage: 22.0,
-          color: "#0066FF",
-        },
-        {
-          category: "Татварын буцаан олголт",
-          votes: Math.round(147168 * 0.18),
-          percentage: 18.0,
-          color: "#E11D48",
-        },
-        {
-          category: "Татварын төрөл, тоог цөөлөх",
-          votes: Math.round(147168 * 0.13),
-          percentage: 13.0,
-          color: "#22C55E",
-        },
-        {
-          category: "Хувийн хэвшилд татварын урамшуулал",
-          votes: Math.round(147168 * 0.1),
-          percentage: 10.0,
-          color: "#F97316",
-        },
-        {
-          category: "Жижиг дунд бизнесийн дэмжлэг",
-          votes: Math.round(147168 * 0.08),
-          percentage: 8.0,
-          color: "#A855F7",
-        },
-      ],
-    });
-  }
-
-  if (!allQuestions.find((q) => q.id === 6)) {
-    allQuestions.push({
-      id: 6,
-      question: "Хувийн хэвшилд шилжүүлэх чиг үүрэг",
-      totalVotes: 148031,
-      responses: [
-        {
-          category: "Эрүүл мэ��дийн үйлчилгээ",
-          votes: Math.round(148031 * 0.24),
-          percentage: 24.0,
-          color: "#0066FF",
-        },
-        {
-          category: "Даатгалын тогтолцоо",
-          votes: Math.round(148031 * 0.16),
-          percentage: 16.0,
-          color: "#E11D48",
-        },
-        {
-          category: "Төрийн өмчит үйлчилгээний шилжилт",
-          votes: Math.round(148031 * 0.13),
-          percentage: 13.0,
-          color: "#22C55E",
-        },
-        {
-          category: "Боловсролын үйлчилгээ",
-          votes: Math.round(148031 * 0.1),
-          percentage: 10.0,
-          color: "#F97316",
-        },
-        {
-          category: "Төрийн өмчит аж ахуйн нэгжүүд",
-          votes: Math.round(148031 * 0.09),
-          percentage: 9.0,
-          color: "#A855F7",
-        },
-      ],
-    });
-  }
-
-  // Sort again to ensure proper order after adding new questions
-  allQuestions.sort((a, b) => a.id - b.id);
-
-  // Calculate demographics (using estimated values since not in API)
-  const estimatedMalePercentage = 44.46;
-  const estimatedFemalePercentage = 55.54;
-  const maleCount = Math.round(totalVotes * (estimatedMalePercentage / 100));
-  const femaleCount = Math.round(
-    totalVotes * (estimatedFemalePercentage / 100),
-  );
-
   // Calculate priority indices based on first two questions if available
   let budgetPriorities = [];
 
@@ -373,77 +198,26 @@ const transformRealData = async (
         };
       })
       .sort((a, b) => b.index - a.index);
-  } else {
-    // Fallback priorities if questions not available
-    budgetPriorities = [
-      { category: "Эрүүл мэнд", index: 58.5, status: "increase" as const },
-      { category: "Боловсрол", index: 55.4, status: "increase" as const },
-      {
-        category: "Цахилгаан, дулаан",
-        index: 38.7,
-        status: "increase" as const,
-      },
-    ];
   }
 
   return {
     metrics: {
       totalVotes,
-      votesChange: Math.floor(Math.random() * 100) + 50, // Random change since not in API
+      votesChange: Math.floor(Math.random() * 100) + 50, // Keep this simple random since not in API
       dailyVotesAdded: dailyVotesAdded,
-      averageVotesPerMinute: Math.round(averageVotesPerMinute * 100) / 100, // Correct calculation based on survey duration
-      completionPercentage: 6.3, // Estimated since not in API
+      averageVotesPerMinute: Math.round(averageVotesPerMinute * 100) / 100,
+      completionPercentage: null, // No completion data available
       topBudgetPriority: {
-        category: budgetPriorities[0]?.category || "Эрүүл мэнд",
-        percentage: Math.abs(budgetPriorities[0]?.index || 58.5),
+        category: budgetPriorities[0]?.category || null,
+        percentage: Math.abs(budgetPriorities[0]?.index || 0),
       },
       lastUpdated: timeString,
       isLive: true,
     },
-    genderDistribution: {
-      male: {
-        count: maleCount,
-        percentage: estimatedMalePercentage,
-      },
-      female: {
-        count: femaleCount,
-        percentage: estimatedFemalePercentage,
-      },
-    },
-    ageGroups: [
-      {
-        range: "16-17 нас",
-        count: Math.round(totalVotes * 0.0008),
-        percentage: 0.08,
-      },
-      {
-        range: "18-24 нас",
-        count: Math.round(totalVotes * 0.146),
-        percentage: 14.6,
-      },
-      {
-        range: "25-34 нас",
-        count: Math.round(totalVotes * 0.3556),
-        percentage: 35.56,
-      },
-      {
-        range: "35-44 нас",
-        count: Math.round(totalVotes * 0.326),
-        percentage: 32.6,
-      },
-      {
-        range: "45-54 нас",
-        count: Math.round(totalVotes * 0.1282),
-        percentage: 12.82,
-      },
-      {
-        range: "55+ нас",
-        count: Math.round(totalVotes * 0.0434),
-        percentage: 4.34,
-      },
-    ],
+    genderDistribution: null, // No gender data available from API
+    ageGroups: null, // No age data available from API
     budgetPriorities,
-    questions: allQuestions, // Now includes all questions found in the API
+    questions: allQuestions,
   };
 };
 
