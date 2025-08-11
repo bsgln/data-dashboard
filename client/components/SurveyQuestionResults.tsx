@@ -63,8 +63,8 @@ export function SurveyQuestionResults({
           </div>
 
           <h3
-            className="text-[13px] sm:text-[14px] font-semibold text-[#1E293B] tracking-[0.15px]
-                     leading-[1.5] transition-colors duration-200 pr-2"
+            className="text-[13px] sm:text-[14px] lg:text-[15px] font-semibold text-[#1E293B] tracking-[0.15px]
+                     leading-[1.5] transition-colors duration-200 pr-2 break-words overflow-wrap-anywhere"
           >
             {question.question}
           </h3>
