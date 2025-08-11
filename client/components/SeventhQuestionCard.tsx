@@ -53,11 +53,11 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#F97316",
       details: [
         "Сургууль, цэцэрлэгийн тоог нэмэгдүүлэх",
-        "Хөдөө орон нутагт боловсролын чанарыг дээшлүүлэх"
+        "Хөдөө орон ну��агт боловсролын чанарыг дээшлүүлэх"
       ]
     },
     {
-      category: "Хууль, цагдаагийн байгуу��лага",
+      category: "Хууль, цагдаагийн байгууллага",
       percentage: 11,
       votes: Math.round(38514 * 0.11),
       color: "#A855F7",
@@ -93,7 +93,7 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#0D9488",
       details: [
         "Малын эрүүл мэнд, бэлчээрийн менежмент сайжруулах",
-        "Хөдө�� аж ахуйн салбарт дэмжлэг үзүүлэх"
+        "Хөдөө аж ахуйн салбарт дэмжлэг үзүүлэх"
       ]
     },
     {
@@ -162,18 +162,18 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
         </h3>
       </div>
 
-      {/* Top 3 Results - Popup Style Cards */}
+      {/* Top Suggestions with Details */}
       <div className="relative z-10 flex-1 space-y-3 sm:space-y-4">
-        {topResponses.map((response, index) => (
+        {topSuggestions.map((suggestion, index) => (
           <div
-            key={response.category}
-            className={`relative p-3 sm:p-4 rounded-xl transition-all duration-500 hover:scale-[1.02]
+            key={suggestion.category}
+            className={`relative p-3 sm:p-4 rounded-xl transition-all duration-500 hover:scale-[1.01]
                       border backdrop-blur-sm group/item
-                      ${index === 0 
-                        ? 'bg-gradient-to-r from-white/90 to-blue-50/80 border-blue-200/60 shadow-[0_4px_20px_rgba(0,102,255,0.15)]' 
+                      ${index === 0
+                        ? 'bg-gradient-to-r from-white/90 to-green-50/80 border-green-200/60 shadow-[0_4px_20px_rgba(34,197,94,0.15)]'
                         : index === 1
-                        ? 'bg-gradient-to-r from-white/80 to-indigo-50/70 border-indigo-200/50 shadow-[0_3px_16px_rgba(0,102,255,0.1)]'
-                        : 'bg-gradient-to-r from-white/70 to-purple-50/60 border-purple-200/40 shadow-[0_2px_12px_rgba(0,102,255,0.08)]'
+                        ? 'bg-gradient-to-r from-white/80 to-emerald-50/70 border-emerald-200/50 shadow-[0_3px_16px_rgba(34,197,94,0.1)]'
+                        : 'bg-gradient-to-r from-white/70 to-blue-50/60 border-blue-200/40 shadow-[0_2px_12px_rgba(34,197,94,0.08)]'
                       }`}
             style={{ animationDelay: `${700 + index * 100}ms` }}
           >
@@ -181,57 +181,69 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
             <div className={`absolute -top-2 -left-2 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg
                            ${index === 0 ? 'bg-gradient-to-br from-yellow-400 to-orange-500' :
                              index === 1 ? 'bg-gradient-to-br from-gray-400 to-gray-600' :
-                             'bg-gradient-to-br from-amber-600 to-yellow-700'}`}>
+                             index === 2 ? 'bg-gradient-to-br from-amber-600 to-yellow-700' :
+                             'bg-gradient-to-br from-blue-500 to-indigo-600'}`}>
               {index + 1}
             </div>
-            
-            <div className="flex items-center justify-between">
-              <div className="flex-1 mr-3">
-                <div className="flex items-center gap-2 mb-2">
-                  <div 
+
+            <div className="space-y-3">
+              {/* Header with category and percentage */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div
                     className="w-3 h-3 rounded-full shadow-sm"
-                    style={{ backgroundColor: response.color }}
+                    style={{ backgroundColor: suggestion.color }}
                   />
-                  <span className="text-[13px] sm:text-[14px] font-semibold text-[#1E293B] leading-tight">
-                    {response.category}
+                  <span className="text-[14px] sm:text-[15px] font-bold text-[#1E293B] leading-tight">
+                    {suggestion.category}
                   </span>
                 </div>
-                
-                {/* Progress bar */}
-                <div className="relative h-2 bg-gray-200/60 rounded-full overflow-hidden">
-                  <div
-                    className="absolute left-0 top-0 h-full rounded-full transition-all duration-1000 ease-out"
-                    style={{
-                      width: `${response.percentage}%`,
-                      backgroundColor: response.color,
-                      boxShadow: `0 0 10px ${response.color}40`,
-                      animationDelay: `${800 + index * 100}ms`,
-                    }}
-                  />
+
+                <div className="text-right">
+                  <div className="text-[14px] sm:text-[16px] font-bold text-[#1E293B]">
+                    ≈{suggestion.percentage}%
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-[#64748B]">
+                    {suggestion.votes.toLocaleString()} санал
+                  </div>
                 </div>
               </div>
-              
-              <div className="text-right">
-                <div className="text-[14px] sm:text-[16px] font-bold text-[#1E293B]">
-                  {response.percentage}%
-                </div>
-                <div className="text-[10px] sm:text-[11px] text-[#64748B]">
-                  {response.votes.toLocaleString()} санал
-                </div>
+
+              {/* Detailed suggestions */}
+              <div className="space-y-1">
+                {suggestion.details.map((detail, detailIndex) => (
+                  <div key={detailIndex} className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
+                    <span className="text-[12px] sm:text-[13px] text-[#475569] leading-relaxed">
+                      {detail}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Progress bar */}
+              <div className="relative h-2 bg-gray-200/60 rounded-full overflow-hidden">
+                <div
+                  className="absolute left-0 top-0 h-full rounded-full transition-all duration-1000 ease-out"
+                  style={{
+                    width: `${suggestion.percentage}%`,
+                    backgroundColor: suggestion.color,
+                    boxShadow: `0 0 8px ${suggestion.color}40`,
+                    animationDelay: `${800 + index * 100}ms`,
+                  }}
+                />
               </div>
             </div>
           </div>
         ))}
-        
+
         {/* Show more indicator */}
-        {question.responses.length > 3 && (
-          <div className="text-center pt-2">
-            <div className="inline-flex items-center gap-2 text-xs text-blue-600 bg-blue-50/80 px-3 py-1 rounded-full border border-blue-200/50">
-              <Calendar className="w-3 h-3" />
-              <span>+{question.responses.length - 3} бусад сонголт</span>
-            </div>
+        <div className="text-center pt-2">
+          <div className="inline-flex items-center gap-2 text-xs text-green-600 bg-green-50/80 px-3 py-1 rounded-full border border-green-200/50">
+            <Calendar className="w-3 h-3" />
+            <span>+{citizenSuggestions.length - topSuggestions.length} бусад санал</span>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Footer stats */}
