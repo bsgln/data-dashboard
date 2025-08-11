@@ -75,39 +75,23 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
       },
     };
 
-    // Age groups based on Mongolia's adult population demographics
-    const ageGroups = [
-      {
-        range: "16-17 нас",
-        count: Math.round(totalVotes * 0.031),
-        percentage: 3.1,
-      },
-      {
-        range: "18-24 нас",
-        count: Math.round(totalVotes * 0.168),
-        percentage: 16.8,
-      },
-      {
-        range: "25-34 нас",
-        count: Math.round(totalVotes * 0.289),
-        percentage: 28.9,
-      },
-      {
-        range: "35-44 нас",
-        count: Math.round(totalVotes * 0.261),
-        percentage: 26.1,
-      },
-      {
-        range: "45-54 нас",
-        count: Math.round(totalVotes * 0.161),
-        percentage: 16.1,
-      },
-      {
-        range: "55+ нас",
-        count: Math.round(totalVotes * 0.09),
-        percentage: 9.0,
-      },
+    // Age groups based on actual survey response data
+    const ageResponseData = [
+      { range: "16-17 нас", count: 119 },
+      { range: "18-24 нас", count: 20958 },
+      { range: "25-34 нас", count: 51042 },
+      { range: "35-44 нас", count: 46795 },
+      { range: "45-54 нас", count: 18410 },
+      { range: "55+ нас", count: 6231 },
     ];
+
+    const totalAgeResponses = ageResponseData.reduce((sum, item) => sum + item.count, 0);
+
+    const ageGroups = ageResponseData.map(item => ({
+      range: item.range,
+      count: item.count,
+      percentage: Math.round((item.count / totalAgeResponses) * 100 * 10) / 10,
+    }));
 
     // Calculate budget priorities based on survey responses
     const budgetPriorities = calculateBudgetPriorities(transformedQuestions);
@@ -118,7 +102,7 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
         votesChange: Math.floor(Math.random() * 100) + 50,
         dailyVotesAdded: todayStats?.votes_added || metrics.daily_votes_added,
         averageVotesPerMinute: metrics.average_votes_per_minute,
-        completionPercentage: Math.round((metrics.total_votes / 2100000) * 100 * 10) / 10, // Based on Mongolia adult population
+        completionPercentage: Math.round((metrics.total_votes / 2280887) * 100 * 10) / 10, // Based on actual Mongolia adult population
         topBudgetPriority: {
           category: metrics.top_budget_priority_category || "Тодорхойгүй",
           percentage: metrics.top_budget_priority_percentage,
