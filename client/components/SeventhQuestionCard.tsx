@@ -37,7 +37,7 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       ]
     },
     {
-      category: "Эрүүл мэндийн үйлчилг��э",
+      category: "Эрүүл мэндийн үйлчилгээ",
       percentage: 14,
       votes: Math.round(38514 * 0.14),
       color: "#22C55E",
@@ -156,20 +156,20 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
         </h3>
       </div>
 
-      {/* Top Suggestions with Details */}
+      {/* All Citizen Suggestions */}
       <div className="relative z-10 flex-1 space-y-3 sm:space-y-4">
-        {topSuggestions.map((suggestion, index) => (
+        {allSuggestions.map((suggestion, index) => (
           <div
             key={suggestion.category}
-            className={`relative p-3 sm:p-4 rounded-xl transition-all duration-500 hover:scale-[1.01]
-                      border backdrop-blur-sm group/item
+            className={`relative p-3 sm:p-4 rounded-xl border backdrop-blur-sm
                       ${index === 0
                         ? 'bg-gradient-to-r from-white/90 to-green-50/80 border-green-200/60 shadow-[0_4px_20px_rgba(34,197,94,0.15)]'
                         : index === 1
                         ? 'bg-gradient-to-r from-white/80 to-emerald-50/70 border-emerald-200/50 shadow-[0_3px_16px_rgba(34,197,94,0.1)]'
-                        : 'bg-gradient-to-r from-white/70 to-blue-50/60 border-blue-200/40 shadow-[0_2px_12px_rgba(34,197,94,0.08)]'
+                        : index === 2
+                        ? 'bg-gradient-to-r from-white/75 to-blue-50/65 border-blue-200/45 shadow-[0_2px_12px_rgba(34,197,94,0.08)]'
+                        : 'bg-gradient-to-r from-white/70 to-gray-50/60 border-gray-200/40 shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
                       }`}
-            style={{ animationDelay: `${700 + index * 100}ms` }}
           >
             {/* Rank indicator */}
             <div className={`absolute -top-2 -left-2 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg
