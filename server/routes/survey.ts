@@ -350,14 +350,18 @@ export const handleSurveyData: RequestHandler = async (_req, res) => {
     }
 
     const realData = await response.json();
+    console.log(`📊 Received data with keys: ${Object.keys(realData || {}).join(', ')}`);
 
     if (!realData.result || !realData.data) {
+      console.error(`❌ Invalid API response format. result: ${realData?.result}, data: ${!!realData?.data}`);
       throw new Error("Invalid API response format");
     }
 
+    console.log(`🔄 Transforming data...`);
     // Transform real data to our dashboard format
     const transformedData = await transformRealData(realData.data);
 
+    console.log(`✅ Successfully transformed data, sending response`);
     res.json(transformedData);
   } catch (error) {
     console.error("❌ Error fetching real survey data:", error);
