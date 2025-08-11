@@ -323,11 +323,11 @@ const transformRealData = async (
     genderDistribution: {
       male: {
         count: maleCount,
-        percentage: estimatedMalePercentage,
+        percentage: malePercentage,
       },
       female: {
         count: femaleCount,
-        percentage: estimatedFemalePercentage,
+        percentage: femalePercentage,
       },
     },
     ageGroups,
