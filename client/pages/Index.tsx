@@ -39,8 +39,8 @@ export default function Index() {
       <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
         {/* Connection Status & Controls */}
         <div
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0
-                    mb-3 sm:mb-4 animate-in slide-in-from-top-2 fade-in"
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 lg:gap-0
+                    mb-3 sm:mb-4 lg:mb-6 animate-in slide-in-from-top-2 fade-in"
           style={{ animationDelay: "100ms", animationFillMode: "backwards" }}
         >
           <div className="flex items-center gap-3">
