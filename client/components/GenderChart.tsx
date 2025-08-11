@@ -134,8 +134,10 @@ export function GenderChart({ data }: GenderChartProps) {
                 <div
                   className="absolute left-0 top-0 h-full rounded-lg transition-all duration-1000 ease-out"
                   style={{
-                    width: "0%",
+                    width: `${item.value}%`,
                     backgroundColor: item.color,
+                    transform: "scaleX(0)",
+                    transformOrigin: "left",
                     animation: `expandBar${index} 1.2s ease-out ${0.8 + index * 0.2}s both`,
                   }}
                 />
