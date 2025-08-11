@@ -145,18 +145,6 @@ export function GenderChart({ data }: GenderChartProps) {
         </div>
       </div>
 
-      <style>{`
-        ${genderData.map((item, index) => `
-          @keyframes expandBar${index} {
-            from {
-              transform: scaleX(0);
-            }
-            to {
-              transform: scaleX(1);
-            }
-          }
-        `).join('')}
-      `}</style>
     </div>
   );
 }
