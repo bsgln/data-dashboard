@@ -63,7 +63,7 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
       iconColor: "text-blue-600",
       iconBg: "bg-blue-50",
       tooltip:
-        "Санал асуулгад оролцсон нийт хүмүүсийн тоо. Бодит цагийн мэдээлэл.",
+        "Санал асуулгад оролцсон нийт хүмүүси��н тоо. Бодит цагийн мэдээлэл.",
       isNumeric: true,
     },
     {
@@ -108,8 +108,8 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
         >
           <div className="flex justify-between items-start mb-3">
             <h3
-              className="text-[13px] sm:text-[14px] text-[#1E293B] tracking-[0.2px] transition-colors duration-200
-                leading-[1.3] font-medium flex-1 pr-2"
+              className="text-[13px] sm:text-[14px] lg:text-[15px] text-[#1E293B] tracking-[0.2px] transition-colors duration-200
+                leading-[1.3] font-medium flex-1 pr-2 break-words"
             >
               {card.title}
             </h3>
@@ -151,8 +151,8 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
               </div>
             )}
             <div
-              className="text-[11px] sm:text-[12px] text-[#64748B] tracking-[0.2px]
-                         transition-colors duration-200 leading-[1.2]"
+              className="text-[11px] sm:text-[12px] lg:text-[13px] text-[#64748B] tracking-[0.2px]
+                         transition-colors duration-200 leading-[1.3] break-words"
             >
               {card.subtitle}
             </div>
