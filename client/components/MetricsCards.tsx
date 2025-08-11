@@ -59,7 +59,9 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
     },
     {
       title: "Монгол улсын насанд хүрсэн иргэд",
-      value: `${metrics.completionPercentage || 0} %`,
+      value: metrics.completionPercentage !== null
+        ? `${metrics.completionPercentage} %`
+        : "Мэдээлэл алга",
       subtitle: "16+ насны иргэдээс авсан саналын хувь",
       icon: UserCheck,
       iconColor: "text-purple-600",
