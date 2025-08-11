@@ -56,9 +56,9 @@ export function GenderChart({ data }: GenderChartProps) {
 
   return (
     <div
-      className="bg-white p-4 sm:p-5 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
+      className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
                     transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,102,255,0.12)]
-                    animate-in slide-in-from-left-4 fade-in min-h-[320px] sm:min-h-[380px] flex flex-col"
+                    animate-in slide-in-from-left-4 fade-in min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] flex flex-col"
       style={{ animationDelay: "200ms", animationFillMode: "backwards" }}
     >
       <div className="mb-4 sm:mb-6">
@@ -77,7 +77,7 @@ export function GenderChart({ data }: GenderChartProps) {
       </div>
 
       <div className="flex flex-col items-center gap-6 sm:gap-8 flex-1">
-        <div className="relative w-[140px] h-[140px] sm:w-[166px] sm:h-[166px] group">
+        <div className="relative w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] lg:w-[166px] lg:h-[166px] group mx-auto">
           <div className="w-full h-full transition-transform duration-500 group-hover:scale-105">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -105,7 +105,7 @@ export function GenderChart({ data }: GenderChartProps) {
           </div>
         </div>
 
-        <div className="w-full space-y-2">
+        <div className="w-full space-y-1 sm:space-y-2">
           {genderData.map((item, index) => (
             <div key={index} className="space-y-1 group">
               <div className="flex justify-between items-center transition-all duration-200 group-hover:translate-x-1">
