@@ -59,55 +59,12 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
       };
     });
 
-    // Calculate gender distribution (estimated based on Mongolia demographics)
+    // No gender distribution data available from database
     const totalVotes = metrics.total_votes;
-    const estimatedMalePercentage = 44.46;
-    const estimatedFemalePercentage = 55.54;
+    const genderDistribution = null;
 
-    const genderDistribution = {
-      male: {
-        count: Math.round(totalVotes * (estimatedMalePercentage / 100)),
-        percentage: estimatedMalePercentage,
-      },
-      female: {
-        count: Math.round(totalVotes * (estimatedFemalePercentage / 100)),
-        percentage: estimatedFemalePercentage,
-      },
-    };
-
-    // Age groups based on Mongolia's demographic data
-    const ageGroups = [
-      {
-        range: "16-17 нас",
-        count: Math.round(totalVotes * 0.0008),
-        percentage: 0.08,
-      },
-      {
-        range: "18-24 нас",
-        count: Math.round(totalVotes * 0.146),
-        percentage: 14.6,
-      },
-      {
-        range: "25-34 нас",
-        count: Math.round(totalVotes * 0.3556),
-        percentage: 35.56,
-      },
-      {
-        range: "35-44 нас",
-        count: Math.round(totalVotes * 0.326),
-        percentage: 32.6,
-      },
-      {
-        range: "45-54 нас",
-        count: Math.round(totalVotes * 0.1282),
-        percentage: 12.82,
-      },
-      {
-        range: "55+ нас",
-        count: Math.round(totalVotes * 0.0434),
-        percentage: 4.34,
-      },
-    ];
+    // No age group data available from database
+    const ageGroups = null;
 
     // Calculate budget priorities based on survey responses
     const budgetPriorities = calculateBudgetPriorities(transformedQuestions);
