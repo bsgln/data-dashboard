@@ -360,7 +360,9 @@ export const handleSurveyData: RequestHandler = async (_req, res) => {
 
     res.json(transformedData);
   } catch (error) {
-    console.error("Error fetching real survey data:", error);
+    console.error("❌ Error fetching real survey data:", error);
+    console.error("🔍 Error type:", error?.constructor?.name);
+    console.error("📝 Error message:", error instanceof Error ? error.message : "Unknown error");
 
     // Return error response instead of fallback data
     res.status(500).json({
