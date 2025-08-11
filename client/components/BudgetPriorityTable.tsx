@@ -8,8 +8,9 @@ export function BudgetPriorityTable({ data }: BudgetPriorityTableProps) {
   if (!data || data.length === 0) {
     return (
       <div
-        className="bg-white p-4 sm:p-5 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
-                      min-h-[280px] flex items-center justify-center"
+        className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
+                      transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,102,255,0.12)]
+                      min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] flex items-center justify-center"
       >
         <div className="text-center w-full">
           <div className="space-y-3">
