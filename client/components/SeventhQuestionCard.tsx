@@ -230,13 +230,6 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
           </div>
         ))}
 
-        {/* Show more indicator */}
-        <div className="text-center pt-2">
-          <div className="inline-flex items-center gap-2 text-xs text-green-600 bg-green-50/80 px-3 py-1 rounded-full border border-green-200/50">
-            <Calendar className="w-3 h-3" />
-            <span>+{citizenSuggestions.length - topSuggestions.length} бусад санал</span>
-          </div>
-        </div>
       </div>
 
       {/* Footer stats */}
