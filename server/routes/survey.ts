@@ -206,6 +206,10 @@ const transformRealData = async (
   const maleCount = Math.round(totalVotes * (estimatedMalePercentage / 100));
   const femaleCount = Math.round(totalVotes * (estimatedFemalePercentage / 100));
 
+  // Calculate completion percentage based on actual adult population
+  const mongoliaAdultPopulation = 2280887; // Actual adult population 16+
+  const completionPercentage = Math.round((totalVotes / mongoliaAdultPopulation) * 100 * 10) / 10;
+
   // Age groups based on real Mongolia population data
   const agePopulationData = [
     { range: "16-17 нас", population: 119 }, // Keep survey response for 16-17 as no population data provided
@@ -229,10 +233,6 @@ const transformRealData = async (
       percentage: Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
     };
   });
-
-  // Calculate completion percentage based on actual adult population
-  const mongoliaAdultPopulation = 2280887; // Actual adult population 16+
-  const completionPercentage = Math.round((totalVotes / mongoliaAdultPopulation) * 100 * 10) / 10;
 
   return {
     metrics: {
