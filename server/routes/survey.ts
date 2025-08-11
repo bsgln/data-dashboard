@@ -338,8 +338,12 @@ const transformRealData = async (
 
 export const handleSurveyData: RequestHandler = async (_req, res) => {
   try {
+    console.log(`🔍 Fetching data from: ${REAL_API_URL}`);
+
     // Fetch real data from the API
     const response = await fetch(REAL_API_URL);
+
+    console.log(`📡 API Response status: ${response.status}`);
 
     if (!response.ok) {
       throw new Error(`API responded with status: ${response.status}`);
