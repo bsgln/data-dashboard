@@ -32,7 +32,7 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       votes: Math.round(38514 * 0.15),
       color: "#E11D48",
       details: [
-        "Зардлыг бууруулах, үр ашиггүй зардлыг танах",
+        "З��рдлыг бууруулах, үр ашиггүй зардлыг танах",
         "Давхардсан төсвийн зарцуулалтыг зогсоох"
       ]
     },
@@ -53,7 +53,7 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       color: "#F97316",
       details: [
         "Сургууль, цэцэрлэгийн тоог нэмэгдүүлэх",
-        "Хөдөө орон ну��агт боловсролын чанарыг дээшлүүлэх"
+        "Хөдөө орон нутагт боловсролын чанарыг дээшлүүлэх"
       ]
     },
     {
@@ -249,9 +249,9 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       {/* Footer stats */}
       <div className="relative z-10 mt-4 pt-3 border-t border-gray-200/50">
         <div className="flex justify-between items-center text-xs text-gray-500">
-          <span>Нийт санал</span>
+          <span>Санал бичсэн</span>
           <span className="font-semibold text-gray-700">
-            {question.totalVotes.toLocaleString()} хүн
+            {totalVotes.toLocaleString()} хүн
           </span>
         </div>
       </div>
