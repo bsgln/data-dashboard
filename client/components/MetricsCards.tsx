@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Progress } from "@/components/ui/progress";
 import { AnimatedNumber } from "./AnimatedNumber";
+import { useEffect, useState } from "react";
 
 interface MetricsCardsProps {
   metrics?: SurveyMetrics;
@@ -53,7 +54,7 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
       iconColor: "text-green-600",
       iconBg: "bg-green-50",
       tooltip:
-        "Санал асуулгын хугацааны турш минут бүрт дунджаар хэдэн санал өгсөн тооцоолол. Тооцоолол: Нийт санал ÷ (Эхлэх - Дуусах хугацаа минутаар)",
+        "Санал асуулгын хугацааны турш минут бүрт дунджаар хэдэн санал өгсөн тооцоолол. Тооцоолол: Нийт санал ÷ (Эхлэх - Дуусах хугацаа минут��ар)",
       isNumeric: true,
       formatter: (v: number) => v.toFixed(1),
     },
