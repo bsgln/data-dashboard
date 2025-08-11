@@ -271,11 +271,12 @@ const transformRealData = async (
       .sort((a, b) => b.index - a.index);
   }
 
-  // Calculate demographics based on Mongolia's population statistics
-  const estimatedMalePercentage = 49.2;
-  const estimatedFemalePercentage = 50.8;
-  const maleCount = Math.round(totalVotes * (estimatedMalePercentage / 100));
-  const femaleCount = Math.round(totalVotes * (estimatedFemalePercentage / 100));
+  // Use yesterday's actual gender distribution data
+  const maleCount = 63818;
+  const femaleCount = 79739;
+  const totalGenderVotes = maleCount + femaleCount;
+  const malePercentage = 44.46;
+  const femalePercentage = 55.54;
 
   // Calculate completion percentage based on actual adult population
   const mongoliaAdultPopulation = 2280887; // Actual adult population 16+
