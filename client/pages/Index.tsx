@@ -105,6 +105,13 @@ export default function Index() {
               <BudgetPriorityTable data={data?.budgetPriorities} />
             </div>
 
+            {/* Seventh Question Card - Special Popup Design */}
+            <div className="mb-4 sm:mb-6">
+              <SeventhQuestionCard
+                question={data?.questions.find(q => q.id === 7)}
+              />
+            </div>
+
             <div className="mb-4 sm:mb-6">
               <h2
                 className="text-[16px] sm:text-[18px] font-semibold text-[#1E293B] mb-3 sm:mb-4
