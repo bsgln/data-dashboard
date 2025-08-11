@@ -59,15 +59,13 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
     },
     {
       title: "Монгол улсын насанд хүрсэн иргэд",
-      value: metrics.completionPercentage !== null
-        ? `${metrics.completionPercentage} %`
-        : "Мэдээлэл алга",
+      value: `${metrics.completionPercentage || 0} %`,
       subtitle: "16+ насны иргэдээс авсан саналын хувь",
       icon: UserCheck,
       iconColor: "text-purple-600",
       iconBg: "bg-purple-50",
       tooltip:
-        "Санал асуулгыг дуусгасан хувь. Тооцоолол: (Дуусгасан хүмүүсийн тоо ÷ Нийт уригдсан хүмүүсийн тоо) × 100%",
+        "Санал асуулгыг дуусгасан хувь. Тооцоолол: (Нийт санал ÷ Монгол улсын 16+ насны иргэдийн тоо) × 100%",
       isNumeric: false,
     },
   ];
