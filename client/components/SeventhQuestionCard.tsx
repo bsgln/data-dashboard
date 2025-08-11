@@ -1,5 +1,13 @@
 import { SurveyQuestion } from "@shared/survey";
-import { TrendingUp, Calendar, Users } from "lucide-react";
+import { TrendingUp, Calendar, Users, MessageSquare } from "lucide-react";
+
+interface DetailedResponse {
+  category: string;
+  percentage: number;
+  votes: number;
+  color: string;
+  details: string[];
+}
 
 interface SeventhQuestionCardProps {
   question?: SurveyQuestion;
