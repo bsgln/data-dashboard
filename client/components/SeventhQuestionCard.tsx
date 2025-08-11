@@ -14,25 +14,112 @@ interface SeventhQuestionCardProps {
 }
 
 export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
-  if (!question) {
-    return (
-      <div
-        className="bg-white p-4 sm:p-5 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
-                      transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,102,255,0.12)]
-                      min-h-[320px] sm:min-h-[380px] flex items-center justify-center"
-      >
-        <div className="text-center">
-          <div className="w-16 h-16 bg-gray-200 rounded-full animate-pulse mx-auto mb-3"></div>
-          <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
-        </div>
-      </div>
-    );
-  }
+  // Static data for citizen suggestions with detailed descriptions
+  const citizenSuggestions: DetailedResponse[] = [
+    {
+      category: "Цалин нэмэгдүүлэх",
+      percentage: 19,
+      votes: Math.round(38514 * 0.19),
+      color: "#0066FF",
+      details: [
+        "Багш, эмч, цагдаагийн цалинг нэмэгдүүлэх",
+        "Төрийн албан хаагчдын цалинг амьжиргааны түвшинд нийцүүлэх"
+      ]
+    },
+    {
+      category: "Төсвийн үр ашиг",
+      percentage: 15,
+      votes: Math.round(38514 * 0.15),
+      color: "#E11D48",
+      details: [
+        "Зардлыг бууруулах, үр ашиггүй зардлыг танах",
+        "Давхардсан төсвийн зарцуулалтыг зогсоох"
+      ]
+    },
+    {
+      category: "Эрүүл мэндийн үйлчилгээ",
+      percentage: 14,
+      votes: Math.round(38514 * 0.14),
+      color: "#22C55E",
+      details: [
+        "Эрүүл мэндийн хүртээмж, чанарыг сайжруулах",
+        "Эрүүл мэндийн салбарын төсвийг нэмэгдүүлэх"
+      ]
+    },
+    {
+      category: "Боловсролын салбар",
+      percentage: 12,
+      votes: Math.round(38514 * 0.12),
+      color: "#F97316",
+      details: [
+        "Сургууль, цэцэрлэгийн тоог нэмэгдүүлэх",
+        "Хөдөө орон нутагт боловсролын чанарыг дээшлүүлэх"
+      ]
+    },
+    {
+      category: "Хууль, цагдаагийн байгууллага",
+      percentage: 11,
+      votes: Math.round(38514 * 0.11),
+      color: "#A855F7",
+      details: [
+        "Цагдаагийн байгууллагын нөхцөлийг сайжруул��х",
+        "Хууль хэрэгжилтийг чангатгах"
+      ]
+    },
+    {
+      category: "Нийгмийн хамгаалал",
+      percentage: 8,
+      votes: Math.round(38514 * 0.08),
+      color: "#EC4899",
+      details: [
+        "Эх, хүүхдийн халамж, тэтгэмжийг нэмэгдүүлэх",
+        "Амьжиргааны түвшин доогуур иргэдэд дэмжлэг үзүүлэх"
+      ]
+    },
+    {
+      category: "Дэд бүтэц, зам засвар",
+      percentage: 7,
+      votes: Math.round(38514 * 0.07),
+      color: "#4D7C0F",
+      details: [
+        "Хот, орон нутгийн замыг засварлах",
+        "Гэрэлтүүлэг, явган хүний замыг сайжруулах"
+      ]
+    },
+    {
+      category: "Хөдөө аж ахуй",
+      percentage: 6,
+      votes: Math.round(38514 * 0.06),
+      color: "#0D9488",
+      details: [
+        "Малын эрүүл мэнд, бэлчээрийн менежмент сайжруулах",
+        "Хөдөө аж ахуйн салбарт дэмжлэг үзүүлэх"
+      ]
+    },
+    {
+      category: "Байгаль орчны хамгаалал",
+      percentage: 5,
+      votes: Math.round(38514 * 0.05),
+      color: "#0EA5E9",
+      details: [
+        "Байгаль хамгаалах төсвийг нэмэгдүүлэх",
+        "Хог, бохирдлын менежментийг сайжруулах"
+      ]
+    },
+    {
+      category: "Хувийн хэвшлийн дэмжлэг",
+      percentage: 4,
+      votes: Math.round(38514 * 0.04),
+      color: "#6366F1",
+      details: [
+        "Жижиг, дунд бизнесийн нөхцөлийг сайжруулах",
+        "Татварын хөнгөлөлт олгох"
+      ]
+    }
+  ];
 
-  // Get top 3 responses for highlight display
-  const topResponses = [...question.responses]
-    .sort((a, b) => b.percentage - a.percentage)
-    .slice(0, 3);
+  const totalVotes = 38514;
+  const topSuggestions = citizenSuggestions.slice(0, 5); // Show top 5
 
   return (
     <div
