@@ -63,7 +63,7 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
     if (!transformedQuestions.find((q) => q.id === 7)) {
       transformedQuestions.push({
         id: 7,
-        question: "Монгол улсын 2026 оны төс��ийн тэргүүлэх чиглэлүүд",
+        question: "Монгол улсын 2026 оны төсвийн тэргүүлэх чиглэлүүд",
         totalVotes: 38514,
         responses: [
           {
@@ -130,19 +130,21 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
       });
     }
 
-    // Calculate gender distribution based on Mongolia demographics
+    // Use yesterday's actual gender distribution data
     const totalVotes = metrics.total_votes;
-    const estimatedMalePercentage = 49.2;
-    const estimatedFemalePercentage = 50.8;
+    const maleCount = 63818;
+    const femaleCount = 79739;
+    const malePercentage = 44.46;
+    const femalePercentage = 55.54;
 
     const genderDistribution = {
       male: {
-        count: Math.round(totalVotes * (estimatedMalePercentage / 100)),
-        percentage: estimatedMalePercentage,
+        count: maleCount,
+        percentage: malePercentage,
       },
       female: {
-        count: Math.round(totalVotes * (estimatedFemalePercentage / 100)),
-        percentage: estimatedFemalePercentage,
+        count: femaleCount,
+        percentage: femalePercentage,
       },
     };
 
