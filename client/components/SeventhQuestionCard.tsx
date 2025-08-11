@@ -32,7 +32,7 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       votes: Math.round(38514 * 0.15),
       color: "#E11D48",
       details: [
-        "З��рдлыг бууруулах, үр ашиггүй зардлыг танах",
+        "Зардлыг бууруулах, үр ашиггүй зардлыг танах",
         "Давхардсан төсвийн зарцуулалтыг зогсоох"
       ]
     },
@@ -119,7 +119,7 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
   ];
 
   const totalVotes = 38514;
-  const topSuggestions = citizenSuggestions.slice(0, 5); // Show top 5
+  const allSuggestions = citizenSuggestions; // Show all 10
 
   return (
     <div
