@@ -300,6 +300,22 @@
   }
 }
 
+/* Gender progress bar animation */
+.gender-progress-bar {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: genderBarExpand 1.2s ease-out both;
+}
+
+@keyframes genderBarExpand {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 /* Pulse animation for live indicators */
 @keyframes pulse {
   0%, 100% {
