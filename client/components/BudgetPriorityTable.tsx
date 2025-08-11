@@ -63,10 +63,11 @@ export function BudgetPriorityTable({ data }: BudgetPriorityTableProps) {
     >
       <div className="mb-4 sm:mb-6">
         <h3
-          className="text-[16px] sm:text-[18px] font-semibold text-[#1E293B] tracking-[0.36px]
+          className="text-[16px] sm:text-[18px] lg:text-[19px] font-semibold text-[#1E293B] tracking-[0.36px]
                        transition-colors duration-200 leading-[1.3]"
+          lang="mn"
         >
-          А�� холбогдлын зэрэг
+          Ач холбогдлын зэрэг
         </h3>
       </div>
 
