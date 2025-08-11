@@ -63,13 +63,13 @@ export function GenderChart({ data }: GenderChartProps) {
     >
       <div className="mb-4 sm:mb-6">
         <h3
-          className="text-[16px] sm:text-[18px] font-semibold text-[#1E293B] mb-1 tracking-[0.36px]
+          className="text-[16px] sm:text-[18px] lg:text-[19px] font-semibold text-[#1E293B] mb-1 tracking-[0.36px]
                        transition-colors duration-200 leading-[1.3]"
         >
           Хүйсийн тархалт
         </h3>
         <p
-          className="text-[12px] sm:text-[14px] text-[#64748B] tracking-[0.28px]
+          className="text-[12px] sm:text-[14px] lg:text-[15px] text-[#64748B] tracking-[0.28px]
                       transition-colors duration-200 leading-[1.4]"
         >
           Санал өгөгчдийн хүйсний харьцаа
