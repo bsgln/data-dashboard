@@ -151,10 +151,10 @@ export function GenderChart({ data }: GenderChartProps) {
         ${genderData.map((item, index) => `
           @keyframes expandBar${index} {
             from {
-              width: 0%;
+              transform: scaleX(0);
             }
             to {
-              width: ${item.value}%;
+              transform: scaleX(1);
             }
           }
         `).join('')}
