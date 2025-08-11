@@ -11,9 +11,15 @@ export function AgeGroupChart({ data }: AgeGroupChartProps) {
         className="bg-white p-4 sm:p-5 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
                       min-h-[280px] flex items-center justify-center"
       >
-        <div className="text-center">
-          <div className="text-gray-500 text-sm font-medium">Мэдээлэл алга</div>
-          <div className="text-gray-400 text-xs mt-1">Насны бүлгийн статистик</div>
+        <div className="text-center w-full">
+          <div className="space-y-2">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex justify-between items-center">
+                <div className="h-3 w-20 bg-gray-200 rounded animate-pulse"></div>
+                <div className="h-3 w-12 bg-gray-200 rounded animate-pulse"></div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
