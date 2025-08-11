@@ -37,7 +37,7 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
       ]
     },
     {
-      category: "Эрүүл мэндийн үйлчилгээ",
+      category: "Эрүүл мэндийн үйлчилг��э",
       percentage: 14,
       votes: Math.round(38514 * 0.14),
       color: "#22C55E",
@@ -129,9 +129,6 @@ export function SeventhQuestionCard({ question }: SeventhQuestionCardProps) {
                     min-h-[380px] sm:min-h-[420px] flex flex-col
                     overflow-hidden"
     >
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-indigo-300/20 rounded-full blur-2xl transform translate-x-8 -translate-y-8 transition-transform duration-700 group-hover:scale-110"></div>
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-200/20 to-pink-300/20 rounded-full blur-xl transform -translate-x-4 translate-y-4 transition-transform duration-700 group-hover:scale-110"></div>
       
       {/* Header with icon */}
       <div className="relative z-10 mb-4 sm:mb-6">
