@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
 interface DailyVoteData {
   date: string; // YYYY-MM-DD format in Ulaanbaatar timezone
@@ -15,7 +15,7 @@ class SimpleDailyTracker {
 
   constructor() {
     // Store data file in a temp directory or data directory
-    this.dataFilePath = path.join(process.cwd(), 'daily-vote-data.json');
+    this.dataFilePath = path.join(process.cwd(), "daily-vote-data.json");
     this.loadPersistedData();
   }
 
@@ -42,22 +42,26 @@ class SimpleDailyTracker {
   private loadPersistedData(): void {
     try {
       if (fs.existsSync(this.dataFilePath)) {
-        const fileContent = fs.readFileSync(this.dataFilePath, 'utf8');
+        const fileContent = fs.readFileSync(this.dataFilePath, "utf8");
         const persistedData = JSON.parse(fileContent) as DailyVoteData;
 
         // Only load if it's today's data
         const today = this.getTodayDateString();
         if (persistedData.date === today) {
           this.currentData = persistedData;
-          console.log(`📂 Өнөөдрийн өгөгдөл ачааллагдлаа: ${persistedData.dailyAdded} санал нэмэгдсэн`);
+          console.log(
+            `📂 Өнөөдрийн өгөгдөл ачааллагдлаа: ${persistedData.dailyAdded} санал нэмэгдсэн`,
+          );
         } else {
-          console.log(`📅 Өмнөх өдрийн өгөгдөл олдлоо (${persistedData.date}), шинэ өдөр эхлүүлж байна`);
+          console.log(
+            `📅 Өмнөх өдрийн өгөгдөл олдлоо (${persistedData.date}), шинэ өдөр эхлүүлж байна`,
+          );
           // Keep the old data for baseline calculation but don't set as current
           this.currentData = null;
         }
       }
     } catch (error) {
-      console.error('❌ Хадгалагдсан өгөгдөл ачаалахад алдаа:', error);
+      console.error("❌ Хадгалагдсан өгөгдөл ачаалахад алдаа:", error);
       this.currentData = null;
     }
   }
@@ -67,9 +71,12 @@ class SimpleDailyTracker {
     if (!this.currentData) return;
 
     try {
-      fs.writeFileSync(this.dataFilePath, JSON.stringify(this.currentData, null, 2));
+      fs.writeFileSync(
+        this.dataFilePath,
+        JSON.stringify(this.currentData, null, 2),
+      );
     } catch (error) {
-      console.error('❌ Өгөгдөл файлд хадгалахад алдаа:', error);
+      console.error("❌ Өгөгдөл файлд хадгалахад алдаа:", error);
     }
   }
 
@@ -77,7 +84,7 @@ class SimpleDailyTracker {
   private getPreviousDayData(): DailyVoteData | null {
     try {
       if (fs.existsSync(this.dataFilePath)) {
-        const fileContent = fs.readFileSync(this.dataFilePath, 'utf8');
+        const fileContent = fs.readFileSync(this.dataFilePath, "utf8");
         const persistedData = JSON.parse(fileContent) as DailyVoteData;
 
         // Only return if it's from yesterday or earlier
@@ -87,7 +94,7 @@ class SimpleDailyTracker {
         }
       }
     } catch (error) {
-      console.error('❌ Өмнөх өдрийн өгөгдөл уншихад алдаа:', error);
+      console.error("❌ Өмнөх өдрийн өгөгдөл уншихад алдаа:", error);
     }
     return null;
   }
@@ -101,7 +108,8 @@ class SimpleDailyTracker {
     if (!this.currentData || this.currentData.date !== today) {
       // Өмнөх өдрийн сүүлийн санал тоог авч, өнөөдрийн эхний цэг болгох
       const previousDayData = this.getPreviousDayData();
-      const startOfDayVotes = previousDayData?.currentVotes || currentTotalVotes;
+      const startOfDayVotes =
+        previousDayData?.currentVotes || currentTotalVotes;
 
       // Хэрэв өмнөх өдрийн өгөгдөл байгаа бол тэрийг ашиглаж baseline тооцоолох
       // Үгүй бол одоогийн санал тоог baseline болгох (анхны удаа ажиллуулах үед)
@@ -125,7 +133,9 @@ class SimpleDailyTracker {
       console.log(`📊 Одоогийн санал тоо: ${currentTotalVotes}`);
       console.log(`➕ Өнөөдрийн нэмэгдэл: ${this.currentData.dailyAdded}`);
       if (previousDayData) {
-        console.log(`📋 Өмнөх өдрийн өгөгдөл ашигласан: ${previousDayData.date} (${previousDayData.currentVotes} санал)`);
+        console.log(
+          `📋 Өмнөх өдрийн өгөгдөл ашигласан: ${previousDayData.date} (${previousDayData.currentVotes} санал)`,
+        );
       } else {
         console.log(`⚠️  Өмнөх өдрийн өгөгдөл алга - анхны удаа ажиллаж байна`);
       }
@@ -153,9 +163,7 @@ class SimpleDailyTracker {
 
     // Log хийх (debug зориулалт)
     if (dailyAdded !== oldDailyAdded) {
-      console.log(
-        `📈 Санал ��оо шинэчлэгдлээ: +${dailyAdded - oldDailyAdded}`,
-      );
+      console.log(`📈 Санал ��оо шинэчлэгдлээ: +${dailyAdded - oldDailyAdded}`);
     }
 
     return dailyAdded;
@@ -195,7 +203,7 @@ class SimpleDailyTracker {
         console.log("🗑️  Хадгалагдсан файл устгагдлаа");
       }
     } catch (error) {
-      console.error('❌ Файл устгахад алдаа:', error);
+      console.error("❌ Файл устгахад алдаа:", error);
     }
   }
 

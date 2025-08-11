@@ -21,7 +21,8 @@ const transformRealData = async (
   const totalVotes = realData["Нийт санал"] || 0;
 
   // Use Supabase database for daily tracking
-  const dailyVotesAdded = await supabaseDailyTracker.updateDailyVoteCount(totalVotes);
+  const dailyVotesAdded =
+    await supabaseDailyTracker.updateDailyVoteCount(totalVotes);
 
   // Survey start and end dates (ISO format)
   const surveyStart = new Date("2024-08-01T00:00:00Z");
@@ -280,7 +281,8 @@ const transformRealData = async (
 
   // Calculate completion percentage based on actual adult population
   const mongoliaAdultPopulation = 2280887; // Actual adult population 16+
-  const completionPercentage = Math.round((totalVotes / mongoliaAdultPopulation) * 100 * 10) / 10;
+  const completionPercentage =
+    Math.round((totalVotes / mongoliaAdultPopulation) * 100 * 10) / 10;
 
   // Age groups based on real Mongolia population data
   const agePopulationData = [
@@ -292,17 +294,23 @@ const transformRealData = async (
     { range: "55+ нас", population: 233287 },
   ];
 
-  const totalAgePopulation = agePopulationData.reduce((sum, item) => sum + item.population, 0);
+  const totalAgePopulation = agePopulationData.reduce(
+    (sum, item) => sum + item.population,
+    0,
+  );
 
   // Calculate estimated participation for each age group based on their population proportion
-  const ageGroups = agePopulationData.map(item => {
+  const ageGroups = agePopulationData.map((item) => {
     const participationRate = totalVotes / mongoliaAdultPopulation;
-    const estimatedParticipants = Math.round(item.population * participationRate);
+    const estimatedParticipants = Math.round(
+      item.population * participationRate,
+    );
 
     return {
       range: item.range,
       count: estimatedParticipants,
-      percentage: Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
+      percentage:
+        Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
     };
   });
 
@@ -361,8 +369,10 @@ export const handleSurveyData: RequestHandler = async (_req, res) => {
     // Return error response instead of fallback data
     res.status(500).json({
       error: "Survey data unavailable",
-      message: "Санал асуулгын өгөгдөл авахад алдаа гарлаа. Та дахин оролдоно уу.",
-      details: error instanceof Error ? error.message : "Unknown error occurred",
+      message:
+        "Санал асуулгын өгөгдөл авахад алдаа гарлаа. Та дахин оролдоно уу.",
+      details:
+        error instanceof Error ? error.message : "Unknown error occurred",
       timestamp: new Date().toISOString(),
     });
   }

@@ -17,7 +17,7 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
   const [userVoteCount, setUserVoteCount] = useState(0);
 
   // localStorage key for tracking user interactions
-  const VOTE_COUNT_KEY = 'userVoteCount';
+  const VOTE_COUNT_KEY = "userVoteCount";
 
   useEffect(() => {
     // Load user vote count from localStorage

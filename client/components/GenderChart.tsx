@@ -26,14 +26,14 @@ export function GenderChart({ data }: GenderChartProps) {
       name: "Эрэгтэй",
       value: data.male.percentage,
       count: data.male.count,
-      color: "#4791FF"
+      color: "#4791FF",
     },
     {
-      name: "Эмэгтэй", 
+      name: "Эмэгтэй",
       value: data.female.percentage,
       count: data.female.count,
-      color: "#FB7185"
-    }
+      color: "#FB7185",
+    },
   ];
 
   // Custom tooltip to show detailed information
@@ -92,8 +92,8 @@ export function GenderChart({ data }: GenderChartProps) {
                   className="transition-all duration-300"
                 >
                   {genderData.map((entry, index) => (
-                    <Cell 
-                      key={`cell-${index}`} 
+                    <Cell
+                      key={`cell-${index}`}
                       fill={entry.color}
                       className="transition-all duration-300 hover:opacity-80 cursor-pointer"
                     />
@@ -144,7 +144,6 @@ export function GenderChart({ data }: GenderChartProps) {
           ))}
         </div>
       </div>
-
     </div>
   );
 }

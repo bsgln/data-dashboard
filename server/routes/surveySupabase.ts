@@ -158,17 +158,23 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
       { range: "55+ нас", population: 233287 },
     ];
 
-    const totalAgePopulation = agePopulationData.reduce((sum, item) => sum + item.population, 0);
+    const totalAgePopulation = agePopulationData.reduce(
+      (sum, item) => sum + item.population,
+      0,
+    );
 
     // Calculate estimated participation for each age group based on their population proportion
-    const ageGroups = agePopulationData.map(item => {
+    const ageGroups = agePopulationData.map((item) => {
       const participationRate = totalVotes / 2280887; // Adult population
-      const estimatedParticipants = Math.round(item.population * participationRate);
+      const estimatedParticipants = Math.round(
+        item.population * participationRate,
+      );
 
       return {
         range: item.range,
         count: estimatedParticipants,
-        percentage: Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
+        percentage:
+          Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
       };
     });
 
@@ -181,7 +187,8 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
         votesChange: Math.floor(Math.random() * 100) + 50,
         dailyVotesAdded: todayStats?.votes_added || metrics.daily_votes_added,
         averageVotesPerMinute: metrics.average_votes_per_minute,
-        completionPercentage: Math.round((metrics.total_votes / 2280887) * 100 * 10) / 10, // Based on actual Mongolia adult population
+        completionPercentage:
+          Math.round((metrics.total_votes / 2280887) * 100 * 10) / 10, // Based on actual Mongolia adult population
         topBudgetPriority: {
           category: metrics.top_budget_priority_category || "Тодорхойгүй",
           percentage: metrics.top_budget_priority_percentage,

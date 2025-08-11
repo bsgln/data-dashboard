@@ -30,7 +30,7 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
         const response = await fetch(finalConfig.dataUrl, {
           signal: controller.signal,
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         });
 
@@ -51,10 +51,11 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
 
         let errorMessage = "Unknown error occurred";
         if (err instanceof Error) {
-          if (err.name === 'AbortError') {
+          if (err.name === "AbortError") {
             errorMessage = "Request timeout - please check your connection";
-          } else if (err.message.includes('Failed to fetch')) {
-            errorMessage = "Network error - please check your internet connection";
+          } else if (err.message.includes("Failed to fetch")) {
+            errorMessage =
+              "Network error - please check your internet connection";
           } else {
             errorMessage = err.message;
           }
@@ -84,7 +85,7 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
       if (failureCount < 5) {
         console.log(
           `Retrying survey data fetch (attempt ${failureCount + 1}/5)`,
-          error?.message || error
+          error?.message || error,
         );
         return true;
       }
