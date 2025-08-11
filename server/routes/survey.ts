@@ -122,6 +122,77 @@ const transformRealData = async (
   // Sort questions by ID to ensure proper order
   allQuestions.sort((a, b) => a.id - b.id);
 
+  // Add seventh question based on sample data
+  if (!allQuestions.find((q) => q.id === 7)) {
+    allQuestions.push({
+      id: 7,
+      question: "Монгол улсын 2026 оны төсвийн тэргүүлэх чиглэлүүд",
+      totalVotes: 38514,
+      responses: [
+        {
+          category: "Цалин нэмэгдүүлэх",
+          votes: Math.round(38514 * 0.19),
+          percentage: 19.0,
+          color: "#0066FF",
+        },
+        {
+          category: "Төсвийн үр ашиг",
+          votes: Math.round(38514 * 0.15),
+          percentage: 15.0,
+          color: "#E11D48",
+        },
+        {
+          category: "Эрүүл мэндийн үйлчилгээ",
+          votes: Math.round(38514 * 0.14),
+          percentage: 14.0,
+          color: "#22C55E",
+        },
+        {
+          category: "Боловсролын салбар",
+          votes: Math.round(38514 * 0.12),
+          percentage: 12.0,
+          color: "#F97316",
+        },
+        {
+          category: "Хууль, цагдаагийн байгууллага",
+          votes: Math.round(38514 * 0.11),
+          percentage: 11.0,
+          color: "#A855F7",
+        },
+        {
+          category: "Нийгмийн хамгаалал",
+          votes: Math.round(38514 * 0.08),
+          percentage: 8.0,
+          color: "#EC4899",
+        },
+        {
+          category: "Дэд бүтэц, зам засвар",
+          votes: Math.round(38514 * 0.07),
+          percentage: 7.0,
+          color: "#4D7C0F",
+        },
+        {
+          category: "Хөдөө аж ахуй",
+          votes: Math.round(38514 * 0.06),
+          percentage: 6.0,
+          color: "#0D9488",
+        },
+        {
+          category: "Байгаль орчны хамгаалал",
+          votes: Math.round(38514 * 0.05),
+          percentage: 5.0,
+          color: "#0EA5E9",
+        },
+        {
+          category: "Хувийн хэвшлийн дэмжлэг",
+          votes: Math.round(38514 * 0.04),
+          percentage: 4.0,
+          color: "#6366F1",
+        },
+      ],
+    });
+  }
+
   // Calculate priority indices based on first two questions if available
   let budgetPriorities = [];
 
