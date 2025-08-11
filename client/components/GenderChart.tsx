@@ -243,7 +243,7 @@ export function GenderChart({ data }: GenderChartProps) {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes drawPath {
           from {
             opacity: 0;
