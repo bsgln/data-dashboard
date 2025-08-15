@@ -130,7 +130,7 @@ export default function Index() {
 
             <MetricsCardsSkeleton />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
               <GenderChartSkeleton />
               <GenderChartSkeleton /> {/* Age participation chart skeleton */}
             </div>
