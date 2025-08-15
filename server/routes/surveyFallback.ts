@@ -66,7 +66,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
           color: colors[5]
         },
         {
-          category: "Дэд бүтэц, зам",
+          category: "Дэд бүтэц, з��м",
           votes: Math.round(question1TotalVotes * 0.08),
           percentage: 8.0,
           color: colors[6]
@@ -170,33 +170,34 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         }
       : { category: "Тодорхойгүй", percentage: 0 };
 
-    // Calculate gender distribution (using historical data)
-    const maleCount = 63818;
-    const femaleCount = 79739;
+    // Override total votes with correct data
+    const actualTotalVotes = 188016;
+
+    // Calculate gender distribution (using updated data)
+    const maleCount = 82180;
+    const femaleCount = 105836;
     const totalGenderVotes = maleCount + femaleCount;
-    
-    // Age groups based on Mongolia population
-    const agePopulationData = [
-      { range: "16-17 нас", population: 75000 },
-      { range: "18-24 нас", population: 320000 },
-      { range: "25-34 нас", population: 450000 },
-      { range: "35-44 нас", population: 380000 },
-      { range: "45-54 нас", population: 290000 },
-      { range: "55+ нас", population: 765887 }
+
+    // Age groups based on actual survey data
+    const ageGroups = [
+      {
+        range: "18-34 нас",
+        count: 93755,
+        percentage: 49.87
+      },
+      {
+        range: "35-54 нас",
+        count: 85893,
+        percentage: 45.68
+      },
+      {
+        range: "55+ нас",
+        count: 8368,
+        percentage: 4.45
+      }
     ];
-    
+
     const mongoliaAdultPopulation = 2280887;
-    const participationRate = totalVotesSum / mongoliaAdultPopulation;
-    const totalAgePopulation = agePopulationData.reduce((sum, item) => sum + item.population, 0);
-    
-    const ageGroups = agePopulationData.map(item => {
-      const estimatedParticipants = Math.round(item.population * participationRate);
-      return {
-        range: item.range,
-        count: estimatedParticipants,
-        percentage: Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
-      };
-    });
 
     return {
       metrics: {
