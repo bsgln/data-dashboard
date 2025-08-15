@@ -10,7 +10,6 @@ export function SurveyQuestionResults({
   question,
   onVote,
 }: SurveyQuestionResultsProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Generate unique animation IDs to avoid conflicts
   const animationId = useMemo(
