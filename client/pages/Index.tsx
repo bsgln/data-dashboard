@@ -165,6 +165,12 @@ export default function Index() {
           </div>
         )}
 
+        {/* Question Detail Popup */}
+        <QuestionDetailPopup
+          isOpen={isPopupOpen}
+          onClose={closePopup}
+          question={selectedQuestion}
+        />
       </div>
     </div>
   );
