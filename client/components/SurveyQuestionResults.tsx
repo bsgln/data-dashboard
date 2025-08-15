@@ -12,7 +12,6 @@ export function SurveyQuestionResults({
   onVote,
   onDetailClick,
 }: SurveyQuestionResultsProps) {
-
   // Generate unique animation IDs to avoid conflicts
   const animationId = useMemo(
     () => Math.random().toString(36).substr(2, 9),
@@ -21,7 +20,6 @@ export function SurveyQuestionResults({
 
   return (
     <>
-
       <div
         className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_2px_8px_rgba(0,102,255,0.06)]
                       transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,102,255,0.1)]
@@ -139,14 +137,11 @@ export function SurveyQuestionResults({
                          px-5 py-2 text-[11px] sm:text-[12px] font-medium
                          transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
             >
-              <span className="hidden sm:inline">
-                Дэлгэрэнгүй
-              </span>
+              <span className="hidden sm:inline">Дэлгэрэнгүй</span>
               <span className="sm:hidden">Дэлгэрэнгүй</span>
             </button>
           </div>
         </div>
-
       </div>
 
       {/* CSS Animation Styles */}

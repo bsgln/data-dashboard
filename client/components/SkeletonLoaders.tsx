@@ -208,8 +208,10 @@ export function SeventhQuestionCardSkeleton() {
 
 export function DetailedQuestionCardSkeleton() {
   return (
-    <div className="bg-white p-4 sm:p-5 lg:p-6 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
-                    min-h-[300px] border border-gray-100/50">
+    <div
+      className="bg-white p-4 sm:p-5 lg:p-6 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
+                    min-h-[300px] border border-gray-100/50"
+    >
       {/* Header */}
       <div className="mb-4 sm:mb-6">
         <div className="flex items-start justify-between mb-3">

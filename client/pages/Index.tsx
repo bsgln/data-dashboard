@@ -33,7 +33,8 @@ export default function Index() {
     closeConnectionError,
   } = useSurveyData();
 
-  const [selectedQuestion, setSelectedQuestion] = useState<SurveyQuestion | null>(null);
+  const [selectedQuestion, setSelectedQuestion] =
+    useState<SurveyQuestion | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleQuestionClick = (question: SurveyQuestion) => {
@@ -46,14 +47,12 @@ export default function Index() {
     setSelectedQuestion(null);
   };
 
-
   return (
     <div
       className="min-h-screen bg-[#F8FAFC] animate-in fade-in"
       style={{ animationDuration: "800ms" }}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
-
         {/* Connection Error Dialog */}
         <ConnectionErrorDialog
           isOpen={showConnectionError}

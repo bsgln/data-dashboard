@@ -180,9 +180,7 @@ export function AgeParticipationChart({
       <div className="mt-4 pt-4 border-t border-gray-100">
         <div className="text-xs text-gray-500 text-center">
           <p>Оролцооны хувь = (Санал өгсөн / Нийт хүн ам) × 100%</p>
-          <p className="mt-1">
-            *Шинэчлэгдсэн насны бүлгээр
-          </p>
+          <p className="mt-1">*Шинэчлэгдсэн насны бүлгээр</p>
         </div>
       </div>
 

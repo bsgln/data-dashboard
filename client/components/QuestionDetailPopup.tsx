@@ -21,13 +21,18 @@ interface QuestionDetailPopupProps {
   question: SurveyQuestion | null;
 }
 
-export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetailPopupProps) {
+export function QuestionDetailPopup({
+  isOpen,
+  onClose,
+  question,
+}: QuestionDetailPopupProps) {
   if (!isOpen || !question) return null;
 
   // Detailed data for each question (using Excel data)
   const questionDetails: QuestionDetailData = {
     1: {
-      title: "Монгол улсын 2026 оны төсвийн ямар салбарт илүү их хөрөнгө оруулалт хийх ёстой вэ?",
+      title:
+        "Монгол улсын 2026 оны төсвийн ямар салбарт илүү их хөрөнгө оруулалт хийх ёстой вэ?",
       description: "Тайлбар бичсэн: 38,514",
       totalResponses: 38514,
       categories: [
@@ -38,8 +43,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Эрүүл мэндийн үйлчилгээний хүртээмж, чанарыг сайжруулах",
             "Эмч, сувилагчдын цалин, нөхцөлийг нэмэгдүүлэх",
             "Эрүүл орчин, цэвэр ус, агаарын чанарыг сайжруулах",
-            "Сэтгэцийн эрүүл мэндийн тусламжийг өргөжүүлэх"
-          ]
+            "Сэтгэцийн эрүүл мэндийн тусламжийг өргөжүүлэх",
+          ],
         },
         {
           name: "Цалин, нийгмийн хамгаалал (≈13%)",
@@ -48,8 +53,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Төрийн албан хаагчдын цалинг нэмэгдүүлэх",
             "Нийгмийн халамж, тэтгэмжийн хүртээмжийг нэмэгдүүлэх",
             "Ээж, хүүхдийн дэмжлэгийг өргөжүүлэх",
-            "Хөгжлийн бэрхшээлтэй иргэдийг дэмжих"
-          ]
+            "Хөгжлийн бэрхшээлтэй иргэдийг дэмжих",
+          ],
         },
         {
           name: "Боловсрол (≈13%)",
@@ -58,8 +63,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Ясли, цэцэрлэгийн ��оог нэмэгдүүлэх",
             "Багш нарын цалин, ур чадварыг сайжруулах",
             "Хөдөө орон нутгийн сургалтын чанарыг дээшлүүлэх",
-            "Хөтөлбөр, сургалтын орчныг шинэчлэх"
-          ]
+            "Хөтөлбөр, сургалтын орчныг шинэчлэх",
+          ],
         },
         {
           name: "Аюулгүй байдал, хууль сахиулах (≈11%)",
@@ -68,8 +73,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Цагдаагийн байгууллагын орон тоо, нөхцөлийг сайжруулах",
             "Замын хөдөлгөөний аюулгүй байдлыг хангах",
             "Гэмт хэрэг, хүчирхийлэлтэй тэмцэх",
-            "Иргэдийн аюулгүй байдлыг нэмэгдүүлэх"
-          ]
+            "Иргэдийн аюулгүй байдлыг нэмэгдүүлэх",
+          ],
         },
         {
           name: "Хөдөө аж ахуй, байгаль орчин (≈10%)",
@@ -78,8 +83,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Ус, бэлчээрийн менежмент сайжруулах",
             "Хөдөө аж ахуйн үйлдвэрлэлийг нэмэгдүүлэх",
             "Байгаль хамгааллыг чангатгах",
-            "Хог, бохирдлыг буу��уулах"
-          ]
+            "Хог, бохирдлыг буу��уулах",
+          ],
         },
         {
           name: "Эдийн засаг, ажлын байр (≈9%)",
@@ -88,8 +93,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Ажлын байрыг нэмэгдүүлэх",
             "Татварын дарамтыг бууруулах",
             "Жижиг, дунд үйлдвэрлэлийг дэмжих",
-            "Үр ашиггүй зардлыг танах"
-          ]
+            "Үр ашиггүй зардлыг танах",
+          ],
         },
         {
           name: "Дэд бүтэц, зам (≈8%)",
@@ -98,8 +103,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Хот хоорондын болон доторх замын чанарыг сайжруулах",
             "Явган болон дугуйн зам нэмэх",
             "Гэрэлтүүлэг, нийтийн тээврийн хүртээмжийг сайжруулах",
-            "Хот төлөвлөлтийг сайжруулах"
-          ]
+            "Хот төлөвлөлтийг сайжруулах",
+          ],
         },
         {
           name: "Эрчим хүч (≈8%)",
@@ -108,8 +113,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Шинэ цахилгаан станц барих",
             "Эрчим хүчний хараат байдлыг бууруулах",
             "Эрчим хүчний үнэ тогтвортой байлгах",
-            "Эрчим хүчний дэд бүтцийг шинэчлэх"
-          ]
+            "Эрчим хүчний дэд бүтцийг шинэчлэх",
+          ],
         },
         {
           name: "Соёл, спорт, аялал жуулчлал (≈2%)",
@@ -118,8 +123,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Спортын дэд бүтцийг сайжруулах",
             "Аялал жуулчлалыг хөгжүүлэх",
             "Үндэсний соёлыг хамгаалах",
-            "Соёлын боловсролыг нэмэгдүүлэх"
-          ]
+            "Соёлын боловсролыг нэмэгдүүлэх",
+          ],
         },
         {
           name: "Орон нутагт хөрөнгө оруулах (≈1%)",
@@ -127,10 +132,10 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
           details: [
             "Орон нутгийн дэд бүтцийг сайжруулах",
             "Нутгийн хөгжилд чиглэсэн төсөл хэрэгжүүлэх",
-            "Хөдөө орон нутгийн ажил эрхлэлтийг нэмэгдүүлэх"
-          ]
-        }
-      ]
+            "Хөдөө орон нутгийн ажил эрхлэлтийг нэмэгдүүлэх",
+          ],
+        },
+      ],
     },
     2: {
       title: "Хөрөнгө оруулалт хасах салба",
@@ -143,8 +148,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
           details: [
             "Үр ашиггүй хөрөнгө оруулалтыг зогсоох",
             "Төсвийн үр ашгийг нэмэгдүүлэх",
-            "Зардлын ил тод байдлыг хангах"
-          ]
+            "Зардлын ил тод байдлыг хангах",
+          ],
         },
         {
           name: "Татвар, санхүүгийн бодлого (≈15%)",
@@ -152,8 +157,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
           details: [
             "Татварын орлогын зарцуулалтыг хянах",
             "Татварын системийг шударга болгох",
-            "Татварын дарамтыг бууруулах"
-          ]
+            "Татварын дарамтыг бууруулах",
+          ],
         },
         {
           name: "Төрийн алба, зардлын хэмнэлт (≈14%)",
@@ -161,8 +166,8 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
           details: [
             "Төрийн албан хаагчдын тоог хязгаарлах",
             "Албан томилолт, тансаг хэрэглээг багасгах",
-            "Захиргааны үйл ажиллагааны зардлыг танах"
-          ]
+            "Захиргааны үйл ажиллагааны зардлыг танах",
+          ],
         },
         {
           name: "Эрүүл мэнд (≈12%)",
@@ -170,19 +175,19 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
           details: [
             "Эрүүл мэндийн төсвийг оновчтой болгох",
             "Ашиггүй эмнэлгийн төслүүдийг хасах",
-            "Үйлчилгээний чанарыг сайжруулах"
-          ]
+            "Үйлчилгээний чанарыг сайжруулах",
+          ],
         },
         {
           name: "Хууль сахиулах, хяналт (≈10%)",
           percentage: 10,
           details: [
             "Авлига, хээл хахуулийн эсрэг арга хэмжээ",
-            "Хууль хэрэгжилтийг чангатгах"
-          ]
-        }
-      ]
-    }
+            "Хууль хэрэгжилтийг чангатгах",
+          ],
+        },
+      ],
+    },
     // Add more questions here...
   };
 
@@ -192,11 +197,11 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Modal */}
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
         {/* Header */}

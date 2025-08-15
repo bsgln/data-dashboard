@@ -19,19 +19,22 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
   }
 
   // This should use the question data from props, not hardcoded data
-  const detailedCategories: DetailedCategory[] = question.responses.map(response => ({
-    name: response.category,
-    percentage: response.percentage,
-    votes: response.votes,
-    color: response.color,
-    details: [] // Simple categories without detailed descriptions for now
-  }));
+  const detailedCategories: DetailedCategory[] = question.responses.map(
+    (response) => ({
+      name: response.category,
+      percentage: response.percentage,
+      votes: response.votes,
+      color: response.color,
+      details: [], // Simple categories without detailed descriptions for now
+    }),
+  );
 
   return (
-    <div className="bg-white p-4 sm:p-5 lg:p-6 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
+    <div
+      className="bg-white p-4 sm:p-5 lg:p-6 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
                     transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,102,255,0.12)]
-                    min-h-[300px] flex flex-col border border-gray-100/50">
-      
+                    min-h-[300px] flex flex-col border border-gray-100/50"
+    >
       {/* Header */}
       <div className="mb-4 sm:mb-6">
         <div className="flex items-start justify-between mb-3">
@@ -48,9 +51,11 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
             <span>27,105</span>
           </div>
         </div>
-        
-        <h3 className="text-[16px] sm:text-[18px] lg:text-[19px] font-bold text-[#1E293B]
-                       tracking-[0.36px] transition-colors duration-200 leading-[1.3] mb-2">
+
+        <h3
+          className="text-[16px] sm:text-[18px] lg:text-[19px] font-bold text-[#1E293B]
+                       tracking-[0.36px] transition-colors duration-200 leading-[1.3] mb-2"
+        >
           {question.question}
         </h3>
 
@@ -70,7 +75,7 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
             {/* Category header */}
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <div 
+                <div
                   className="w-3 h-3 rounded-full shadow-sm"
                   style={{ backgroundColor: category.color }}
                 />
@@ -78,7 +83,7 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
                   {category.name}
                 </span>
               </div>
-              
+
               <div className="text-right">
                 <div className="text-[13px] sm:text-[14px] font-bold text-[#1E293B]">
                   ≈{category.percentage}%
@@ -100,7 +105,6 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
                 }}
               />
             </div>
-
           </div>
         ))}
       </div>
