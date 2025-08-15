@@ -66,7 +66,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
           color: colors[5]
         },
         {
-          category: "Дэд бүтэц, з��м",
+          category: "Дэд бүтэц, зам",
           votes: Math.round(question1TotalVotes * 0.08),
           percentage: 8.0,
           color: colors[6]
@@ -201,13 +201,13 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
 
     return {
       metrics: {
-        totalVotes: totalVotesSum,
+        totalVotes: actualTotalVotes,
         votesChange: Math.floor(Math.random() * 100) + 50,
         dailyVotesAdded: dailyVotesAdded,
-        averageVotesPerMinute: Math.round((totalVotesSum / (24 * 60)) * 100) / 100,
-        completionPercentage: Math.round((totalVotesSum / mongoliaAdultPopulation) * 100 * 10) / 10,
+        averageVotesPerMinute: Math.round((actualTotalVotes / (24 * 60)) * 100) / 100,
+        completionPercentage: Math.round((actualTotalVotes / mongoliaAdultPopulation) * 100 * 10) / 10,
         topBudgetPriority,
-        lastUpdated: timeString,
+        lastUpdated: "2025/08/14 23:59",
         isLive: false, // Static data
       },
       genderDistribution: {
