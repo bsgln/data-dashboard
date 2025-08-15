@@ -55,7 +55,7 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
         </h3>
 
         <p className="text-[12px] sm:text-[13px] text-[#64748B] font-medium">
-          Тайлбар бичсэн: {question.totalVotes.toLocaleString()} хү��
+          Тайлбар бичсэн: {question.totalVotes.toLocaleString()} хүн
         </p>
       </div>
 
@@ -110,7 +110,7 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
         <div className="flex justify-between items-center text-xs text-gray-500">
           <span>Нийт тайлбар</span>
           <span className="font-semibold text-gray-700">
-            27,105 санал
+            {question.totalVotes.toLocaleString()} санал
           </span>
         </div>
       </div>
