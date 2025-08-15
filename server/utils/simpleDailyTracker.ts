@@ -128,7 +128,7 @@ class SimpleDailyTracker {
       // Save to file immediately
       this.saveDataToFile();
 
-      console.log(`��� Шинэ өдөр эхэллээ: ${today}`);
+      console.log(`🌅 Шинэ өдөр эхэллээ: ${today}`);
       console.log(`🌅 Өдрийн эхний санал тоо: ${startOfDayVotes}`);
       console.log(`📊 Одоогийн санал тоо: ${currentTotalVotes}`);
       console.log(`➕ Өнөөдрийн нэмэгдэл: ${this.currentData.dailyAdded}`);
@@ -163,7 +163,7 @@ class SimpleDailyTracker {
 
     // Log хийх (debug зориулалт)
     if (dailyAdded !== oldDailyAdded) {
-      console.log(`📈 Санал ��оо шинэчлэгдлээ: +${dailyAdded - oldDailyAdded}`);
+      console.log(`📈 Санал тоо шинэчлэгдлээ: +${dailyAdded - oldDailyAdded}`);
     }
 
     return dailyAdded;
@@ -180,7 +180,7 @@ class SimpleDailyTracker {
     return 0;
   }
 
-  // Өнөөдрийн ��татистик авах
+  // Өнөөдрийн статистик авах
   public getTodayStats(): DailyVoteData | null {
     const today = this.getTodayDateString();
 
