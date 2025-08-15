@@ -135,11 +135,11 @@ export default function Index() {
               <GenderChartSkeleton /> {/* Age participation chart skeleton */}
             </div>
 
-            <div className="mb-6 sm:mb-8">
-              <div className="h-5 sm:h-6 w-40 sm:w-48 bg-gray-200 rounded animate-pulse mb-4 sm:mb-6"></div>
+            <div className="mb-8">
+              <div className="h-6 w-48 bg-gray-200 rounded animate-pulse mb-6"></div>
 
               {/* Regular Question Skeletons */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
                 <SurveyQuestionSkeleton />
                 <SurveyQuestionSkeleton />
                 <SurveyQuestionSkeleton />
@@ -149,7 +149,7 @@ export default function Index() {
               </div>
 
               {/* Citizen Suggestions Card Skeleton - At Bottom */}
-              <div className="mb-6 sm:mb-8">
+              <div className="mb-8">
                 <SeventhQuestionCardSkeleton />
               </div>
             </div>
