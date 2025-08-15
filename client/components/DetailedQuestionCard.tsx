@@ -49,13 +49,13 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
           </div>
         </div>
         
-        <h3 className="text-[16px] sm:text-[18px] lg:text-[19px] font-bold text-[#1E293B] 
+        <h3 className="text-[16px] sm:text-[18px] lg:text-[19px] font-bold text-[#1E293B]
                        tracking-[0.36px] transition-colors duration-200 leading-[1.3] mb-2">
-          Хөрөнгө оруулалт нэмэгдүүлэх салбар
+          {question.question}
         </h3>
-        
+
         <p className="text-[12px] sm:text-[13px] text-[#64748B] font-medium">
-          Тайлбар бичсэн: 27,105 хүн
+          Тайлбар бичсэн: {question.totalVotes.toLocaleString()} хү��
         </p>
       </div>
 
