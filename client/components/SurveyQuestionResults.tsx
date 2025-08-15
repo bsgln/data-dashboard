@@ -4,6 +4,7 @@ import { useMemo } from "react";
 interface SurveyQuestionResultsProps {
   question: SurveyQuestion;
   onVote?: (responseId: number) => Promise<boolean>;
+  onDetailClick?: () => void;
 }
 
 export function SurveyQuestionResults({
