@@ -18,11 +18,17 @@ async function fetchLiveQuestions(): Promise<SurveyQuestion[]> {
 
     const apiData = await response.json();
     
-    if (!apiData.result || !apiData.data || !apiData.data["Дэлгэрэ��гүй үзүүлэлт"]) {
-      throw new Error("Invalid API response format");
+    console.log("📋 API Response structure:", Object.keys(apiData.data || {}));
+
+    if (!apiData.result || !apiData.data) {
+      throw new Error("Invalid API response format - missing result or data");
     }
 
     const questionsData = apiData.data["Дэлгэрэнгүй үзүүлэлт"];
+    if (!questionsData) {
+      console.log("❌ Missing 'Дэлгэрэнгүй үзүүлэлт' in response");
+      throw new Error("Invalid API response format - missing detailed data");
+    }
     const questions: SurveyQuestion[] = [];
     
     const colors = [
