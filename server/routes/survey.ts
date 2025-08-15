@@ -344,8 +344,8 @@ const transformRealData = async (
   };
 };
 
-// Import the fallback handler
-import { handleSurveyFallback } from "./surveyFallback";
+// Import the fallback handler with live questions
+import { handleSurveyFallbackNew } from "./surveyFallbackNew";
 
 export const handleSurveyData: RequestHandler = async (req, res) => {
   try {
