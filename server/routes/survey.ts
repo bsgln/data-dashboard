@@ -344,8 +344,13 @@ const transformRealData = async (
   };
 };
 
-export const handleSurveyData: RequestHandler = async (_req, res) => {
+// Import the fallback handler
+import { handleSurveyFallback } from "./surveyFallback";
+
+export const handleSurveyData: RequestHandler = async (req, res) => {
   try {
+    console.log("🔄 Attempting to fetch live survey data from API...");
+
     // Fetch real data from the API
     const response = await fetch(REAL_API_URL);
 
@@ -362,18 +367,27 @@ export const handleSurveyData: RequestHandler = async (_req, res) => {
     // Transform real data to our dashboard format
     const transformedData = await transformRealData(realData.data);
 
+    console.log("✅ Live survey data fetched successfully");
     res.json(transformedData);
-  } catch (error) {
-    console.error("Error fetching real survey data:", error);
 
-    // Return error response instead of fallback data
-    res.status(500).json({
-      error: "Survey data unavailable",
-      message:
-        "Санал асуулгын өгөгдөл авахад алдаа гарлаа. Та дахин оролдоно уу.",
-      details:
-        error instanceof Error ? error.message : "Unknown error occurred",
-      timestamp: new Date().toISOString(),
-    });
+  } catch (error) {
+    console.error("❌ Live API failed, switching to Excel fallback:", error);
+
+    // Use Excel fallback when live API is unavailable
+    try {
+      return await handleSurveyFallback(req, res);
+    } catch (fallbackError) {
+      console.error("❌ Fallback also failed:", fallbackError);
+
+      // Final error response if both live and fallback fail
+      res.status(500).json({
+        error: "Survey data unavailable",
+        message:
+          "Санал асуулгын өгөгдөл авахад алдаа гарлаа. Та дахин оролдоно уу.",
+        details:
+          error instanceof Error ? error.message : "Unknown error occurred",
+        timestamp: new Date().toISOString(),
+      });
+    }
   }
 };
