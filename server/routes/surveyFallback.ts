@@ -33,7 +33,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Эдийн засаг, ажлын байр", votes: Math.round(27105 * 0.09), percentage: 9.0, color: colors[5] },
         { category: "Дэд бүтэц, зам", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[6] },
         { category: "Эрчим хүч", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[7] },
-        { category: "Соёл, спорт, аялал жуулчлал", votes: Math.round(27105 * 0.02), percentage: 2.0, color: colors[8] },
+        { category: "��оёл, спорт, аялал жуулчлал", votes: Math.round(27105 * 0.02), percentage: 2.0, color: colors[8] },
         { category: "Орон нутагт хөрөнгө оруулах", votes: Math.round(27105 * 0.01), percentage: 1.0, color: colors[9] }
       ]
     };
@@ -125,9 +125,12 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
     };
 
     questions.push(question1, question2, question3, question4, question5, question6);
-    
-    console.log(`✅ Created ${questions.length} questions with static survey data`);
-    
+
+    // Calculate total votes from all questions
+    const totalVotesSum = questions.reduce((sum, q) => sum + q.totalVotes, 0);
+
+    console.log(`✅ Created ${questions.length} questions with total ${totalVotesSum} votes`);
+
     // Calculate metrics
     const dailyVotesAdded = await supabaseDailyTracker.updateDailyVoteCount(totalVotesSum);
     const now = new Date();
