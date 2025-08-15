@@ -163,13 +163,20 @@ export default function Index() {
         {/* Loading overlay for refreshes */}
         {isRefetching && (
           <div
-            className="fixed top-4 right-4 bg-white shadow-lg rounded-lg p-3 flex items-center gap-2 
+            className="fixed top-4 right-4 bg-white shadow-lg rounded-lg p-3 flex items-center gap-2
                           animate-in slide-in-from-right-4 fade-in z-50"
           >
             <RefreshCw className="w-4 h-4 animate-spin text-[#0066FF]" />
             <span className="text-sm text-[#64748B]">Шинэчилж байна...</span>
           </div>
         )}
+
+        {/* Question Detail Popup */}
+        <QuestionDetailPopup
+          isOpen={isPopupOpen}
+          onClose={closePopup}
+          question={selectedQuestion}
+        />
       </div>
     </div>
   );
