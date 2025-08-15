@@ -110,7 +110,8 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
     ];
 
     // Static demographics and metrics
-    const actualTotalVotes = 188016; // Static total votes (not from questions)
+    // Calculate total votes from all questions: 490296 + 469837 + 460144 + 396606 + 448229 + 408180 = 2,673,292
+    const actualTotalVotes = 2673292; // Sum of all question votes
     
     // Calculate correct average votes per minute
     // Voting started 8.1 (Aug 1, 2025) and ended yesterday (Aug 14, 2025)
