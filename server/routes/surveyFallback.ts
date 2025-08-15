@@ -12,9 +12,10 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
   try {
-    console.log("📊 Creating survey data with detailed Question 1");
+    console.log("📊 Creating survey data with live questions from API");
 
-    const questions: SurveyQuestion[] = [];
+    // Try to fetch live questions from the new API
+    let questions: SurveyQuestion[] = [];
     const colors = [
       "#0066FF", "#E11D48", "#22C55E", "#F97316", "#A855F7",
       "#EC4899", "#4D7C0F", "#0D9488", "#0EA5E9", "#6366F1"
