@@ -22,8 +22,8 @@ export function SurveyQuestionResults({
 
       <div
         className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_2px_8px_rgba(0,102,255,0.06)]
-                      transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,102,255,0.1)] hover:scale-[1.005]
-                      animate-in slide-in-from-bottom-4 fade-in min-h-[280px] sm:min-h-[320px] lg:min-h-[360px] flex flex-col
+                      transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,102,255,0.1)]
+                      animate-in slide-in-from-bottom-4 fade-in min-h-[240px] sm:min-h-[280px] lg:min-h-[320px] flex flex-col
                       border border-[#F1F5F9] hover:border-[#E1EFFE]"
         style={{
           animationDelay: `${400 + question.id * 100}ms`,
