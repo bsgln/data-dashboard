@@ -1,7 +1,5 @@
 import { SurveyQuestion } from "@shared/survey";
-import { Button } from "@/components/ui/button";
-import { SurveyDetailModal } from "./SurveyDetailModal";
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 
 interface SurveyQuestionResultsProps {
   question: SurveyQuestion;
