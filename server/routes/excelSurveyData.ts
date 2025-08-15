@@ -133,21 +133,21 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
     const maleCount = Math.round(actualTotalVotes * 0.4446); // 83,645
     const femaleCount = Math.round(actualTotalVotes * 0.5554); // 104,441
 
-    // Age groups based on actual survey data
+    // Age groups based on 188,086 total votes
     const ageGroups = [
       {
         range: "18-34 нас",
-        count: 93755,
+        count: Math.round(actualTotalVotes * 0.4987), // 93,755
         percentage: 49.87
       },
       {
-        range: "35-54 нас", 
-        count: 85893,
+        range: "35-54 нас",
+        count: Math.round(actualTotalVotes * 0.4568), // 85,893
         percentage: 45.68
       },
       {
         range: "55+ нас",
-        count: 8368,
+        count: Math.round(actualTotalVotes * 0.0445), // 8,370
         percentage: 4.45
       }
     ];
