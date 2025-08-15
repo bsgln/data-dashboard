@@ -6,6 +6,7 @@ import { AgeParticipationChart } from "@/components/AgeParticipationChart";
 import { BudgetPriorityTable } from "@/components/BudgetPriorityTable";
 import { SurveyQuestionResults } from "@/components/SurveyQuestionResults";
 import { SeventhQuestionCard } from "@/components/SeventhQuestionCard";
+import { QuestionDetailPopup } from "@/components/QuestionDetailPopup";
 import { ConnectionErrorDialog } from "@/components/ConnectionErrorDialog";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, Settings, AlertCircle, Wifi, WifiOff } from "lucide-react";
