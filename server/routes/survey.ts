@@ -127,7 +127,7 @@ const transformRealData = async (
   if (!allQuestions.find((q) => q.id === 7)) {
     allQuestions.push({
       id: 7,
-      question: "Монгол улсын 2026 оны төсвийн тэргүүлэх чиглэлүүд",
+      question: "Монгол улсын 2026 оны төсвийн тэргүүлэх чи��лэлүүд",
       totalVotes: 38514,
       responses: [
         {
@@ -373,9 +373,9 @@ export const handleSurveyData: RequestHandler = async (req, res) => {
   } catch (error) {
     console.error("❌ Live API failed, switching to Excel fallback:", error);
 
-    // Use Excel fallback when live API is unavailable
+    // Use new fallback with live questions when main API is unavailable
     try {
-      return await handleSurveyFallback(req, res);
+      return await handleSurveyFallbackNew(req, res);
     } catch (fallbackError) {
       console.error("❌ Fallback also failed:", fallbackError);
 
