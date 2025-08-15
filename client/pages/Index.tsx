@@ -12,7 +12,7 @@ import { ConnectionErrorDialog } from "@/components/ConnectionErrorDialog";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, Settings, AlertCircle, Wifi, WifiOff } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { SurveyDashboardData } from "@shared/survey";
+import { SurveyDashboardData, SurveyQuestion } from "@shared/survey";
 import {
   MetricsCardsSkeleton,
   GenderChartSkeleton,
