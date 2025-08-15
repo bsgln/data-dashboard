@@ -4,7 +4,6 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricsCards } from "@/components/MetricsCards";
 import { GenderChart } from "@/components/GenderChart";
 import { AgeParticipationChart } from "@/components/AgeParticipationChart";
-import { BudgetPriorityTable } from "@/components/BudgetPriorityTable";
 import { SurveyQuestionResults } from "@/components/SurveyQuestionResults";
 import { SeventhQuestionCard } from "@/components/SeventhQuestionCard";
 import { QuestionDetailPopup } from "@/components/QuestionDetailPopup";
