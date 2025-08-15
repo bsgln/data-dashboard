@@ -4,6 +4,7 @@ import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleSurveyData } from "./routes/survey";
 import { handleSurveyFallback } from "./routes/surveyFallback";
+import { handleLiveQuestions } from "./routes/liveQuestions";
 import {
   handleSimpleDailyStats,
   handleDailyStatsDebug,
