@@ -19,19 +19,20 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
     const questions: SurveyQuestion[] = [
       {
         id: 1,
-        question: "Монгол улсын 2026 оны төсвийн ямар салбарт илүү их хөрөнгө оруулалт хийх ёстой вэ?",
-        totalVotes: 38514,
+        question: "2026 онд аль салбарт төсвийг түлхүү чиглүүлэх нь зүйтэй гэж та үзэж байна вэ?",
+        totalVotes: 490296,
         responses: [
-          { category: "Цалин хөлс нэмэгдүүлэх", votes: 7318, percentage: 19.0, color: colors[0] },
-          { category: "Эрүүл мэндийн салбар", votes: 6139, percentage: 15.9, color: colors[1] },
-          { category: "Төсвийн үр ашиг", votes: 5777, percentage: 15.0, color: colors[2] },
-          { category: "Боловсролын салбар", votes: 4622, percentage: 12.0, color: colors[3] },
-          { category: "Хууль, цагдаагийн байгууллага", votes: 4235, percentage: 11.0, color: colors[4] },
-          { category: "Нийгмийн хамгаалал", votes: 3081, percentage: 8.0, color: colors[5] },
-          { category: "Дэд бүтэц, зам харилцаа холбоо", votes: 2696, percentage: 7.0, color: colors[6] },
-          { category: "Хөдөө аж ахуй", votes: 2311, percentage: 6.0, color: colors[7] },
-          { category: "Байгаль орчны хамгаалал", votes: 1926, percentage: 5.0, color: colors[8] },
-          { category: "Хувийн хэвшлийн дэмжлэг", votes: 1540, percentage: 4.0, color: colors[9] }
+          { category: "Эрүүл мэнд", votes: 129625, percentage: 26.44, color: colors[0] },
+          { category: "Боловсрол", votes: 105295, percentage: 21.48, color: colors[1] },
+          { category: "Цахилгаан, дулаан", votes: 88010, percentage: 17.95, color: colors[2] },
+          { category: "Зам", votes: 35165, percentage: 7.17, color: colors[3] },
+          { category: "Хууль зүй, хүний эрхийн салбар", votes: 29082, percentage: 5.93, color: colors[4] },
+          { category: "Гэр бүл, хүүхэд", votes: 24151, percentage: 4.93, color: colors[5] },
+          { category: "Байгаль орчин, уур амьсгалын өөрчлөлт", votes: 21543, percentage: 4.39, color: colors[6] },
+          { category: "Ус", votes: 17606, percentage: 3.59, color: colors[7] },
+          { category: "Хөдөө аж ахуй, мал аж ахуй", votes: 15445, percentage: 3.15, color: colors[8] },
+          { category: "Нийгмийн халамж", votes: 15047, percentage: 3.07, color: colors[9] },
+          { category: "Соёл, спорт, аялал жуулчлал", votes: 9327, percentage: 1.9, color: colors[0] }
         ]
       },
       {
