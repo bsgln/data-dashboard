@@ -91,7 +91,7 @@ export default function Index() {
               </h2>
 
               {/* Regular Survey Questions (excluding question 7) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
                 {data?.questions
                   .filter((q) => q.id !== 7)
                   .map((question) => (
