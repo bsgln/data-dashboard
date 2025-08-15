@@ -127,7 +127,7 @@ const transformRealData = async (
   if (!allQuestions.find((q) => q.id === 7)) {
     allQuestions.push({
       id: 7,
-      question: "Монгол улсын 2026 оны төсвийн тэргүүлэх чи��лэлүүд",
+      question: "Монгол улсын 2026 оны төсвийн тэргүүлэх чиглэлүүд",
       totalVotes: 38514,
       responses: [
         {
@@ -344,8 +344,8 @@ const transformRealData = async (
   };
 };
 
-// Import the fallback handler with live questions
-import { handleSurveyFallbackNew } from "./surveyFallbackNew";
+// Import the Excel data handler
+import { handleExcelSurveyData } from "./excelSurveyData";
 
 export const handleSurveyData: RequestHandler = async (req, res) => {
   try {
