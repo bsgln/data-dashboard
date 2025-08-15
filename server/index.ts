@@ -29,6 +29,7 @@ export function createServer() {
   app.get("/api/demo", handleDemo);
   app.get("/api/survey", handleSurveyData);
   app.get("/api/survey-fallback", handleSurveyFallback);
+  app.get("/api/live-questions", handleLiveQuestions);
   app.get("/api/excel-analysis", handleExcelAnalysis);
 
   // Энгийн өдрийн статистик (зөвхөн API дата ашиглан)
