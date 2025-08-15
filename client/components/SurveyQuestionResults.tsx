@@ -19,13 +19,6 @@ export function SurveyQuestionResults({
 
   return (
     <>
-      <SurveyDetailModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        questionId={question.id}
-        questionText={question.question}
-        questionTotalVotes={question.totalVotes}
-      />
 
       <div
         className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_2px_8px_rgba(0,102,255,0.06)]
