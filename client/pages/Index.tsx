@@ -139,7 +139,7 @@ export default function Index() {
               <div className="h-6 w-48 bg-gray-200 rounded animate-pulse mb-6"></div>
 
               {/* Regular Question Skeletons */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8">
                 <SurveyQuestionSkeleton />
                 <SurveyQuestionSkeleton />
                 <SurveyQuestionSkeleton />
