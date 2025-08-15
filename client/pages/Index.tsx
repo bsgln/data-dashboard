@@ -33,6 +33,19 @@ export default function Index() {
     closeConnectionError,
   } = useSurveyData();
 
+  const [selectedQuestion, setSelectedQuestion] = useState<SurveyQuestion | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleQuestionClick = (question: SurveyQuestion) => {
+    setSelectedQuestion(question);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedQuestion(null);
+  };
+
 
   return (
     <div
