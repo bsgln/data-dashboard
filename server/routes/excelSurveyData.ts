@@ -202,7 +202,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
       {
         id: 4,
         question:
-          "Ямар төрлийн хөрөнгө оруулалтыг 2026 онд шинээр эхлүүлэхгүй, тэвчиж болно гэж та үзэж байна вэ?",
+          "Ямар төрлийн хөрөнгө оруулалтыг 2026 онд шинээр эх��үүлэхгүй, тэвчиж болно гэж та үзэж байна вэ?",
         totalVotes: 396606,
         responses: [
           {
@@ -347,7 +347,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
     ];
 
     // Static demographics and metrics
-    const actualTotalVotes = 188086; // Final total votes after voting ended
+    const actualTotalVotes = 188016; // Final total votes after voting ended
 
     // Calculate correct average votes per minute
     // Voting started 8.1 (Aug 1, 2025) and ended Aug 14, 2025
