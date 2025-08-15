@@ -96,7 +96,21 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
     totalVotesSum += question1TotalVotes;
     questionId++;
     
-    // Parse each sheet as a survey question
+    // Fetch and parse Excel for remaining questions (2-6)
+    console.log("📊 Fetching Excel survey data for questions 2-6:", EXCEL_URL);
+
+    const response = await fetch(EXCEL_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to download Excel file: ${response.status}`);
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const workbook = XLSX.read(buffer, { type: 'buffer' });
+
+    console.log("📋 Excel sheets found:", workbook.SheetNames);
+
+    // Parse each sheet as a survey question (skip first since we have custom data)
     workbook.SheetNames.forEach((sheetName, sheetIndex) => {
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
