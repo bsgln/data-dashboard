@@ -10,6 +10,7 @@ interface SurveyQuestionResultsProps {
 export function SurveyQuestionResults({
   question,
   onVote,
+  onDetailClick,
 }: SurveyQuestionResultsProps) {
 
   // Generate unique animation IDs to avoid conflicts
