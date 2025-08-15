@@ -33,7 +33,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Эдийн засаг, ажлын байр", votes: Math.round(27105 * 0.09), percentage: 9.0, color: colors[5] },
         { category: "Дэд бүтэц, зам", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[6] },
         { category: "Эрчим хүч", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[7] },
-        { category: "��оёл, спорт, аялал жуулчлал", votes: Math.round(27105 * 0.02), percentage: 2.0, color: colors[8] },
+        { category: "Соёл, спорт, аялал жуулчлал", votes: Math.round(27105 * 0.02), percentage: 2.0, color: colors[8] },
         { category: "Орон нутагт хөрөнгө оруулах", votes: Math.round(27105 * 0.01), percentage: 1.0, color: colors[9] }
       ]
     };
@@ -85,7 +85,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Дотуур байр, цэцэрлэг түр зогсоох", votes: Math.round(10537 * 0.20), percentage: 20.0, color: colors[1] },
         { category: "Инженерийн дэд бүтцийн зарим төсөл хасах", votes: Math.round(10537 * 0.15), percentage: 15.0, color: colors[2] },
         { category: "Сургуулийн шинэ барилга түр хойшлуулах", votes: Math.round(10537 * 0.12), percentage: 12.0, color: colors[3] },
-        { category: "Эмнэлгийн зарим төсөл хасах", votes: Math.round(10537 * 0.10), percentage: 10.0, color: colors[4] },
+        { category: "Эмнэлгийн зарим ��өсөл хасах", votes: Math.round(10537 * 0.10), percentage: 10.0, color: colors[4] },
         { category: "Цахилгаан, дулаан дэд бүтцийн өргөтгөл хасах", votes: Math.round(10537 * 0.08), percentage: 8.0, color: colors[5] },
         { category: "Бусад жижиг төсөл хасах", votes: Math.round(10537 * 0.05), percentage: 5.0, color: colors[6] },
         { category: "Үлдсэн санал", votes: Math.round(10537 * 0.05), percentage: 5.0, color: colors[7] }
@@ -152,7 +152,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
     const femaleCount = 105836;
     const totalGenderVotes = maleCount + femaleCount;
 
-    // Age groups based on actual survey data
+    // Age groups based on actual survey data - updated pyramid
     const ageGroups = [
       {
         range: "18-34 нас",
