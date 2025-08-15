@@ -134,6 +134,7 @@ export function SurveyQuestionResults({
         >
           <div className="flex justify-center items-center">
             <button
+              onClick={onDetailClick}
               className="border border-[#0066FF] text-[#0066FF] hover:bg-[#0066FF] hover:text-white rounded-full
                          px-5 py-2 text-[11px] sm:text-[12px] font-medium
                          transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
