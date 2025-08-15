@@ -71,7 +71,7 @@ export default function Index() {
 
             <MetricsCards metrics={data?.metrics} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
               <GenderChart data={data?.genderDistribution} />
               <AgeParticipationChart
                 totalVotes={data?.metrics.totalVotes || 0}
