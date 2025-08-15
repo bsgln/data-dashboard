@@ -24,12 +24,12 @@ interface QuestionDetailPopupProps {
 export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetailPopupProps) {
   if (!isOpen || !question) return null;
 
-  // Detailed data for each question (this is the popup data you provided)
+  // Detailed data for each question (using Excel data)
   const questionDetails: QuestionDetailData = {
     1: {
-      title: "Хөрөнгө оруулалт нэмэгдүүлэх",
-      description: "Тайлбар бичсэн: 27,105",
-      totalResponses: 27105,
+      title: "Монгол улсын 2026 оны төсвийн ямар салбарт илүү их хөрөнгө оруулалт хийх ёстой вэ?",
+      description: "Тайлбар бичсэн: 38,514",
+      totalResponses: 38514,
       categories: [
         {
           name: "Эрүүл мэнд (≈18%)",
@@ -48,14 +48,14 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
             "Төрийн албан хаагчдын цалинг нэмэгдүүлэх",
             "Нийгмийн халамж, тэтгэмжийн хүртээмжийг нэмэгдүүлэх",
             "Ээж, хүүхдийн дэмжлэгийг өргөжүүлэх",
-            "Хөгжлийн бэрхшээ��тэй иргэдийг дэмжих"
+            "Хөгжлийн бэрхшээлтэй иргэдийг дэмжих"
           ]
         },
         {
           name: "Боловсрол (≈13%)",
           percentage: 13,
           details: [
-            "Ясли, цэцэрлэгийн тоог нэмэгдүүлэх",
+            "Ясли, цэцэрлэгийн ��оог нэмэгдүүлэх",
             "Багш нарын цалин, ур чадварыг сайжруулах",
             "Хөдөө орон нутгийн сургалтын чанарыг дээшлүүлэх",
             "Хөтөлбөр, сургалтын орчныг шинэчлэх"
@@ -75,10 +75,10 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
           name: "Хөдөө аж ахуй, байгаль орчин (≈10%)",
           percentage: 10,
           details: [
-            "Ус, бэлчээрийн менежмент сайжруул��х",
+            "Ус, бэлчээрийн менежмент сайжруулах",
             "Хөдөө аж ахуйн үйлдвэрлэлийг нэмэгдүүлэх",
             "Байгаль хамгааллыг чангатгах",
-            "Хог, бохирдлыг бууруулах"
+            "Хог, бохирдлыг буу��уулах"
           ]
         },
         {
@@ -105,7 +105,7 @@ export function QuestionDetailPopup({ isOpen, onClose, question }: QuestionDetai
           name: "Эрчим хүч (≈8%)",
           percentage: 8,
           details: [
-            "Шинэ ц��хилгаан станц барих",
+            "Шинэ цахилгаан станц барих",
             "Эрчим хүчний хараат байдлыг бууруулах",
             "Эрчим хүчний үнэ тогтвортой байлгах",
             "Эрчим хүчний дэд бүтцийг шинэчлэх"
