@@ -22,49 +22,28 @@ interface AgeParticipationChartProps {
 export function AgeParticipationChart({
   totalVotes,
 }: AgeParticipationChartProps) {
-  // Real survey response data and population data
+  // Updated survey response data with new age pyramid
   const participationData: AgeParticipationData[] = [
     {
-      ageRange: "16-17 нас",
-      surveyed: 119,
-      population: 106318, // Estimated from 15-19 group (265,796 * 0.4)
-      participationRate: 0.11,
+      ageRange: "18-34 нас",
+      surveyed: 93755,
+      population: 600000, // Estimated population for 18-34 age group
+      participationRate: 49.87,
       color: "#0066FF",
     },
     {
-      ageRange: "18-24 нас",
-      surveyed: 20958,
-      population: 179264,
-      participationRate: 11.69,
+      ageRange: "35-54 нас",
+      surveyed: 85893,
+      population: 556609, // Combined population for 35-54 age group
+      participationRate: 45.68,
       color: "#E11D48",
     },
     {
-      ageRange: "25-34 нас",
-      surveyed: 51042,
-      population: 244588,
-      participationRate: 20.87,
-      color: "#22C55E",
-    },
-    {
-      ageRange: "35-44 нас",
-      surveyed: 46795,
-      population: 289587,
-      participationRate: 16.16,
-      color: "#F97316",
-    },
-    {
-      ageRange: "45-54 нас",
-      surveyed: 18410,
-      population: 267022,
-      participationRate: 6.89,
-      color: "#A855F7",
-    },
-    {
       ageRange: "55+ нас",
-      surveyed: 6231,
+      surveyed: 8368,
       population: 233287,
-      participationRate: 2.67,
-      color: "#EC4899",
+      participationRate: 4.45,
+      color: "#22C55E",
     },
   ];
 
