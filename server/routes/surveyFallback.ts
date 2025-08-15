@@ -14,12 +14,17 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
   try {
     console.log("📊 Creating survey data with live questions from API");
 
-    // Try to fetch live questions from the new API
+    // Fetch live questions from the new API
     let questions: SurveyQuestion[] = [];
-    const colors = [
-      "#0066FF", "#E11D48", "#22C55E", "#F97316", "#A855F7",
-      "#EC4899", "#4D7C0F", "#0D9488", "#0EA5E9", "#6366F1"
-    ];
+
+    try {
+      questions = await fetchLiveQuestions();
+      console.log(`✅ Got ${questions.length} live questions from API`);
+    } catch (error) {
+      console.error("❌ Failed to fetch live questions, using empty array:", error);
+      // Empty array if live API fails - will maintain static demographics only
+      questions = [];
+    }
 
     // Question 1: Хөрөнгө оруулалт нэмэгдүүлэх (27,105 responses)
     const question1: SurveyQuestion = {
