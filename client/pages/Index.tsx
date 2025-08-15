@@ -16,7 +16,6 @@ import {
   MetricsCardsSkeleton,
   GenderChartSkeleton,
   AgeGroupChartSkeleton,
-  BudgetPriorityTableSkeleton,
   SurveyQuestionSkeleton,
   SeventhQuestionCardSkeleton,
 } from "@/components/SkeletonLoaders";
