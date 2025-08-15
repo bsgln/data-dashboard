@@ -348,46 +348,22 @@ const transformRealData = async (
 import { handleExcelSurveyData } from "./excelSurveyData";
 
 export const handleSurveyData: RequestHandler = async (req, res) => {
+  console.log("📊 Using Excel survey data as primary source");
+
+  // Use Excel data directly as requested
   try {
-    console.log("🔄 Attempting to fetch live survey data from API...");
-
-    // Fetch real data from the API
-    const response = await fetch(REAL_API_URL);
-
-    if (!response.ok) {
-      throw new Error(`API responded with status: ${response.status}`);
-    }
-
-    const realData = await response.json();
-
-    if (!realData.result || !realData.data) {
-      throw new Error("Invalid API response format");
-    }
-
-    // Transform real data to our dashboard format
-    const transformedData = await transformRealData(realData.data);
-
-    console.log("✅ Live survey data fetched successfully");
-    res.json(transformedData);
-
+    return await handleExcelSurveyData(req, res);
   } catch (error) {
-    console.error("❌ Live API failed, switching to Excel fallback:", error);
+    console.error("❌ Excel data failed:", error);
 
-    // Use Excel data when main API is unavailable
-    try {
-      return await handleExcelSurveyData(req, res);
-    } catch (fallbackError) {
-      console.error("❌ Fallback also failed:", fallbackError);
-
-      // Final error response if both live and fallback fail
-      res.status(500).json({
-        error: "Survey data unavailable",
-        message:
-          "Санал асуулгын өгөгдөл авахад алдаа гарлаа. Та дахин оролдоно уу.",
-        details:
-          error instanceof Error ? error.message : "Unknown error occurred",
-        timestamp: new Date().toISOString(),
-      });
-    }
+    // Final error response if Excel data fails
+    res.status(500).json({
+      error: "Survey data unavailable",
+      message:
+        "Санал асуулгын өгөгдөл авахад алдаа гарлаа. Та дахин оролдоно уу.",
+      details:
+        error instanceof Error ? error.message : "Unknown error occurred",
+      timestamp: new Date().toISOString(),
+    });
   }
 };
