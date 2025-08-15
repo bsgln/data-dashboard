@@ -99,6 +99,7 @@ export default function Index() {
                     <div key={question.id}>
                       <SurveyQuestionResults
                         question={question}
+                        onDetailClick={() => handleQuestionClick(question)}
                       />
                     </div>
                   ))}
