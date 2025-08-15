@@ -41,7 +41,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Дэд бүтэц, зам", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[6] },
         { category: "Эрчим хүч", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[7] },
         { category: "Соёл, спорт, аялал жуулчлал", votes: Math.round(27105 * 0.02), percentage: 2.0, color: colors[8] },
-        { category: "Орон нутагт хөрөнгө о��уулах", votes: Math.round(27105 * 0.01), percentage: 1.0, color: colors[9] }
+        { category: "Орон нутагт хөрөнгө оруулах", votes: Math.round(27105 * 0.01), percentage: 1.0, color: colors[9] }
       ]
     };
 
@@ -58,7 +58,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Хууль сахиулах, хяналт", votes: Math.round(17846 * 0.10), percentage: 10.0, color: colors[4] },
         { category: "Дэд бүтэц, зам", votes: Math.round(17846 * 0.09), percentage: 9.0, color: colors[5] },
         { category: "Соёл, спорт", votes: Math.round(17846 * 0.08), percentage: 8.0, color: colors[6] },
-        { category: "Хө��өө аж ахуй", votes: Math.round(17846 * 0.07), percentage: 7.0, color: colors[7] },
+        { category: "Хөдөө аж ахуй", votes: Math.round(17846 * 0.07), percentage: 7.0, color: colors[7] },
         { category: "Орон нутаг", votes: Math.round(17846 * 0.04), percentage: 4.0, color: colors[8] },
         { category: "Боловсрол", votes: Math.round(17846 * 0.02), percentage: 2.0, color: colors[9] }
       ]
@@ -73,7 +73,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Төрийн зардал бууруулах", votes: Math.round(19435 * 0.22), percentage: 22.0, color: colors[0] },
         { category: "Төрийн өмчит компаниудын тоог цөөлөх", votes: Math.round(19435 * 0.17), percentage: 17.0, color: colors[1] },
         { category: "Халамжийн бодлогыг шинэчлэх", votes: Math.round(19435 * 0.15), percentage: 15.0, color: colors[2] },
-        { category: "��өрийн албан хаагчдын тоо хязгаарлах", votes: Math.round(19435 * 0.12), percentage: 12.0, color: colors[3] },
+        { category: "Төрийн албан хаагчдын тоо хязгаарлах", votes: Math.round(19435 * 0.12), percentage: 12.0, color: colors[3] },
         { category: "Чиг үүргийг хувийн хэвшилд шилжүүлэх", votes: Math.round(19435 * 0.10), percentage: 10.0, color: colors[4] },
         { category: "Төсөв оновчтой зарцуулах", votes: Math.round(19435 * 0.09), percentage: 9.0, color: colors[5] },
         { category: "Эдийн засгийн реформ", votes: Math.round(19435 * 0.06), percentage: 6.0, color: colors[6] },
@@ -111,7 +111,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Татварын хугацааг уян хатан болгох", votes: Math.round(8428 * 0.12), percentage: 12.0, color: colors[3] },
         { category: "ЖДҮ дэмжих", votes: Math.round(8428 * 0.08), percentage: 8.0, color: colors[4] },
         { category: "Чөлөөт бүс хөгжүүлэх", votes: Math.round(8428 * 0.06), percentage: 6.0, color: colors[5] },
-        { category: "Татварын урамшуулал", votes: Math.round(8428 * 0.05), percentage: 5.0, color: colors[6] },
+        { category: "Татварын урамшу��лал", votes: Math.round(8428 * 0.05), percentage: 5.0, color: colors[6] },
         { category: "Бусад", votes: Math.round(8428 * 0.03), percentage: 3.0, color: colors[7] }
       ]
     };
