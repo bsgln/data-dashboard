@@ -99,7 +99,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
         totalVotes: 408180,
         responses: [
           { category: "Дэд бүтцийн үйлчилгээ (хог хаягдал, цэцэрлэгжүүлэлт, зам засвар гэх мэт)", votes: 105037, percentage: 25.73, color: colors[0] },
-          { category: "Эрүүл мэндийн д��атгалын үйлчилгээний шинэ хэлбэрүүд", votes: 87947, percentage: 21.55, color: colors[1] },
+          { category: "Эрүүл мэндийн даатгалын үйлчилгээний шинэ хэлбэрүүд", votes: 87947, percentage: 21.55, color: colors[1] },
           { category: "Эрүүл мэндийн урьдчилан сэргийлэх үйлчилгээ, анхан шатны үзлэг", votes: 80663, percentage: 19.76, color: colors[2] },
           { category: "Халаалт, засвар үйлчилгээ", votes: 54266, percentage: 13.29, color: colors[3] },
           { category: "Харуул хамгаалалт", votes: 47094, percentage: 11.54, color: colors[4] },
