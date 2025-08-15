@@ -373,9 +373,9 @@ export const handleSurveyData: RequestHandler = async (req, res) => {
   } catch (error) {
     console.error("❌ Live API failed, switching to Excel fallback:", error);
 
-    // Use new fallback with live questions when main API is unavailable
+    // Use Excel data when main API is unavailable
     try {
-      return await handleSurveyFallbackNew(req, res);
+      return await handleExcelSurveyData(req, res);
     } catch (fallbackError) {
       console.error("❌ Fallback also failed:", fallbackError);
 
