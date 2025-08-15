@@ -6,7 +6,6 @@ import { GenderChart } from "@/components/GenderChart";
 import { AgeParticipationChart } from "@/components/AgeParticipationChart";
 import { SurveyQuestionResults } from "@/components/SurveyQuestionResults";
 import { SeventhQuestionCard } from "@/components/SeventhQuestionCard";
-import { QuestionDetailPopup } from "@/components/QuestionDetailPopup";
 import { ConnectionErrorDialog } from "@/components/ConnectionErrorDialog";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, Settings, AlertCircle, Wifi, WifiOff } from "lucide-react";
@@ -33,18 +32,6 @@ export default function Index() {
     closeConnectionError,
   } = useSurveyData();
 
-  const [selectedQuestion, setSelectedQuestion] = useState<SurveyQuestion | null>(null);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  const handleQuestionClick = (question: SurveyQuestion) => {
-    setSelectedQuestion(question);
-    setIsPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setIsPopupOpen(false);
-    setSelectedQuestion(null);
-  };
 
   return (
     <div
@@ -95,11 +82,7 @@ export default function Index() {
                 {data?.questions
                   .filter((q) => q.id !== 7)
                   .map((question) => (
-                    <div
-                      key={question.id}
-                      onClick={() => handleQuestionClick(question)}
-                      className="cursor-pointer transition-transform duration-200 hover:scale-[1.02]"
-                    >
+                    <div key={question.id}>
                       <SurveyQuestionResults
                         question={question}
                       />
@@ -167,12 +150,6 @@ export default function Index() {
           </div>
         )}
 
-        {/* Question Detail Popup */}
-        <QuestionDetailPopup
-          isOpen={isPopupOpen}
-          onClose={closePopup}
-          question={selectedQuestion}
-        />
       </div>
     </div>
   );
