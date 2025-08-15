@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import * as XLSX from "xlsx";
 import { SurveyDashboardData, SurveyQuestion, SurveyResponse } from "@shared/survey";
 import { supabaseDailyTracker } from "../utils/supabaseDailyTracker";
+import { fetchLiveQuestions } from "./liveQuestions";
 
 const EXCEL_URL = "https://cdn.builder.io/o/assets%2F3a7659bd2c534c9d9609b01504a01464%2Ff59419d538b34c05be6399f805f52cf9?alt=media&token=e811fe30-9a2a-4cd7-b14f-89d904cc8374&apiKey=3a7659bd2c534c9d9609b01504a01464";
 
@@ -34,7 +35,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Дэд бүтэц, зам", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[6] },
         { category: "Эрчим хүч", votes: Math.round(27105 * 0.08), percentage: 8.0, color: colors[7] },
         { category: "Соёл, спорт, аялал жуулчлал", votes: Math.round(27105 * 0.02), percentage: 2.0, color: colors[8] },
-        { category: "Орон нутагт хөрөнгө оруулах", votes: Math.round(27105 * 0.01), percentage: 1.0, color: colors[9] }
+        { category: "Орон нутагт хөрөнгө о��уулах", votes: Math.round(27105 * 0.01), percentage: 1.0, color: colors[9] }
       ]
     };
 
@@ -51,7 +52,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Хууль сахиулах, хяналт", votes: Math.round(17846 * 0.10), percentage: 10.0, color: colors[4] },
         { category: "Дэд бүтэц, зам", votes: Math.round(17846 * 0.09), percentage: 9.0, color: colors[5] },
         { category: "Соёл, спорт", votes: Math.round(17846 * 0.08), percentage: 8.0, color: colors[6] },
-        { category: "Хөдөө аж ахуй", votes: Math.round(17846 * 0.07), percentage: 7.0, color: colors[7] },
+        { category: "Хө��өө аж ахуй", votes: Math.round(17846 * 0.07), percentage: 7.0, color: colors[7] },
         { category: "Орон нутаг", votes: Math.round(17846 * 0.04), percentage: 4.0, color: colors[8] },
         { category: "Боловсрол", votes: Math.round(17846 * 0.02), percentage: 2.0, color: colors[9] }
       ]
@@ -85,7 +86,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Дотуур байр, цэцэрлэг түр зогсоох", votes: Math.round(10537 * 0.20), percentage: 20.0, color: colors[1] },
         { category: "Инженерийн дэд бүтцийн зарим төсөл хасах", votes: Math.round(10537 * 0.15), percentage: 15.0, color: colors[2] },
         { category: "Сургуулийн шинэ барилга түр хойшлуулах", votes: Math.round(10537 * 0.12), percentage: 12.0, color: colors[3] },
-        { category: "Эмнэлгийн зарим ��өсөл хасах", votes: Math.round(10537 * 0.10), percentage: 10.0, color: colors[4] },
+        { category: "Эмнэлгийн зарим төсөл хасах", votes: Math.round(10537 * 0.10), percentage: 10.0, color: colors[4] },
         { category: "Цахилгаан, дулаан дэд бүтцийн өргөтгөл хасах", votes: Math.round(10537 * 0.08), percentage: 8.0, color: colors[5] },
         { category: "Бусад жижиг төсөл хасах", votes: Math.round(10537 * 0.05), percentage: 5.0, color: colors[6] },
         { category: "Үлдсэн санал", votes: Math.round(10537 * 0.05), percentage: 5.0, color: colors[7] }
