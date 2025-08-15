@@ -11,27 +11,90 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
   try {
-    console.log("📊 Fetching Excel survey data from:", EXCEL_URL);
-    
-    const response = await fetch(EXCEL_URL);
-    if (!response.ok) {
-      throw new Error(`Failed to download Excel file: ${response.status}`);
-    }
+    console.log("📊 Creating survey data with detailed Question 1");
 
-    const arrayBuffer = await response.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const workbook = XLSX.read(buffer, { type: 'buffer' });
-    
-    console.log("📋 Excel sheets found:", workbook.SheetNames);
-    
     const questions: SurveyQuestion[] = [];
     const colors = [
-      "#0066FF", "#E11D48", "#22C55E", "#F97316", "#A855F7", 
+      "#0066FF", "#E11D48", "#22C55E", "#F97316", "#A855F7",
       "#EC4899", "#4D7C0F", "#0D9488", "#0EA5E9", "#6366F1"
     ];
-    
+
     let questionId = 1;
     let totalVotesSum = 0;
+
+    // Add detailed Question 1 data
+    const question1TotalVotes = 27105;
+    const question1: SurveyQuestion = {
+      id: 1,
+      question: "Асуулт 1: Хөрөнгө оруулалт нэмэгдүүлэх салбар",
+      totalVotes: question1TotalVotes,
+      responses: [
+        {
+          category: "Эрүүл мэнд",
+          votes: Math.round(question1TotalVotes * 0.18),
+          percentage: 18.0,
+          color: colors[0]
+        },
+        {
+          category: "Цалин, нийгмийн хамгаалал",
+          votes: Math.round(question1TotalVotes * 0.13),
+          percentage: 13.0,
+          color: colors[1]
+        },
+        {
+          category: "Боловсрол",
+          votes: Math.round(question1TotalVotes * 0.13),
+          percentage: 13.0,
+          color: colors[2]
+        },
+        {
+          category: "Аюулгүй байдал, хууль сахиулах",
+          votes: Math.round(question1TotalVotes * 0.11),
+          percentage: 11.0,
+          color: colors[3]
+        },
+        {
+          category: "Хөдөө аж ахуй, байгаль орчин",
+          votes: Math.round(question1TotalVotes * 0.10),
+          percentage: 10.0,
+          color: colors[4]
+        },
+        {
+          category: "Эдийн засаг, ажлын байр",
+          votes: Math.round(question1TotalVotes * 0.09),
+          percentage: 9.0,
+          color: colors[5]
+        },
+        {
+          category: "Дэд бүтэц, зам",
+          votes: Math.round(question1TotalVotes * 0.08),
+          percentage: 8.0,
+          color: colors[6]
+        },
+        {
+          category: "Эрчим хүч",
+          votes: Math.round(question1TotalVotes * 0.08),
+          percentage: 8.0,
+          color: colors[7]
+        },
+        {
+          category: "Соёл, спорт, аялал жуулчлал",
+          votes: Math.round(question1TotalVotes * 0.02),
+          percentage: 2.0,
+          color: colors[8]
+        },
+        {
+          category: "Орон нутагт хөрөнгө оруулах",
+          votes: Math.round(question1TotalVotes * 0.01),
+          percentage: 1.0,
+          color: colors[9]
+        }
+      ]
+    };
+
+    questions.push(question1);
+    totalVotesSum += question1TotalVotes;
+    questionId++;
     
     // Parse each sheet as a survey question
     workbook.SheetNames.forEach((sheetName, sheetIndex) => {
