@@ -61,7 +61,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
           { category: "Төрийн өмчит компаниудын зардлыг бууруулах, тоог цөөлөх", votes: 107016, percentage: 23.26, color: colors[1] },
           { category: "Халамжийн зардлыг танах (ямар төрлийн халамж)", votes: 77013, percentage: 16.74, color: colors[2] },
           { category: "Төрийн албан хаагчдын орон тоог хязгаарлах (нэмэлт тайлбар)", votes: 69826, percentage: 15.17, color: colors[3] },
-          { category: "Төрийн ��иг үүргийг хувийн хэвшилд шилжүүлэх (ямар чиг үүрэг)", votes: 51452, percentage: 11.18, color: colors[4] },
+          { category: "Төрийн чиг үүргийг хувийн хэвшилд шилжүүлэх (ямар чиг үүрэг)", votes: 51452, percentage: 11.18, color: colors[4] },
           { category: "Хөрөнгө оруулалтыг бууруулах (салбар)", votes: 27447, percentage: 5.96, color: colors[5] }
         ]
       },
