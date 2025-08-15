@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleSurveyData } from "./routes/survey";
+import { handleSurveyFallback } from "./routes/surveyFallback";
 import {
   handleSimpleDailyStats,
   handleDailyStatsDebug,
