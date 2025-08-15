@@ -205,3 +205,61 @@ export function SeventhQuestionCardSkeleton() {
     </div>
   );
 }
+
+export function DetailedQuestionCardSkeleton() {
+  return (
+    <div className="bg-white p-4 sm:p-5 lg:p-6 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
+                    min-h-[300px] border border-gray-100/50">
+      {/* Header */}
+      <div className="mb-4 sm:mb-6">
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <Skeleton className="w-9 h-9 rounded-lg" />
+            <Skeleton className="h-4 w-20" />
+          </div>
+          <Skeleton className="h-6 w-16 rounded-full" />
+        </div>
+        <Skeleton className="h-5 w-full mb-2" />
+        <Skeleton className="h-4 w-32" />
+      </div>
+
+      {/* Categories */}
+      <div className="space-y-4 mb-4">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <div
+            key={index}
+            className="border border-gray-100/80 rounded-lg p-3 sm:p-4 bg-gradient-to-r from-gray-50/30 to-white"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <Skeleton className="w-3 h-3 rounded-full" />
+                <Skeleton className="h-4 w-32" />
+              </div>
+              <div className="text-right">
+                <Skeleton className="h-4 w-10 mb-1" />
+                <Skeleton className="h-3 w-16" />
+              </div>
+            </div>
+            <Skeleton className="h-1.5 w-full rounded-full mb-3" />
+            <div className="space-y-1.5">
+              {Array.from({ length: 3 }).map((_, detailIndex) => (
+                <div key={detailIndex} className="flex items-start gap-2">
+                  <Skeleton className="w-1 h-1 rounded-full mt-2" />
+                  <Skeleton className="h-3 w-full" />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <div className="pt-3 border-t border-gray-200/50">
+        <div className="flex justify-between items-center">
+          <Skeleton className="h-3 w-16" />
+          <Skeleton className="h-3 w-20" />
+        </div>
+      </div>
+    </div>
+  );
+}
