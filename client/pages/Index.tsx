@@ -41,46 +41,6 @@ export default function Index() {
       style={{ animationDuration: "800ms" }}
     >
       <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
-        {/* Connection Status & Controls */}
-        <div
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 lg:gap-0
-                    mb-3 sm:mb-4 lg:mb-6 animate-in slide-in-from-top-2 fade-in"
-          style={{ animationDelay: "100ms", animationFillMode: "backwards" }}
-        >
-          <div className="flex items-center gap-3">
-            {isConnected ? (
-              <div
-                className={`flex items-center gap-2 text-[#22C55E] transition-all duration-300 ${isLoading || isRefetching ? "animate-pulse" : ""}`}
-              >
-                <Wifi className="w-4 h-4" />
-                <span className="text-sm font-medium">
-                  {isLoading || isRefetching ? "Холбогдож байна" : "Холбогдсон"}
-                </span>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 text-[#EF4444] animate-bounce">
-                <WifiOff className="w-4 h-4" />
-                <span className="text-sm font-medium">Холболт тасарсан</span>
-              </div>
-            )}
-          </div>
-
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-end sm:justify-start">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={refetch}
-              disabled={isLoading || isRefetching}
-              className="flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md
-                         text-sm sm:text-base px-3 sm:px-4 py-2"
-            >
-              <RefreshCw
-                className={`w-4 h-4 transition-transform duration-500 ${isLoading || isRefetching ? "animate-spin" : "hover:rotate-180"}`}
-              />
-              Шинэчлэх
-            </Button>
-          </div>
-        </div>
 
         {/* Connection Error Dialog */}
         <ConnectionErrorDialog
