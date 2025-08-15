@@ -51,7 +51,7 @@ export default function Index() {
       className="min-h-screen bg-[#F8FAFC] animate-in fade-in"
       style={{ animationDuration: "800ms" }}
     >
-      <div className="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
 
         {/* Connection Error Dialog */}
         <ConnectionErrorDialog
