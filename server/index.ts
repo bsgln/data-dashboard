@@ -8,6 +8,7 @@ import {
   handleDailyStatsDebug,
   handleDailyStatsReset,
 } from "./routes/simpleDailyStats";
+import { handleExcelAnalysis } from "./routes/excelAnalyzer";
 
 export function createServer() {
   const app = express();
