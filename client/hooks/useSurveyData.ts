@@ -89,7 +89,7 @@ export function useSurveyData(config: Partial<DashboardConfig> = {}) {
         );
         return true;
       }
-      setError("Холболт тасарса�� байна. Дахин оролдоно уу.");
+      setError("Холболт тасарсан байна. Дахин оролдоно уу.");
       return false;
     },
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
