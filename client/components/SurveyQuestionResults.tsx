@@ -122,37 +122,6 @@ export function SurveyQuestionResults({
           ))}
         </div>
 
-        {/* Footer */}
-        <div
-          className="border-t border-[#E6EBF3] pt-4 animate-in slide-in-from-bottom-2 fade-in"
-          style={{
-            animationDelay: `${800 + question.id * 100}ms`,
-            animationFillMode: "backwards",
-          }}
-        >
-          <div
-            className={`flex ${onVote ? "justify-between" : "justify-center"} items-center gap-2`}
-          >
-            <Button
-              variant="outline"
-              className="border-[#0066FF] text-[#0066FF] hover:bg-[#0066FF] hover:text-white rounded-full
-                         px-5 py-2 text-[11px] sm:text-[12px] font-medium
-                         transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-              onClick={() => setIsModalOpen(true)}
-            >
-              <span className="hidden sm:inline">
-                Иргэдээс ирсэн саналын дэлгэрэнгүй
-              </span>
-              <span className="sm:hidden">Дэлгэрэнгүй</span>
-            </Button>
-
-            {onVote && (
-              <div className="text-[10px] sm:text-[11px] text-[#64748B] text-center">
-                Жинхэнэ датабааз режим
-              </div>
-            )}
-          </div>
-        </div>
       </div>
 
       {/* CSS Animation Styles */}
