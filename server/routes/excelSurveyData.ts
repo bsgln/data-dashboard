@@ -28,7 +28,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
           { category: "Зам", votes: 35165, percentage: 7.17, color: colors[3] },
           { category: "Хууль зүй, хүний эрхийн салбар", votes: 29082, percentage: 5.93, color: colors[4] },
           { category: "Гэр бүл, хүүхэд", votes: 24151, percentage: 4.93, color: colors[5] },
-          { category: "Байгаль орчин, уур амьсгалын өөрчл��лт", votes: 21543, percentage: 4.39, color: colors[6] },
+          { category: "Байгаль орчин, уур амьсгалын өөрчлөлт", votes: 21543, percentage: 4.39, color: colors[6] },
           { category: "Ус", votes: 17606, percentage: 3.59, color: colors[7] },
           { category: "Хөдөө аж ахуй, мал аж ахуй", votes: 15445, percentage: 3.15, color: colors[8] },
           { category: "Нийгмийн халамж", votes: 15047, percentage: 3.07, color: colors[9] },
@@ -59,10 +59,10 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
         responses: [
           { category: "Төрийн захиргааны үйл ажиллагааны зардал бууруулах (томилолт, унаа, оффисын зардал гэх мэт)", votes: 127390, percentage: 27.68, color: colors[0] },
           { category: "Төрийн өмчит компаниудын зардлыг бууруулах, тоог цөөлөх", votes: 107016, percentage: 23.26, color: colors[1] },
-          { category: "Халамжийн зардлыг танах (я��ар төрлийн халамж)", votes: 77013, percentage: 16.74, color: colors[2] },
+          { category: "Халамжийн зардлыг танах (ямар төрлийн халамж)", votes: 77013, percentage: 16.74, color: colors[2] },
           { category: "Төрийн албан хаагчдын орон тоог хязгаарлах (нэмэлт тайлбар)", votes: 69826, percentage: 15.17, color: colors[3] },
-          { category: "Төрийн чиг үүргийг хувийн хэвшилд шилжүүлэх (ямар чиг үүрэг)", votes: 51452, percentage: 11.18, color: colors[4] },
-          { category: "��өрөнгө оруулалтыг бууруулах (салбар)", votes: 27447, percentage: 5.96, color: colors[5] }
+          { category: "Төрийн ��иг үүргийг хувийн хэвшилд шилжүүлэх (ямар чиг үүрэг)", votes: 51452, percentage: 11.18, color: colors[4] },
+          { category: "Хөрөнгө оруулалтыг бууруулах (салбар)", votes: 27447, percentage: 5.96, color: colors[5] }
         ]
       },
       {
