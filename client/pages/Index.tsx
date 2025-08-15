@@ -78,9 +78,9 @@ export default function Index() {
               />
             </div>
 
-            <div className="mb-4 sm:mb-6">
+            <div className="mb-8">
               <h2
-                className="text-[16px] sm:text-[18px] font-semibold text-[#1E293B] mb-3 sm:mb-4
+                className="text-[18px] sm:text-[20px] lg:text-[22px] font-semibold text-[#1E293B] mb-6
                              tracking-[0.3px] animate-in slide-in-from-left-2 fade-in transition-colors duration-200"
                 style={{
                   animationDelay: "500ms",
@@ -91,7 +91,7 @@ export default function Index() {
               </h2>
 
               {/* Regular Survey Questions (excluding question 7) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
                 {data?.questions
                   .filter((q) => q.id !== 7)
                   .map((question) => (
@@ -108,7 +108,7 @@ export default function Index() {
               </div>
 
               {/* Citizen Suggestions Card - At Bottom */}
-              <div className="mb-4 sm:mb-6">
+              <div className="mb-8">
                 <SeventhQuestionCard
                   question={data?.questions.find((q) => q.id === 7)}
                 />
