@@ -18,7 +18,6 @@ import {
   BudgetPriorityTableSkeleton,
   SurveyQuestionSkeleton,
   SeventhQuestionCardSkeleton,
-  DetailedQuestionCardSkeleton,
 } from "@/components/SkeletonLoaders";
 
 export default function Index() {
