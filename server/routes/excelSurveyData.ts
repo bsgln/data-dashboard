@@ -19,7 +19,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
     const questions: SurveyQuestion[] = [
       {
         id: 1,
-        question: "2026 онд аль салбарт төсвийг түлхүү чиглүүлэх нь зүйтэй гэж та үзэж байна вэ?",
+        question: "2026 онд аль салбарт төсвийг түлхүү чиглүүлэх нь зүйтэй ��эж та үзэж байна вэ?",
         totalVotes: 490296,
         responses: [
           { category: "Эрүүл мэнд", votes: 129625, percentage: 26.44, color: colors[0] },
@@ -82,7 +82,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
       },
       {
         id: 5,
-        question: "Татварын бодлогын дэмжлэг үзүүлэх",
+        question: "Татварын бодлогын дэм��лэг үзүүлэх",
         totalVotes: 448229,
         responses: [
           { category: "Татварын хувь хэмжээг бууруулах", votes: 150610, percentage: 33.6, color: colors[0] },
@@ -99,7 +99,7 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
         totalVotes: 408180,
         responses: [
           { category: "Дэд бүтцийн үйлчилгээ (хог хаягдал, цэцэрлэгжүүлэлт, зам засвар гэх мэт)", votes: 105037, percentage: 25.73, color: colors[0] },
-          { category: "Эрүүл мэндийн д��атгалын үйлчилгээний шинэ хэлбэрүүд", votes: 87947, percentage: 21.55, color: colors[1] },
+          { category: "Эрүүл мэндийн д��атга��ын үйлчилгээний шинэ хэлбэрүүд", votes: 87947, percentage: 21.55, color: colors[1] },
           { category: "Эрүүл мэндийн урьдчилан сэргийлэх үйлчилгээ, анхан шатны үзлэг", votes: 80663, percentage: 19.76, color: colors[2] },
           { category: "Халаалт, засвар үйлчилгээ", votes: 54266, percentage: 13.29, color: colors[3] },
           { category: "Харуул хамгаалалт", votes: 47094, percentage: 11.54, color: colors[4] },
@@ -113,11 +113,11 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
     const actualTotalVotes = 188086; // Final total votes after voting ended
     
     // Calculate correct average votes per minute
-    // Voting started 8.1 (Aug 1, 2025) and ended yesterday (Aug 14, 2025)
+    // Voting started 8.1 (Aug 1, 2025) and ended Aug 14, 2025
     const startDate = new Date('2025-08-01T00:00:00');
     const endDate = new Date('2025-08-14T23:59:59');
-    const totalMinutes = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60));
-    const averageVotesPerMinute = Math.round((actualTotalVotes / totalMinutes) * 100) / 100;
+    const totalMinutes = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60)); // 20,159 minutes
+    const averageVotesPerMinute = Math.round((actualTotalVotes / totalMinutes) * 100) / 100; // 9.33 votes/minute
     
     console.log(`📊 Voting period: ${totalMinutes} minutes (${Math.floor(totalMinutes / (24 * 60))} days)`);
     console.log(`📊 Average votes per minute: ${averageVotesPerMinute}`);
