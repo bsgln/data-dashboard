@@ -128,9 +128,10 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
     // Find top budget priority from first question
     const topBudgetPriority = questions[0].responses[0];
 
-    // Calculate gender distribution (using updated data)
-    const maleCount = 82180;
-    const femaleCount = 105836;
+    // Calculate gender distribution based on 188,086 total votes
+    // Using proportions: 44.46% male, 55.54% female
+    const maleCount = Math.round(actualTotalVotes * 0.4446); // 83,645
+    const femaleCount = Math.round(actualTotalVotes * 0.5554); // 104,441
 
     // Age groups based on actual survey data
     const ageGroups = [
