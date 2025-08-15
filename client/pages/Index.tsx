@@ -119,10 +119,19 @@ export default function Index() {
                 Асуултуудын үр дүн
               </h2>
 
-              {/* Regular Survey Questions (excluding question 7) */}
+              {/* Question 1 - Detailed View */}
+              {data?.questions.find(q => q.id === 1) && (
+                <div className="mb-4 sm:mb-6">
+                  <DetailedQuestionCard
+                    question={data.questions.find(q => q.id === 1)}
+                  />
+                </div>
+              )}
+
+              {/* Regular Survey Questions (excluding questions 1 and 7) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
                 {data?.questions
-                  .filter((q) => q.id !== 7)
+                  .filter((q) => q.id !== 7 && q.id !== 1)
                   .map((question) => (
                     <SurveyQuestionResults
                       key={question.id}
