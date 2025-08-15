@@ -101,17 +101,6 @@ export function DetailedQuestionCard({ question }: DetailedQuestionCardProps) {
               />
             </div>
 
-            {/* Detailed descriptions */}
-            <div className="space-y-1.5">
-              {category.details.map((detail, detailIndex) => (
-                <div key={detailIndex} className="flex items-start gap-2">
-                  <div className="w-1 h-1 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
-                  <span className="text-[11px] sm:text-[12px] text-[#475569] leading-relaxed">
-                    {detail}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         ))}
       </div>
