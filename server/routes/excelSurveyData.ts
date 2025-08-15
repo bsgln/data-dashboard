@@ -37,58 +37,74 @@ async function createExcelSurveyData(): Promise<SurveyDashboardData> {
       },
       {
         id: 2,
-        question: "Монгол улсын 2026 оны төсвийн ямар салбарын зардлыг бууруулах ёстой вэ?",
-        totalVotes: 38514,
+        question: "2026 онд аль салбарын төсөвт хэмнэлт хийх шаардлагатай гэж та үзэж байна вэ?",
+        totalVotes: 469837,
         responses: [
-          { category: "УИХ-ын аппарат", votes: 11554, percentage: 30.0, color: colors[0] },
-          { category: "Засгийн газрын нарийн бичгийн дарга нарын аппарат", votes: 7703, percentage: 20.0, color: colors[1] },
-          { category: "Ерөнхийлөгчийн тамгын газар", votes: 4622, percentage: 12.0, color: colors[2] },
-          { category: "Гадаад харилцааны яам", votes: 3466, percentage: 9.0, color: colors[3] },
-          { category: "Шүүхийн ерөнхий зөвлөл", votes: 3466, percentage: 9.0, color: colors[4] },
-          { category: "Соёл урлагийн яам", votes: 2311, percentage: 6.0, color: colors[5] },
-          { category: "Хөгжлийн банк", votes: 1926, percentage: 5.0, color: colors[6] },
-          { category: "Орон нутгийн өөрөө удирдах байгууллага", votes: 1926, percentage: 5.0, color: colors[7] },
-          { category: "Шинжлэх ухаан технологийн яам", votes: 1541, percentage: 4.0, color: colors[8] }
+          { category: "Нийгмийн халамж", votes: 80121, percentage: 17.05, color: colors[0] },
+          { category: "Соёл, спорт, аялал жуулчлал", votes: 76565, percentage: 16.3, color: colors[1] },
+          { category: "Зам, барилга", votes: 65437, percentage: 13.93, color: colors[2] },
+          { category: "Хууль зүй", votes: 59657, percentage: 12.7, color: colors[3] },
+          { category: "Цахилгаан, дулаан", votes: 39275, percentage: 8.36, color: colors[4] },
+          { category: "Хөдөө аж ахуй, мал аж ахуй", votes: 36668, percentage: 7.8, color: colors[5] },
+          { category: "Эрүүл мэнд", votes: 36272, percentage: 7.72, color: colors[6] },
+          { category: "Байгаль орчин, уур амьсгалын өөрчлөлт", votes: 30000, percentage: 6.39, color: colors[7] },
+          { category: "Боловсрол", votes: 29234, percentage: 6.22, color: colors[8] },
+          { category: "Ус", votes: 16608, percentage: 3.53, color: colors[9] }
         ]
       },
       {
         id: 3,
-        question: "Та сонгуульд санал өгдөг үү?",
-        totalVotes: 38514,
+        question: "Төсвийн үр ашгийг сайжруулах хүрээнд ямар бодлого хэрэгжүүлэх шаардлагатай гэж та үзэж байна вэ?",
+        totalVotes: 460144,
         responses: [
-          { category: "Тийм", votes: 36588, percentage: 95.0, color: colors[0] },
-          { category: "Үгүй", votes: 1926, percentage: 5.0, color: colors[1] }
+          { category: "Төрийн захиргааны үйл ажиллагааны зардал бууруулах (томилолт, унаа, оффисын зардал гэх мэт)", votes: 127390, percentage: 27.68, color: colors[0] },
+          { category: "Төрийн өмчит компаниудын зардлыг бууруулах, тоог цөөлөх", votes: 107016, percentage: 23.26, color: colors[1] },
+          { category: "Халамжийн зардлыг танах (ямар төрлийн халамж)", votes: 77013, percentage: 16.74, color: colors[2] },
+          { category: "Төрийн албан хаагчдын орон тоог хязгаарлах (нэмэлт тайлбар)", votes: 69826, percentage: 15.17, color: colors[3] },
+          { category: "Төрийн чиг үүргийг хувийн хэвшилд шилжүүлэх (ямар чиг үүрэг)", votes: 51452, percentage: 11.18, color: colors[4] },
+          { category: "��өрөнгө оруулалтыг бууруулах (салбар)", votes: 27447, percentage: 5.96, color: colors[5] }
         ]
       },
       {
         id: 4,
-        question: "Улс төрийн намуудын санхүүжилтийг төсвөөс олгох талаар таны бодол юу вэ?",
-        totalVotes: 38514,
+        question: "Ямар төрлийн хөрөнгө оруулалтыг 2026 онд шинээр эхлүүлэхгүй, тэвчиж болно гэж та үзэж байна вэ?",
+        totalVotes: 396606,
         responses: [
-          { category: "Зөвшөөрөхгүй байна", votes: 26960, percentage: 70.0, color: colors[0] },
-          { category: "Зөвшөөрч байна", votes: 11554, percentage: 30.0, color: colors[1] }
+          { category: "Соёлын төв", votes: 140983, percentage: 35.55, color: colors[0] },
+          { category: "Дотуур байр", votes: 76928, percentage: 19.4, color: colors[1] },
+          { category: "Инженерийн дэд бүтэц", votes: 47661, percentage: 12.02, color: colors[2] },
+          { category: "Сургууль", votes: 33372, percentage: 8.41, color: colors[3] },
+          { category: "Эмнэлэг", votes: 26577, percentage: 6.7, color: colors[4] },
+          { category: "Цэцэрлэг", votes: 26375, percentage: 6.65, color: colors[5] },
+          { category: "Цахилгаан, эрчим хүч", votes: 24221, percentage: 6.11, color: colors[6] },
+          { category: "Дулаан хангамж", votes: 20489, percentage: 5.17, color: colors[7] }
         ]
       },
       {
         id: 5,
-        question: "Хэрэв намуудад төрийн санхүүжилт олгох юм бол жилд хэдэн төгрөг олгох ёстой вэ?",
-        totalVotes: 38514,
+        question: "Татварын бодлогын дэмжлэг үзүүлэх",
+        totalVotes: 448229,
         responses: [
-          { category: "1 тэрбум төгрөг", votes: 15406, percentage: 40.0, color: colors[0] },
-          { category: "5+ тэрбум төгрөг", votes: 9629, percentage: 25.0, color: colors[1] },
-          { category: "2 тэрбум төгрөг", votes: 7703, percentage: 20.0, color: colors[2] },
-          { category: "3 тэрбум төгрөг", votes: 3851, percentage: 10.0, color: colors[3] },
-          { category: "4 тэрбум төгрөг", votes: 1926, percentage: 5.0, color: colors[4] }
+          { category: "Татварын хувь хэмжээг бууруулах", votes: 150610, percentage: 33.6, color: colors[0] },
+          { category: "Татварын буцаан олголт ба хөнгөлөлт", votes: 85152, percentage: 19.0, color: colors[1] },
+          { category: "Татварын хугацааг уян хатан болгох", votes: 71956, percentage: 16.05, color: colors[2] },
+          { category: "Татварын орчныг сайжруулах", votes: 58091, percentage: 12.96, color: colors[3] },
+          { category: "Татварын урамшуулал", votes: 50326, percentage: 11.23, color: colors[4] },
+          { category: "Татварын чөлөөт бүс", votes: 32094, percentage: 7.16, color: colors[5] }
         ]
       },
       {
         id: 6,
-        question: "Монгол улсын төсвийн ил тод байдлыг хэрхэн сайжруулах вэ?",
-        totalVotes: 38514,
+        question: "Хувийн хэвшилд шилжүүлэх чиг үүрэг",
+        totalVotes: 408180,
         responses: [
-          { category: "Төсвийн мэдээллийг иргэдэд ойлгомжтой хэлбэрээр хүргэх", votes: 19257, percentage: 50.0, color: colors[0] },
-          { category: "Төсвийн биелэлтийн тайланг үе үе олон нийтэд танилцуулах", votes: 11554, percentage: 30.0, color: colors[1] },
-          { category: "Иргэдийн төсвийн хяналтад оролцох боломжийг нэмэгдүүлэх", votes: 7703, percentage: 20.0, color: colors[2] }
+          { category: "Дэд бүтцийн үйлчилгээ (хог хаягдал, цэцэрлэгжүүлэлт, зам засвар гэх мэт)", votes: 105037, percentage: 25.73, color: colors[0] },
+          { category: "Эрүүл мэндийн д��атгалын үйлчилгээний шинэ хэлбэрүүд", votes: 87947, percentage: 21.55, color: colors[1] },
+          { category: "Эрүүл мэндийн урьдчилан сэргийлэх үйлчилгээ, анхан шатны үзлэг", votes: 80663, percentage: 19.76, color: colors[2] },
+          { category: "Халаалт, засвар үйлчилгээ", votes: 54266, percentage: 13.29, color: colors[3] },
+          { category: "Харуул хамгаалалт", votes: 47094, percentage: 11.54, color: colors[4] },
+          { category: "Тусгай хамгаалалттай газар нутгийн менежмент", votes: 32790, percentage: 8.03, color: colors[5] },
+          { category: "Бусад", votes: 383, percentage: 0.09, color: colors[6] }
         ]
       }
     ];
