@@ -98,10 +98,15 @@ export default function Index() {
                 {data?.questions
                   .filter((q) => q.id !== 7)
                   .map((question) => (
-                    <SurveyQuestionResults
+                    <div
                       key={question.id}
-                      question={question}
-                    />
+                      onClick={() => handleQuestionClick(question)}
+                      className="cursor-pointer transition-transform duration-200 hover:scale-[1.02]"
+                    >
+                      <SurveyQuestionResults
+                        question={question}
+                      />
+                    </div>
                   ))}
               </div>
 
