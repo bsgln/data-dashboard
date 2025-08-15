@@ -66,7 +66,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
         { category: "Төрийн зардал бууруулах", votes: Math.round(19435 * 0.22), percentage: 22.0, color: colors[0] },
         { category: "Төрийн өмчит компаниудын тоог цөөлөх", votes: Math.round(19435 * 0.17), percentage: 17.0, color: colors[1] },
         { category: "Халамжийн бодлогыг шинэчлэх", votes: Math.round(19435 * 0.15), percentage: 15.0, color: colors[2] },
-        { category: "Төрийн албан хаагчдын тоо хязгаарлах", votes: Math.round(19435 * 0.12), percentage: 12.0, color: colors[3] },
+        { category: "��өрийн албан хаагчдын тоо хязгаарлах", votes: Math.round(19435 * 0.12), percentage: 12.0, color: colors[3] },
         { category: "Чиг үүргийг хувийн хэвшилд шилжүүлэх", votes: Math.round(19435 * 0.10), percentage: 10.0, color: colors[4] },
         { category: "Төсөв оновчтой зарцуулах", votes: Math.round(19435 * 0.09), percentage: 9.0, color: colors[5] },
         { category: "Эдийн засгийн реформ", votes: Math.round(19435 * 0.06), percentage: 6.0, color: colors[6] },
@@ -126,66 +126,7 @@ async function parseExcelToSurveyData(): Promise<SurveyDashboardData> {
 
     questions.push(question1, question2, question3, question4, question5, question6);
     
-    // Fetch and parse Excel for remaining questions (2-6)
-    console.log("📊 Fetching Excel survey data for questions 2-6:", EXCEL_URL);
-
-    const response = await fetch(EXCEL_URL);
-    if (!response.ok) {
-      throw new Error(`Failed to download Excel file: ${response.status}`);
-    }
-
-    const arrayBuffer = await response.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const workbook = XLSX.read(buffer, { type: 'buffer' });
-
-    console.log("📋 Excel sheets found:", workbook.SheetNames);
-
-    // Parse each sheet as a survey question (skip first since we have custom data)
-    workbook.SheetNames.forEach((sheetName, sheetIndex) => {
-      const worksheet = workbook.Sheets[sheetName];
-      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
-      
-      if (jsonData.length < 2) return; // Skip empty sheets
-      
-      console.log(`📄 Processing sheet: ${sheetName}`);
-      
-      const responses: SurveyResponse[] = [];
-      let questionTotalVotes = 0;
-      
-      // Skip header row and process data
-      for (let i = 1; i < jsonData.length; i++) {
-        const row = jsonData[i];
-        if (!row[0] || !row[1]) continue; // Skip empty rows
-        
-        const category = String(row[0]).trim();
-        const votes = parseInt(String(row[1]).replace(/,/g, '')) || 0;
-        const percentage = parseFloat(String(row[2]).replace('%', '')) || 0;
-        
-        if (category && votes > 0) {
-          responses.push({
-            category,
-            votes,
-            percentage: Math.round(percentage * 10) / 10, // Round to 1 decimal
-            color: colors[(responses.length) % colors.length]
-          });
-          
-          questionTotalVotes += votes;
-        }
-      }
-      
-      if (responses.length > 0) {
-        questions.push({
-          id: questionId++,
-          question: sheetName,
-          totalVotes: questionTotalVotes,
-          responses: responses.sort((a, b) => b.votes - a.votes) // Sort by votes descending
-        });
-        
-        totalVotesSum += questionTotalVotes;
-      }
-    });
-    
-    console.log(`✅ Parsed ${questions.length} questions with total ${totalVotesSum} votes`);
+    console.log(`✅ Created ${questions.length} questions with static survey data`);
     
     // Calculate metrics
     const dailyVotesAdded = await supabaseDailyTracker.updateDailyVoteCount(totalVotesSum);
