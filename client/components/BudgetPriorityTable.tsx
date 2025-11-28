@@ -8,8 +8,9 @@ export function BudgetPriorityTable({ data }: BudgetPriorityTableProps) {
   if (!data || data.length === 0) {
     return (
       <div
-        className="bg-white p-4 sm:p-5 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
-                      min-h-[280px] flex items-center justify-center"
+        className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
+                      transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,102,255,0.12)]
+                      min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] flex items-center justify-center"
       >
         <div className="text-center w-full">
           <div className="space-y-3">
@@ -55,15 +56,16 @@ export function BudgetPriorityTable({ data }: BudgetPriorityTableProps) {
 
   return (
     <div
-      className="bg-white p-4 sm:p-5 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
+      className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_4px_16px_rgba(0,102,255,0.08)]
                     transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,102,255,0.12)]
-                    animate-in slide-in-from-bottom-4 fade-in min-h-[320px] sm:min-h-[380px] flex flex-col"
+                    animate-in slide-in-from-bottom-4 fade-in min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] flex flex-col"
       style={{ animationDelay: "400ms", animationFillMode: "backwards" }}
     >
       <div className="mb-4 sm:mb-6">
         <h3
-          className="text-[16px] sm:text-[18px] font-semibold text-[#1E293B] tracking-[0.36px]
+          className="text-[16px] sm:text-[18px] lg:text-[19px] font-semibold text-[#1E293B] tracking-[0.36px]
                        transition-colors duration-200 leading-[1.3]"
+          lang="mn"
         >
           Ач холбогдлын зэрэг
         </h3>

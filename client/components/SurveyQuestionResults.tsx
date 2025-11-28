@@ -1,19 +1,17 @@
 import { SurveyQuestion } from "@shared/survey";
-import { Button } from "@/components/ui/button";
-import { SurveyDetailModal } from "./SurveyDetailModal";
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 
 interface SurveyQuestionResultsProps {
   question: SurveyQuestion;
   onVote?: (responseId: number) => Promise<boolean>;
+  onDetailClick?: () => void;
 }
 
 export function SurveyQuestionResults({
   question,
   onVote,
+  onDetailClick,
 }: SurveyQuestionResultsProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   // Generate unique animation IDs to avoid conflicts
   const animationId = useMemo(
     () => Math.random().toString(36).substr(2, 9),
@@ -22,18 +20,10 @@ export function SurveyQuestionResults({
 
   return (
     <>
-      <SurveyDetailModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        questionId={question.id}
-        questionText={question.question}
-        questionTotalVotes={question.totalVotes}
-      />
-
       <div
-        className="bg-white p-4 sm:p-5 rounded-xl shadow-[0_2px_8px_rgba(0,102,255,0.06)]
-                      transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,102,255,0.1)] hover:scale-[1.005]
-                      animate-in slide-in-from-bottom-4 fade-in min-h-[320px] sm:min-h-[360px] flex flex-col
+        className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-[0_2px_8px_rgba(0,102,255,0.06)]
+                      transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,102,255,0.1)]
+                      animate-in slide-in-from-bottom-4 fade-in min-h-[280px] sm:min-h-[320px] lg:min-h-[360px] flex flex-col
                       border border-[#F1F5F9] hover:border-[#E1EFFE]"
         style={{
           animationDelay: `${400 + question.id * 100}ms`,
@@ -63,8 +53,8 @@ export function SurveyQuestionResults({
           </div>
 
           <h3
-            className="text-[13px] sm:text-[14px] font-semibold text-[#1E293B] tracking-[0.15px]
-                     leading-[1.5] transition-colors duration-200 pr-2"
+            className="text-[13px] sm:text-[14px] lg:text-[15px] font-semibold text-[#1E293B] tracking-[0.15px]
+                     leading-[1.5] transition-colors duration-200 pr-2 break-words overflow-wrap-anywhere"
           >
             {question.question}
           </h3>
@@ -140,27 +130,16 @@ export function SurveyQuestionResults({
             animationFillMode: "backwards",
           }}
         >
-          <div
-            className={`flex ${onVote ? "justify-between" : "justify-center"} items-center gap-2`}
-          >
-            <Button
-              variant="outline"
-              className="border-[#0066FF] text-[#0066FF] hover:bg-[#0066FF] hover:text-white rounded-full
+          <div className="flex justify-center items-center">
+            <button
+              onClick={onDetailClick}
+              className="border border-[#0066FF] text-[#0066FF] hover:bg-[#0066FF] hover:text-white rounded-full
                          px-5 py-2 text-[11px] sm:text-[12px] font-medium
                          transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-              onClick={() => setIsModalOpen(true)}
             >
-              <span className="hidden sm:inline">
-                Иргэдээс ирсэн саналын дэлгэрэнгүй
-              </span>
+              <span className="hidden sm:inline">Дэлгэрэнгүй</span>
               <span className="sm:hidden">Дэлгэрэнгүй</span>
-            </Button>
-
-            {onVote && (
-              <div className="text-[10px] sm:text-[11px] text-[#64748B] text-center">
-                Жинхэнэ датабааз режим
-              </div>
-            )}
+            </button>
           </div>
         </div>
       </div>

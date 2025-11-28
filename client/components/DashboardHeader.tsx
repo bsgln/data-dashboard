@@ -35,12 +35,14 @@ export function DashboardHeader({ lastUpdated, isLive }: DashboardHeaderProps) {
           <h1
             className="text-[18px] sm:text-[22px] lg:text-[24px] font-bold text-[#1E293B] leading-[1.15] sm:leading-[1.2]
                          tracking-[0.36px] sm:tracking-[0.44px] lg:tracking-[0.48px] transition-colors duration-200 break-words"
+            lang="mn"
           >
             Санал асуулгын үр дүн
           </h1>
           <p
             className="text-[12px] sm:text-[14px] lg:text-[16px] text-[#1E293B] tracking-[0.18px] sm:tracking-[0.21px] lg:tracking-[0.24px]
                         transition-colors duration-200 leading-[1.3] sm:leading-[1.35] lg:leading-[1.4] break-words opacity-90"
+            lang="mn"
           >
             2026 оны төсвийн чиглэлийн талаарх иргэдийн санал
           </p>

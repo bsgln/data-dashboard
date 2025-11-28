@@ -1,21 +1,23 @@
+import { useState } from "react";
 import { useSurveyData } from "@/hooks/useSurveyData";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricsCards } from "@/components/MetricsCards";
 import { GenderChart } from "@/components/GenderChart";
-import { AgeGroupChart } from "@/components/AgeGroupChart";
-import { BudgetPriorityTable } from "@/components/BudgetPriorityTable";
+import { AgeParticipationChart } from "@/components/AgeParticipationChart";
 import { SurveyQuestionResults } from "@/components/SurveyQuestionResults";
+import { SeventhQuestionCard } from "@/components/SeventhQuestionCard";
+import { QuestionDetailPopup } from "@/components/QuestionDetailPopup";
 import { ConnectionErrorDialog } from "@/components/ConnectionErrorDialog";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, Settings, AlertCircle, Wifi, WifiOff } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { SurveyDashboardData } from "@shared/survey";
+import { SurveyDashboardData, SurveyQuestion } from "@shared/survey";
 import {
   MetricsCardsSkeleton,
   GenderChartSkeleton,
   AgeGroupChartSkeleton,
-  BudgetPriorityTableSkeleton,
   SurveyQuestionSkeleton,
+  SeventhQuestionCardSkeleton,
 } from "@/components/SkeletonLoaders";
 
 export default function Index() {
@@ -31,53 +33,26 @@ export default function Index() {
     closeConnectionError,
   } = useSurveyData();
 
+  const [selectedQuestion, setSelectedQuestion] =
+    useState<SurveyQuestion | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleQuestionClick = (question: SurveyQuestion) => {
+    setSelectedQuestion(question);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedQuestion(null);
+  };
+
   return (
     <div
       className="min-h-screen bg-[#F8FAFC] animate-in fade-in"
       style={{ animationDuration: "800ms" }}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 sm:py-8">
-        {/* Connection Status & Controls */}
-        <div
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0
-                    mb-3 sm:mb-4 animate-in slide-in-from-top-2 fade-in"
-          style={{ animationDelay: "100ms", animationFillMode: "backwards" }}
-        >
-          <div className="flex items-center gap-3">
-            {isConnected ? (
-              <div
-                className={`flex items-center gap-2 text-[#22C55E] transition-all duration-300 ${isLoading || isRefetching ? "animate-pulse" : ""}`}
-              >
-                <Wifi className="w-4 h-4" />
-                <span className="text-sm font-medium">
-                  {isLoading || isRefetching ? "Холбогдож байна" : "Холбогдсон"}
-                </span>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 text-[#EF4444] animate-bounce">
-                <WifiOff className="w-4 h-4" />
-                <span className="text-sm font-medium">Холболт тасарсан</span>
-              </div>
-            )}
-          </div>
-
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-end sm:justify-start">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={refetch}
-              disabled={isLoading || isRefetching}
-              className="flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md
-                         text-sm sm:text-base px-3 sm:px-4 py-2"
-            >
-              <RefreshCw
-                className={`w-4 h-4 transition-transform duration-500 ${isLoading || isRefetching ? "animate-spin" : "hover:rotate-180"}`}
-              />
-              Шинэчлэх
-            </Button>
-          </div>
-        </div>
-
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
         {/* Connection Error Dialog */}
         <ConnectionErrorDialog
           isOpen={showConnectionError}
@@ -96,15 +71,16 @@ export default function Index() {
 
             <MetricsCards metrics={data?.metrics} />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
               <GenderChart data={data?.genderDistribution} />
-              <AgeGroupChart data={data?.ageGroups} />
-              <BudgetPriorityTable data={data?.budgetPriorities} />
+              <AgeParticipationChart
+                totalVotes={data?.metrics.totalVotes || 0}
+              />
             </div>
 
-            <div className="mb-4 sm:mb-6">
+            <div className="mb-8">
               <h2
-                className="text-[16px] sm:text-[18px] font-semibold text-[#1E293B] mb-3 sm:mb-4
+                className="text-[18px] sm:text-[20px] lg:text-[22px] font-semibold text-[#1E293B] mb-6
                              tracking-[0.3px] animate-in slide-in-from-left-2 fade-in transition-colors duration-200"
                 style={{
                   animationDelay: "500ms",
@@ -114,13 +90,25 @@ export default function Index() {
                 Асуултуудын үр дүн
               </h2>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-                {data?.questions.map((question) => (
-                  <SurveyQuestionResults
-                    key={question.id}
-                    question={question}
-                  />
-                ))}
+              {/* Regular Survey Questions (excluding question 7) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8">
+                {data?.questions
+                  .filter((q) => q.id !== 7)
+                  .map((question) => (
+                    <div key={question.id}>
+                      <SurveyQuestionResults
+                        question={question}
+                        onDetailClick={() => handleQuestionClick(question)}
+                      />
+                    </div>
+                  ))}
+              </div>
+
+              {/* Citizen Suggestions Card - At Bottom */}
+              <div className="mb-8">
+                <SeventhQuestionCard
+                  question={data?.questions.find((q) => q.id === 7)}
+                />
               </div>
             </div>
           </>
@@ -139,18 +127,27 @@ export default function Index() {
 
             <MetricsCardsSkeleton />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
               <GenderChartSkeleton />
-              <AgeGroupChartSkeleton />
-              <BudgetPriorityTableSkeleton />
+              <GenderChartSkeleton /> {/* Age participation chart skeleton */}
             </div>
 
-            <div className="mb-6 sm:mb-8">
-              <div className="h-5 sm:h-6 w-40 sm:w-48 bg-gray-200 rounded animate-pulse mb-4 sm:mb-6"></div>
+            <div className="mb-8">
+              <div className="h-6 w-48 bg-gray-200 rounded animate-pulse mb-6"></div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              {/* Regular Question Skeletons */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8">
                 <SurveyQuestionSkeleton />
                 <SurveyQuestionSkeleton />
+                <SurveyQuestionSkeleton />
+                <SurveyQuestionSkeleton />
+                <SurveyQuestionSkeleton />
+                <SurveyQuestionSkeleton />
+              </div>
+
+              {/* Citizen Suggestions Card Skeleton - At Bottom */}
+              <div className="mb-8">
+                <SeventhQuestionCardSkeleton />
               </div>
             </div>
           </>
@@ -159,13 +156,20 @@ export default function Index() {
         {/* Loading overlay for refreshes */}
         {isRefetching && (
           <div
-            className="fixed top-4 right-4 bg-white shadow-lg rounded-lg p-3 flex items-center gap-2 
+            className="fixed top-4 right-4 bg-white shadow-lg rounded-lg p-3 flex items-center gap-2
                           animate-in slide-in-from-right-4 fade-in z-50"
           >
             <RefreshCw className="w-4 h-4 animate-spin text-[#0066FF]" />
             <span className="text-sm text-[#64748B]">Шинэчилж байна...</span>
           </div>
         )}
+
+        {/* Question Detail Popup */}
+        <QuestionDetailPopup
+          isOpen={isPopupOpen}
+          onClose={closePopup}
+          question={selectedQuestion}
+        />
       </div>
     </div>
   );

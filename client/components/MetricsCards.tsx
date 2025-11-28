@@ -7,20 +7,41 @@ import {
 } from "@/components/ui/tooltip";
 import { Progress } from "@/components/ui/progress";
 import { AnimatedNumber } from "./AnimatedNumber";
+import { useEffect, useState } from "react";
 
 interface MetricsCardsProps {
   metrics?: SurveyMetrics;
 }
 
 export function MetricsCards({ metrics }: MetricsCardsProps) {
+  const [userVoteCount, setUserVoteCount] = useState(0);
+
+  // localStorage key for tracking user interactions
+  const VOTE_COUNT_KEY = "userVoteCount";
+
+  useEffect(() => {
+    // Load user vote count from localStorage
+    const savedCount = localStorage.getItem(VOTE_COUNT_KEY);
+    if (savedCount) {
+      setUserVoteCount(parseInt(savedCount, 10));
+    }
+  }, []);
+
+  // Function to increment user vote count
+  const incrementUserVote = () => {
+    const newCount = userVoteCount + 1;
+    setUserVoteCount(newCount);
+    localStorage.setItem(VOTE_COUNT_KEY, newCount.toString());
+  };
+
   if (!metrics) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
-        {[...Array(4)].map((_, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
+        {[...Array(3)].map((_, index) => (
           <div
             key={index}
-            className="bg-white p-3 sm:p-4 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
-                       min-h-[100px] sm:min-h-[110px] flex flex-col justify-between"
+            className="bg-white p-3 sm:p-4 lg:p-5 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
+                       min-h-[100px] sm:min-h-[110px] lg:min-h-[120px] flex flex-col justify-between"
           >
             <div className="h-4 w-28 bg-gray-200 rounded animate-pulse mb-3"></div>
             <div>
@@ -37,12 +58,12 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
     {
       title: "Нийт санал",
       value: metrics.totalVotes || 0,
-      subtitle: `+${(metrics.dailyVotesAdded || 0).toLocaleString()} санал /өнөөдөр/`,
+      subtitle: "Нийт санал өгсөн хүмүүсийн тоо",
       icon: Users,
       iconColor: "text-blue-600",
       iconBg: "bg-blue-50",
       tooltip:
-        "Нийт санал өгөгчдийн тоо. Өнөөдрийн нэмэгдэл нь өдрийн турш нэмэгдсэн саналын тоог харуулна.",
+        "Санал асуулгад оролцсон нийт хүмүүси��н тоо. Бодит цагийн мэдээлэл.",
       isNumeric: true,
     },
     {
@@ -65,31 +86,20 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
       iconColor: "text-purple-600",
       iconBg: "bg-purple-50",
       tooltip:
-        "Санал асуулгыг дуусгасан хувь. Тооцоолол: (Дуусгасан хүмүүсийн тоо ÷ Нийт уригдсан хүмүүсийн тоо) × 100%",
-      isNumeric: false,
-    },
-    {
-      title: "Ач холбогдолын зэрэг",
-      value: metrics.topBudgetPriority?.category || "Тодорхойгүй",
-      subtitle: `${metrics.topBudgetPriority?.percentage || 0}%`,
-      icon: Trophy,
-      iconColor: "text-amber-600",
-      iconBg: "bg-amber-50",
-      tooltip:
-        "Төсөв нэмэгдүүлэх хамгийн чухал салбар. Тооцоолол: Тэргүүлэх индекс = ((Нэмэгдүүлэх санал) - (Багасгах санал)) ÷ (Нийт санал) × 100%",
+        "Санал асуулгыг дуусгасан хувь. Тооцоолол: (Нийт санал ÷ Монгол улсын 16+ насны иргэдийн тоо) × 100%",
       isNumeric: false,
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
       {cards.map((card, index) => (
         <div
           key={index}
-          className="bg-white p-3 sm:p-4 rounded-lg shadow-[0_2px_8px_rgba(0,102,255,0.06)]
-                     transform transition-all duration-300 ease-out hover:scale-[1.02] 
+          className="bg-white p-3 sm:p-4 lg:p-5 rounded-lg lg:rounded-xl shadow-[0_2px_8px_rgba(0,102,255,0.06)]
+                     transform transition-all duration-300 ease-out hover:scale-[1.02]
                      hover:shadow-[0_4px_16px_rgba(0,102,255,0.12)] animate-in slide-in-from-bottom-4 fade-in
-                     min-h-[100px] sm:min-h-[110px] flex flex-col justify-between
+                     min-h-[100px] sm:min-h-[110px] lg:min-h-[120px] flex flex-col justify-between
                      border border-gray-50 hover:border-blue-100"
           style={{
             animationDelay: `${index * 100}ms`,
@@ -98,8 +108,8 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
         >
           <div className="flex justify-between items-start mb-3">
             <h3
-              className="text-[13px] sm:text-[14px] text-[#1E293B] tracking-[0.2px] transition-colors duration-200
-                leading-[1.3] font-medium flex-1 pr-2"
+              className="text-[13px] sm:text-[14px] lg:text-[15px] text-[#1E293B] tracking-[0.2px] transition-colors duration-200
+                leading-[1.3] font-medium flex-1 pr-2 break-words"
             >
               {card.title}
             </h3>
@@ -141,8 +151,8 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
               </div>
             )}
             <div
-              className="text-[11px] sm:text-[12px] text-[#64748B] tracking-[0.2px]
-                         transition-colors duration-200 leading-[1.2]"
+              className="text-[11px] sm:text-[12px] lg:text-[13px] text-[#64748B] tracking-[0.2px]
+                         transition-colors duration-200 leading-[1.3] break-words"
             >
               {card.subtitle}
             </div>

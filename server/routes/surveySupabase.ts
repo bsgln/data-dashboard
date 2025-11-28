@@ -59,55 +59,124 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
       };
     });
 
-    // Calculate gender distribution (estimated based on Mongolia demographics)
+    // Add seventh question based on sample data
+    if (!transformedQuestions.find((q) => q.id === 7)) {
+      transformedQuestions.push({
+        id: 7,
+        question: "Монгол улсын 2026 оны төсвийн тэргүүлэх чиглэлүүд",
+        totalVotes: 38514,
+        responses: [
+          {
+            category: "Цалин нэмэгдүүлэх",
+            votes: Math.round(38514 * 0.19),
+            percentage: 19.0,
+            color: getColorForIndex(0),
+          },
+          {
+            category: "Төсвийн үр ашиг",
+            votes: Math.round(38514 * 0.15),
+            percentage: 15.0,
+            color: getColorForIndex(1),
+          },
+          {
+            category: "Эрүүл мэндийн үйлчилгээ",
+            votes: Math.round(38514 * 0.14),
+            percentage: 14.0,
+            color: getColorForIndex(2),
+          },
+          {
+            category: "Боловсролын салбар",
+            votes: Math.round(38514 * 0.12),
+            percentage: 12.0,
+            color: getColorForIndex(3),
+          },
+          {
+            category: "Хууль, цагдаагийн байгууллага",
+            votes: Math.round(38514 * 0.11),
+            percentage: 11.0,
+            color: getColorForIndex(4),
+          },
+          {
+            category: "Нийгмийн хамгаалал",
+            votes: Math.round(38514 * 0.08),
+            percentage: 8.0,
+            color: getColorForIndex(5),
+          },
+          {
+            category: "Дэд бүтэц, зам засвар",
+            votes: Math.round(38514 * 0.07),
+            percentage: 7.0,
+            color: getColorForIndex(6),
+          },
+          {
+            category: "Хөдөө аж ахуй",
+            votes: Math.round(38514 * 0.06),
+            percentage: 6.0,
+            color: getColorForIndex(7),
+          },
+          {
+            category: "Байгаль орчны хамгаалал",
+            votes: Math.round(38514 * 0.05),
+            percentage: 5.0,
+            color: getColorForIndex(8),
+          },
+          {
+            category: "Хувийн хэвшлийн дэмжлэг",
+            votes: Math.round(38514 * 0.04),
+            percentage: 4.0,
+            color: getColorForIndex(9),
+          },
+        ],
+      });
+    }
+
+    // Use yesterday's actual gender distribution data
     const totalVotes = metrics.total_votes;
-    const estimatedMalePercentage = 44.46;
-    const estimatedFemalePercentage = 55.54;
+    const maleCount = 63818;
+    const femaleCount = 79739;
+    const malePercentage = 44.46;
+    const femalePercentage = 55.54;
 
     const genderDistribution = {
       male: {
-        count: Math.round(totalVotes * (estimatedMalePercentage / 100)),
-        percentage: estimatedMalePercentage,
+        count: maleCount,
+        percentage: malePercentage,
       },
       female: {
-        count: Math.round(totalVotes * (estimatedFemalePercentage / 100)),
-        percentage: estimatedFemalePercentage,
+        count: femaleCount,
+        percentage: femalePercentage,
       },
     };
 
-    // Age groups based on Mongolia's demographic data
-    const ageGroups = [
-      {
-        range: "16-17 нас",
-        count: Math.round(totalVotes * 0.0008),
-        percentage: 0.08,
-      },
-      {
-        range: "18-24 нас",
-        count: Math.round(totalVotes * 0.146),
-        percentage: 14.6,
-      },
-      {
-        range: "25-34 нас",
-        count: Math.round(totalVotes * 0.3556),
-        percentage: 35.56,
-      },
-      {
-        range: "35-44 нас",
-        count: Math.round(totalVotes * 0.326),
-        percentage: 32.6,
-      },
-      {
-        range: "45-54 нас",
-        count: Math.round(totalVotes * 0.1282),
-        percentage: 12.82,
-      },
-      {
-        range: "55+ нас",
-        count: Math.round(totalVotes * 0.0434),
-        percentage: 4.34,
-      },
+    // Age groups based on real Mongolia population data
+    const agePopulationData = [
+      { range: "16-17 нас", population: 119 }, // Keep survey response for 16-17 as no population data provided
+      { range: "18-24 нас", population: 179264 },
+      { range: "25-34 нас", population: 244588 },
+      { range: "35-44 нас", population: 289587 },
+      { range: "45-54 нас", population: 267022 },
+      { range: "55+ нас", population: 233287 },
     ];
+
+    const totalAgePopulation = agePopulationData.reduce(
+      (sum, item) => sum + item.population,
+      0,
+    );
+
+    // Calculate estimated participation for each age group based on their population proportion
+    const ageGroups = agePopulationData.map((item) => {
+      const participationRate = totalVotes / 2280887; // Adult population
+      const estimatedParticipants = Math.round(
+        item.population * participationRate,
+      );
+
+      return {
+        range: item.range,
+        count: estimatedParticipants,
+        percentage:
+          Math.round((item.population / totalAgePopulation) * 100 * 10) / 10,
+      };
+    });
 
     // Calculate budget priorities based on survey responses
     const budgetPriorities = calculateBudgetPriorities(transformedQuestions);
@@ -118,7 +187,8 @@ export const handleSupabaseSurveyData: RequestHandler = async (_req, res) => {
         votesChange: Math.floor(Math.random() * 100) + 50,
         dailyVotesAdded: todayStats?.votes_added || metrics.daily_votes_added,
         averageVotesPerMinute: metrics.average_votes_per_minute,
-        completionPercentage: metrics.completion_percentage,
+        completionPercentage:
+          Math.round((metrics.total_votes / 2280887) * 100 * 10) / 10, // Based on actual Mongolia adult population
         topBudgetPriority: {
           category: metrics.top_budget_priority_category || "Тодорхойгүй",
           percentage: metrics.top_budget_priority_percentage,
@@ -214,12 +284,8 @@ function calculateBudgetPriorities(questions: any[]) {
   );
 
   if (!increaseQuestion || !decreaseQuestion) {
-    // Return default priorities
-    return [
-      { category: "Эрүүл мэнд", index: 58.5, status: "increase" as const },
-      { category: "Боловсрол", index: 55.4, status: "increase" as const },
-      { category: "Дэд бүтэц", index: 38.7, status: "increase" as const },
-    ];
+    // No budget priority data available
+    return [];
   }
 
   // Create priority calculations based on increase vs decrease votes
